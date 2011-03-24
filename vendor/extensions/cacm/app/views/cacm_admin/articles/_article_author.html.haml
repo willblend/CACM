@@ -1,0 +1,8 @@
+%tr
+  %th.label= label(:article, :author, 'Article Author')
+  %td.field
+    - if @article.is_dl_article?
+      = h(@article.author)
+      = f.hidden_field :author
+    - else
+      = f.text_field :author, :class => 'textbox required'

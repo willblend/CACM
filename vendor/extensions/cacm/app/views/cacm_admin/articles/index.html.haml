@@ -1,0 +1,77 @@
+-content_for :page_css do
+  :plain
+    #pagination-table { margin-top: 0; }
+    * HTML .AdminTabNav { padding-top: 2px !important; zoom: 1; }
+    * HTML #pagination-table .pagination { padding: 3px 0px !important; zoom: 1; }
+    *:first-child+HTML #pagination-table .pagination { padding: 3px 0px !important; zoom: 1; }
+
+%h1 Content Aggregation Engine
+
+= render :partial => 'search'
+
+%p#new-item-link
+  = link_to "Create a New Article", '#feed-provider-list', :id => 'create-new-article'
+
+#feed-provider-list{ :style => 'display: none' }
+  %ul
+    // NOTE 
+    // This is another example of the incoming route dictating functionality. Here if the blogger role url is the current one
+    // then show one set of options , otherwise show the full list. 
+    - if request.request_uri.match(/admin\/blog/)
+      %li= link_to "blog@CACM", {:action => "new", :provider_id => CACM::BLOG_FEED_ID } 
+    - else
+      - @manual_feeds.each do |f|
+        %li= link_to f[0], {:action => "new", :provider_id => f[1]}.merge!(index_options)
+      %li= link_to 'Fetch a DL Article', :controller => "cacm_admin/ingest", :action => 'new'
+
+- include_javascript 'livepipe'
+- include_javascript 'livepipe.window.js'
+
+- content_for :page_scripts do
+  :plain
+    document.observe('dom:loaded', function(){
+      // move to body to avoid positioning difficulties
+      $(document.body).insert($('feed-provider-list'));
+
+      // remove outline on click
+      $('create-new-article').observe('click', function(){ this.blur(); });
+
+      // DHTML menu
+      new Control.Window($('create-new-article'), {
+        'position'     : 'relative',
+        'className'    : 'AddMenu',
+        'closeOnClick' : true,
+        'offsetTop'    : function() { return $('create-new-article').offsetHeight - 1; },
+        'width'        : function() { return $('create-new-article').offsetWidth; }
+      });
+    });
+
+= render :partial => 'nav'
+
+- if params[:query] 
+  %h2
+    = @articles.total_entries
+    = %{ results for "#{params[:query]}" within }
+    %span= params[:filter].blank? ? 'all' : params[:filter] 
+    articles.
+- else
+  = restrict_to(CACM::FULL_ACCESS_ROLES) do  
+    = render :partial => 'filters'
+  
+- unless @articles.empty?
+  %table.LayoutTable#pagination-table
+    %tr
+      %td.Left
+        %p.pagination-status= page_entries_info @articles, :entry_name => 'articles'
+      %td.Right
+        = will_paginate @articles
+
+- if params[:filter] == 'new'
+  = render :partial => 'table_action'
+- else
+  = render :partial => 'table_status'
+
+= will_paginate @articles
+= restrict_to(CACM::ADMIN_ACCESS_ROLES) do
+  %p
+  = link_to 'Manage Feeds &raquo;', admin_feeds_path

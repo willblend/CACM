@@ -1,0 +1,21 @@
+#BodyWrapper.UtilityPage.TwoColumnUtility
+  #MainColumn
+    #MainContentArea
+      #PageHdr
+        %h1#create-a-web-account
+          %span create a web account
+        
+        %h3.AccountHeader
+          An email verification has been sent to 
+          %strong= params[:email]
+        
+        %p.Intro ACM veriﬁes that you are the owner of the email address you've provided by sending you a veriﬁcation message. The email message will contain a link that you must click to validate this account.
+        
+        %p.NextStep
+          %strong NEXT STEP: CHECK YOUR EMAIL 
+          You must click the link within the message in order to complete the process of creating your account. You may click on the link embedded in the message, or copy the link and paste it into your browser.
+
+  #Banner.AccountAds
+    %r:snippet{ :name => "account_right_column_ads" }
+    
+  .ClearFix <!-- do not remove -->

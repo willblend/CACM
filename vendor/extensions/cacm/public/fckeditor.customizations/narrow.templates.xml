@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Templates>
+	
+	<Template title="Bulleted Link List">
+		<Description>Bulleted list with blue links and vertical spacing</Description>
+		<Html>
+			<![CDATA[
+			<ul class="Links">
+				<li>list item 1</li>
+				<li>list item 2</li>
+			</ul>
+			]]>
+		</Html>
+	</Template>
+	
+	<Template title="Image Feature">
+		<Description>A feature block with an image on left and text on the right, blue border above the text</Description>
+		<Html>
+			<![CDATA[
+			<table cellspacing="0" class="ImgFeature">
+				<tbody>
+					<tr>
+						<td class="first">
+						<img src="/images/fpo.200_133.gif" alt="" />
+						</td>
+						<td>
+							<h3>Heading</h3>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec semper. Duis eget urna nec orci malesuada semper. Sed placerat egestas turpis. Cras scelerisque. Nulla ullamcorper magna in dui.</p>
+							<span class="more">link text</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			]]>
+		</Html>
+	</Template>
+	
+	<Template title="3 Column">
+		<Description>A 3 column layout</Description>
+		<Html>
+			<![CDATA[
+			<table class="Colx3">
+				<tbody>
+					<tr>
+						<td class="first">
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec semper. Duis eget urna nec orci malesuada semper. Sed placerat egestas turpis. Cras scelerisque. Nulla ullamcorper magna in dui.</p>
+						</td>
+						<td>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec semper. Duis eget urna nec orci malesuada semper. Sed placerat egestas turpis. Cras scelerisque. Nulla ullamcorper magna in dui.</p>
+						</td>
+						<td>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec semper. Duis eget urna nec orci malesuada semper. Sed placerat egestas turpis. Cras scelerisque. Nulla ullamcorper magna in dui.</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			]]>
+		</Html>
+	</Template>
+	
+	<Template title="2 Column">
+		<Description>A 2 column layout</Description>
+		<Html>
+			<![CDATA[
+			<table class="Colx2">
+				<tbody>
+					<tr>
+						<td class="first">
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec semper. Duis eget urna nec orci malesuada semper. Sed placerat egestas turpis. Cras scelerisque. Nulla ullamcorper magna in dui.</p>
+						</td>
+						<td>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec semper. Duis eget urna nec orci malesuada semper. Sed placerat egestas turpis. Cras scelerisque. Nulla ullamcorper magna in dui.</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			]]>
+		</Html>
+	</Template>
+	
+	<Template title="Photo, Caption, Credit">
+		<Description>An image with styled caption and credit</Description>
+		<Html>
+			<![CDATA[
+				<div class="WYSIWYG-Image">
+					<img src="/images/fpo.200_133.gif" alt="Image Alternate Text" class="pic" />
+					<span class="title">A caption of the above image goes here</span>
+					<span class="credit">Credit for the above image goes here</span>
+				</div>
+			]]>
+		</Html>
+	</Template>
+	
+</Templates>
+

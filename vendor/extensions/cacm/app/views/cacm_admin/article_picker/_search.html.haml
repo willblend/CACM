@@ -1,0 +1,17 @@
+- content_for :page_css do
+  :plain
+    #search-box { top: 15px; }
+
+#search-box
+  - form_tag associated_articles_path, :method => 'get', :id => 'article_search_form', :class => 'InlineForm' do
+    %fieldset
+      %legend Search Articles
+      .Field
+        - if params[:feed_id]
+          = hidden_field_tag :feed_id, params[:feed_id]
+        - if params[:feed_ids]
+          = hidden_field_tag :feed_ids, params[:feed_ids]
+        %label{ :for => 'query', :class => 'Invisible' } Search
+        = text_field_tag :query, params[:query], :class => 'TextInput ShowTitle', :title => 'Search Articles'
+      .FormAction
+        = submit_tag "Search"

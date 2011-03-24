@@ -1,0 +1,7 @@
+- unless @assets.empty?
+  %table.LayoutTable#pagination-table
+    %tr
+      %td.Left
+        %p.pagination-status= page_entries_info @assets, :entry_name => 'assets'
+      %td.Right
+        = will_paginate @assets

@@ -1,0 +1,24 @@
+.ClearFix <!-- do not remove -->
+
+- content_for :barrier do
+
+  - if current_member.client.blank? # not logged in via IP/account
+    #article-barrier
+      %h3#full-text-is-premium-content
+        %span The full text of this article is premium content!
+      = render :partial => "articles/barrier_form"  
+  
+  - elsif current_member.inst? and not current_member.indv?
+    = render :partial => "articles/upsell"
+  
+  - elsif not current_member.can_access?(@article) # logged in, but lacks access
+    = render :partial => 'articles/upsell'
+    
+  - elsif @session_expired
+    #article-barrier
+      %h3#session-expired
+        %span Your session has expired. Please log in again.
+      = render :partial => "articles/barrier_form"
+  
+    
+= render 'articles/abstract.html.haml'

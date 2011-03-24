@@ -1,0 +1,402 @@
+/* -- BEGIN: radiant core overrides --------------------------------------- */
+
+BODY { /* font-family: helvetica, arial, sans-serif; */ font-size: 100%; }
+
+FORM { margin: 0; }
+FIELDSET { border: 0; padding: 0; margin: 0; }
+
+A { /*color: #008CBC;*/ }
+
+/* radiant's CSS rule for this doesn't get parsed correctly in IE6 due to use of attribute selectors, so it's duplicated here */
+IMG { border: 0; vertical-align: middle; }
+
+#header #navigation { line-height: 120%; }
+
+#content TABLE.fieldset TD.field { text-align: left; } /* not sure why radiant has it set to right, maybe for visual alignment of the INPUTs? */
+#content TABLE.fieldset TD.field TEXTAREA { height: auto !important; }
+
+#content .textarea { height: auto !important; }
+
+#content .form-area TABLE.fieldset TH.label,
+#content .form-area TABLE.fieldset TH.label LABEL { font-weight: bold !important; }
+#content .form-area TABLE.fieldset TD.field LABEL { font-weight: normal; }
+
+#content TABLE.fieldset TD.field TABLE TD, 
+#content TABLE.fieldset TD.field TABLE TH { border-top: none; padding-left: 0px; }
+
+TABLE.index TH { padding-top: 4px !important; }
+
+/* ----------------------------------------- END: radiant core overrides -- */
+
+
+/* -- BEGIN: DP radiant tweaks -------------------------------------------- */
+
+INPUT { vertical-align: middle; }
+
+/* radiant template structure */
+#page { } 
+#header { position: relative; /* background: #008CBC; color: #FFF; */ padding: 10px 10px 0; width: auto; }
+#header A,
+#header A:visited { color: #FFF; text-decoration: underline; }
+#main { /*min-width: 1000px;*/ }
+* HTML #main { /*width: 1000px;*/ }
+#content { position: relative; }
+#footer { }
+
+#navigation { text-align: left; border: none; color: #000; margin-bottom: 0; }
+#navigation A,
+#navigation A:visited { background-color: #DDD; color: #000; text-decoration: none; }
+#navigation STRONG A,
+#navigation STRONG A:visited { background-color: #FFF; }
+
+
+#content { font-size: 93.75%; /*min-height: 400px;*/ }
+
+#content H1 { font-size: 150%; margin-bottom: 1em; }
+#content H2 { font-size: 120%; }
+#content H3 { font-size: 106.7%; }
+#content H4 { font-size: 100%; }
+
+#content TABLE.index { clear: both; }
+
+/* these DIVs wrap standard content part types and FCK editors */
+.content_type_part { margin-bottom: 2em; }
+.content_type_part LABEL { display: block; }
+.content_type_part INPUT.text { display: block; width: 300px; }
+.content_type_part .description { font-size: .85em; display: block; }
+.BooleanPartType LABEL.description { display: inline !important; font-weight: normal !important; }
+.content_type_part TEXTAREA { display: block; width: 99%; }
+
+#login { width: 30em; margin: 50px auto; background: none !important; border: 0 !important; }
+#login H1 { display: none; }
+#login P.buttons { margin-left: 7.5em; }
+#login P.buttons INPUT { font-size: 1.25em; }
+#login #user_login,
+#login #user_password { width: 99%; }
+* HTML #login { padding-top: 3em; }
+* HTML #login .textbox { width: 95% !important; }
+*:first-child+html #login  .textbox { width: 95% !important; }
+
+FORM .form-area DIV.content_type_part { width: 960px !important;	}
+
+#site-map TD.status { cursor: pointer; }
+
+#content .form-area .title .textbox { width: 99%; }
+
+.template_part { margin-bottom: 2em; }
+.template_part .description { display: block; font-size: .9em; margin-bottom: .5em; }
+.template_part INPUT.text { width: 50%; }
+
+/* ---------------------------------------------- END: DP radiant tweaks -- */
+
+
+/* -- BEGIN: DP radiant additions ----------------------------------------- */
+
+/* username / account settings / logout */
+#UserTools { position: absolute; top: 0; right: 10px; text-align: right; line-height: 1.3; font-size: 75%; }
+#UserTools A { /* text-decoration: underline; */ }
+
+/* client logo */
+#Logo { padding: .5em 0 20px 7px; }
+
+/* for the "toggle wysiwyg" button */
+#toggle-wysiwyg-editor { margin-top: 0; float:right; font-size: 90%; z-index: 500; }
+
+/* fixes ie filter nav borders (e.g. filter last name alphabetically list) */
+* HTML #filter-nav UL LI A { zoom: 1; padding: 1px 4px 2px; }
+*:first-child+html #filter-nav UL LI A { zoom: 1; padding: 1px 4px 2px; }
+
+/* links to live front-end sites */
+#live-sites { position: absolute; top: 37px; left: 410px; list-style: none; line-height: 1.3; margin: 0; font-size: 87.5%; }
+
+/* top right search area */
+#search-box { position: absolute; top: 20px; right: 20px; margin: 0; padding: 0; font-size: .9em; }
+
+/* new item creation, nestled within tab row */
+P#new-item-link { float: right; margin: 0; font-size: 80%; padding: 0; margin-top: -10px; }
+P#new-item-link SPAN.Link,
+P#new-item-link A { display: block; padding: 4px 4px 4px 24px; background: #FFD url(/images/admin/add.png) 4px 50% no-repeat; border: 1px solid #CCC; text-decoration: none; }
+
+
+/* for representing the asset manager in Radiant forms */
+INPUT.asset-manager-filename { width: 20em; }
+.asset-manager-link { border: 1px solid #000; font-size: 90%; padding: 4px 5px 2px; margin-left: 4px; }
+.asset-manager-preview { /* max-width: 250px; */ border: 2px solid #CCC; padding: 2px; display: block; margin-top: 6px; }
+.remove-asset-link { border: 1px solid #CC3333; color: #CC3333; font-size: 90%; padding: 4px 5px 2px; margin-left: 8px; }
+
+
+/* default structure output by will_paginate */
+.pagination { margin: 1em 0; text-align: right; clear: both; font-size: 86%; }
+.pagination A,
+.pagination SPAN { padding: 2px 4px 2px 4px; margin: 2px 1px; color: black; }
+.pagination A { border: 1px solid gray; text-decoration: none; }
+.pagination A:hover,
+.pagination A:active { border-color: black; color: #000; }
+.pagination SPAN.current { border: 1px solid #000; font-weight: bold; background-color: #000; color: #FFF; cursor: default; }
+.pagination SPAN.disabled { border: 1px solid #EEE; color: #DDD; cursor: default; }
+
+/* used for displaying page_entries_info and will_paginate together on the same line */
+#pagination-table { margin: 1em 0; }
+#pagination-table TD { vertical-align: middle; }
+.pagination-status { margin: 0; }
+TD .pagination { margin: 0; }
+
+/* TBD */
+#preview-links { float: right; margin: 0; }
+
+
+/* ------------------------------------------- END: DP radiant additions -- */
+
+
+
+
+/* == EVERYTHING BELOW IS THE STANDARD DP CSS FRAMEWORK =================== */
+
+/* -- BEGIN: tables ------------------------------------------------------- */
+
+/* LayoutTables are used in places where CSS can't accomplish what we need it to. */
+.LayoutTable { width: 100%; border: none; border-collapse: collapse; border-spacing: 0; clear: both; } /* TODO: add bottom margin? */
+.LayoutTable TD { vertical-align: top; }
+
+/* secondary class for LayoutTables. sometimes, we don't want 100% wide LayoutTables */
+.NoStretch { width: auto; }
+
+/* FormTables are used for LABEL/INPUT pairs, with LABELs in THs and INPUT/SELECT/other stuff in TDs */
+.FormTable { width: 100%; border: none; border-collapse: collapse; border-spacing: 0; clear: both; } /* TODO: add bottom margin? */
+.FormTable TD,
+.FormTable TH { padding: 4px 0 !important; line-height: normal; }
+.FormTable TH { font-weight: normal; text-align: right !important; padding: 8px .5em 3px 0 !important; vertical-align: top; }
+.FormTable THEAD TH { text-align: left; border-bottom: 1px solid #081E3F; }
+.FormTable TD .Inputs { margin-bottom: 0; }
+.FormTable TD .Inputs,
+.FormTable TD .FieldValue { min-height: 14px; padding-top: 4px; }
+.FormTable TD .FieldValue { font-weight: bold; }
+.FormTable LABEL,
+.FormTable .Label { }
+
+TABLE.Listing TH,
+TABLE.Listing TD { padding: .5em 8px !important;}
+
+/* DataTables hold tabular data. this is the detault style. we'll subclass this as necessary later on */
+.DataTable { width: 100%; border: none; border-collapse: collapse; border-spacing: 0; clear: both; margin-bottom: 1em; }
+.DataTable TH,
+.DataTable TD { padding: .5em 5px; text-align: left; line-height: normal; }
+.DataTable THEAD TH { border-bottom: 1px solid #BBB; vertical-align: bottom; background: #EEE; }
+.DataTable TFOOT TD { border-top: 1px solid #BBB; vertical-align: bottom; font-weight: bold; }
+
+
+/* remove left/right padding when a LayoutTable is used inside a Listing */
+.Listing .LayoutTable TD { padding-left: 0; padding-right: 0; }
+
+/* --------------------------------------------------------- END: tables -- */
+
+
+/* -- BEGIN: forms -------------------------------------------------------- */
+
+/* wraps a single field and its label */
+DIV.Field { margin: 0 0 2em; }
+DIV.Field P { margin-bottom: .5em; }
+
+/* wraps "submit"-type buttons and cancel, etc. links */
+DIV.FormAction { margin-top: 2.5em; font-size: 80%; } /* mirrors the Radiant P.button class */
+DIV.FormAction INPUT.Button { }
+
+/* wraps things that control elements of the form. ex: select all/none (checkboxes) */
+DIV.FormControls { }
+
+INPUT.TextInput { font-size: 95%; margin-bottom: 4px; } /* for standard text inputs, bottom 4px for Asset Button alignment */
+INPUT.CheckboxInput { } /* for checkboxes */
+INPUT.RadioInput { margin-top: 0; } /* for radio buttons */
+SELECT.SelectInput { } /* for pulldown menus and multi-selects */
+TEXTAREA.TextAreaInput { width: 99%; } /* width is not 100%, because TEXTAREAs have borders and padding by default */
+
+SPAN.Label { font-weight: bold; display: block; }
+DIV.Field UL.Inputs { margin-top: .25em; }
+DIV.Field UL.Inputs LABEL { font-weight: normal !important; }
+
+FORM.InlineForm,
+FORM.InlineForm FIELDSET { border: 0; padding: 0; margin: 0; display: inline; }
+FORM.InlineForm FIELDSET LEGEND { position: absolute; top: -9999em; left: -9999em; display: none; }
+FORM.InlineForm INPUT,
+FORM.InlineForm SELECT { vertical-align: middle; margin: 0; }
+FORM.InlineForm DIV.Field,
+FORM.InlineForm DIV.FormAction { display: inline; margin: 0; }
+
+.FieldError { }
+.FieldError INPUT,
+.FieldError SELECT,
+.FieldError TEXTAREA { background: #FDD; }
+
+SPAN.FieldErrorText { color: #C00; }
+
+/* used in conjuction w/ JS to show the title attribute inside the INPUT, or SELECT */
+.ShowTitle { }
+
+/* used in conjunction w/ .ShowTitle */
+.Disabled { color: #999; }
+
+/* denotes a required form field, used on the INPUT/SELECT element */
+.Required { }
+
+/* usualy goes around the asterisk to mark a field as required */
+.RequiredMark { color: #C00; }
+
+LABEL.Invisible { display: block; position: absolute; top: -10000px; left: -10000px; }
+
+.HelpText { color: #999; /* font-style: italic; */ font-size: 80%; }
+
+/* ---------------------------------------------------------- END: forms -- */
+
+
+/* -- BEGIN: lists -------------------------------------------------------- */
+
+/* for navigation that "pounds down". used on UL and maybe OL */
+.PoundDownNav { margin: 0 0 1em; padding: 0; list-style: none; }
+.PoundDownNav LI { margin: 0 0 .5em; padding: 0 0 0 12px; background: url(./images/icon.arrow.dn.gif) 0 .6em no-repeat; }
+
+/* for radio buttons and checkboxes. used on UL and maybe OL */
+.Inputs { margin: 0 0 1em; padding: 0; list-style: none; line-height: inherit; }
+.Inputs LI { margin: 0 0 .5em; padding: 0 0 0 24px; text-indent: -24px; }
+.Inputs DIV { text-indent: 0; }
+
+/* displays a simple list as horizontal. used on UL and maybe OL */
+.HorizList { margin: 0 0 1em; padding: 0; list-style: none; }
+.HorizList LI { display: inline; margin: 0; padding: 0 1em 0 0; }
+
+*:first-child + HTML .Inputs.HorizList { margin-left: 24px; }
+
+/* used for multiple lists positioned next to each other */
+UL.Grouped { float: left; margin-right: 3em; margin-bottom: 0; }
+
+/* a "standard" smaller bullet. used on UL and maybe OL */
+.DotBullet { margin: 0 0 1em; padding: 0 0 0 10px; list-style: none; }
+.DotBullet LI { padding: 0 0 0 8px; background: url(./images/icon.bullet.gif) 0 .6em no-repeat; }
+* HTML .DotBullet LI { background-position: 0 .7em; } /* stupid IE6/win */
+*:first-child + HTML .DotBullet LI { background-position: 0 .7em; } /* stupid IE7/win */
+
+/* for when no bullet is desired */
+.NoBullet { margin: 0 0 1em; padding: 0; list-style: none; }
+.NoBullet LI { margin-bottom: 1em; }
+
+/* for a list of images */
+.ImageList { margin: 0 0 1em 0; padding: 0; list-style: none; }
+.ImageList LI { margin: 0 0 10px; padding: 0; }
+.ImageList LI IMG { display: block; }
+
+/* lists of links (DTs) with descriptions (DDs) */
+DL.LinkList { }
+DL.LinkList DT { }
+DL.LinkList DD { margin-bottom: 1em; }
+
+/* "filtered" navigation that looks like pagination */
+.FilterNav { font-size: 80%; line-height: 2.3; margin: 0; }
+.FilterNav H3 { display: inline; margin: 0; }
+.FilterNav UL { font-weight: bold; margin: 0 0 1em; line-height: 1.5em; list-style: none; padding: 0; display: inline; }
+.FilterNav UL LI { display: inline; }
+.FilterNav UL A,
+.FilterNav UL A:visited { font-weight: normal; padding: 5px 5px 3px; border: 1px solid #CCC; text-decoration: none; }
+.FilterNav UL LI SPAN { color: white; font-weight: bold; padding: 5px 5px 3px; border: 1px solid #000; background: #000; }
+
+/* ---------------------------------------------------------- END: lists -- */
+
+
+/* for lists */
+.Even { background: #FFF; }
+.Odd { background: #F9F9FC; background: #F3F3F6; }
+
+/* used for placeholder messages in UIs ("No articles exist in the selected category") */
+P.Placeholder,
+SPAN.Placeholder { font-style: italic; color: #999; }
+TD P.Placeholder { text-align: center; margin: 1em 0 !important; }
+
+/* message boxes */
+DIV.Message { border: 1px solid #CCC; padding: 10px; margin: 20px 0; }
+DIV.Message P { margin: 0; }
+.Message.Error { color: #C00; border-color: #C00; }
+.Message.Success { color: #0C0; border-color: #0C0; }
+.Message.Warning { color: yellow; border-color: yellow; }
+
+/* for AJAX forms */
+.ProgressMessage { text-align: center; margin: 1em 0; }
+
+/* simple inline navigation */
+P.InlineNav { font-size: .867em; }
+P.InlineNav SPAN { font-weight: bold; }
+P.InlineNav A { }
+
+SPAN.link,
+.Link { cursor: pointer; }
+
+.Invisible { display: none; }
+
+.ClearFix { clear: both; height: 0; font-size: 0; }
+
+/* used for us developers to put notes in pages so people don't freak out about missing elements */
+.DeveloperNote { border: 2px solid red; padding: 10px; margin: 2em 0; clear: both; }
+
+
+/* standard tabs */
+.AdminTabSet { }
+.AdminTabSet .TabHeader { position: absolute; top: -9999px; left: -9999px; }
+.AdminTabSet UL.AdminTabNav { margin: 0; padding: 0; }
+.AdminTabSet UL.AdminTabNav LI { float: left; list-style-type: none; padding: 0 1px; margin: -1px 5px; font-weight: bold; border: 1px solid #CCC; background: #EEE; }
+.AdminTabSet UL.AdminTabNav LI SPAN,
+.AdminTabSet UL.AdminTabNav LI A { display: block; padding: 3px 8px 2px 8px; text-decoration: none !important; }
+.AdminTabSet UL.AdminTabNav LI SPAN SMALL,
+.AdminTabSet UL.AdminTabNav LI A SMALL { font-weight: normal; }
+.AdminTabSet UL.AdminTabNav LI.Selected,
+.AdminTabSet UL.AdminTabNav LI.Active { border: 1px solid #CCC !important; border-bottom: 1px solid #FFF !important; padding: 0; }
+.AdminTabSet UL.AdminTabNav LI.Selected A,
+.AdminTabSet UL.AdminTabNav LI.Selected SPAN,
+.AdminTabSet UL.AdminTabNav LI.Active SPAN,
+.AdminTabSet UL.AdminTabNav LI.Active A { color: #333; background: #FFF; }
+.AdminTabSet .Tab { }
+.AdminTabSet .TabBorder { border-top: 1px solid #CCC; margin-bottom: 8px; }
+
+/* WORKAROUND: for IE6/win hidden from IE5/mac */
+/* \*/
+* HTML .AdminTabSet UL.AdminTabNav { zoom: 1; }
+*:first-child+HTML .AdminTabSet UL.AdminTabNav { zoom: 1; }
+* HTML .AdminTabSet UL.AdminTabNav LI.Selected,
+* HTML .AdminTabSet UL.AdminTabNav LI.Active { position: relative; border-bottom: 1px solid #FFF !important; }
+*:first-child+HTML .AdminTabSet UL.AdminTabNav LI.Selected,
+*:first-child+HTML .AdminTabSet UL.AdminTabNav LI.Active { position: relative; border-bottom: 1px solid #FFF !important; }
+/* */
+
+
+
+/* -- BEGIN: DatePicker rules --------------------------------------------- */
+
+.CalendarWidget { position: absolute; width: 13.5em; padding: 8px; background: #FFF; border: 1px solid #CCC; border-width: 1px 2px 2px 1px; line-height: 1; font-family: helvetica, arial, sans-serif; font-size: 13px; }
+.CalendarMonth { }
+
+.CalendarNav { height: 0; position: relative; }
+.CalendarNavPrev { position: absolute; top: 0; left: 0; }
+.CalendarNavNext { position: absolute; top: 0; right: 0; }
+
+.CalendarNavPrevYear,
+.CalendarNavNextYear { display: none; }
+
+.CalendarTable { border-collapse: collapse; width: 100%; }
+.CalendarTable CAPTION { margin: 0; padding: 0 0 .5em; }
+.CalendarTable THEAD TH,
+.CalendarTable TBODY TD { text-align: center; border: 1px solid #CCC; padding: .2em 0 0 !important; }
+.CalendarTable THEAD TH { font-weight: bold; text-align: center !important; }
+
+* HTML .CalendarTable THEAD TH,
+* HTML .CalendarTable TBODY TD { padding: .2em 0; }
+
+.CalendarTable TBODY TD { cursor: pointer; }
+.CalendarTable TBODY TD.OtherMonth { background: #EEE; color: #CCC; cursor: default; }
+.CalendarTable TBODY TD.Disabled { color: #CCC; cursor: default; }
+.CalendarTable TBODY TD.Today { background: #FCC; }
+.CalendarTable TBODY TD.Hover { background: #333; color: #FFF; }
+.CalendarTable TBODY TD.Selected { background: #FFC; }
+.CalendarTable TBODY TD.Selected:hover { color: #000; }
+
+DIV.CalendarHelperText { color: #777; margin-bottom: .3em; font-weight: normal !important; }
+
+.CalendarNav SPAN { border: 1px solid #CCC; padding: 0 .3em 0; display: none; }
+.CalendarNav SPAN.Link { display: inline; text-decoration: none; }
+
+/* ----------------------------------------------- END: DatePicker rules -- */

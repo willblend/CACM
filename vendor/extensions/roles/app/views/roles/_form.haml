@@ -1,0 +1,25 @@
+%table.fieldset{:cellpadding=>'0', :cellspacing=>'0', :border=>'0'}
+  %tr
+    %th.label 
+      %label{:for=>'role_name'} Name
+    %td.field= f.text_field :name, :class => 'textbox', :maxlength => 100
+    %td.help Required.
+  %tr
+    %th.label 
+      %label.optional{:for=>'role_notes'} Notes
+    %td.field= f.text_area :notes, :size => '40x4'
+    %td.help Optional.
+  %tr
+    %th.label 
+      %label Users
+    %td
+      = hidden_field_tag 'role[user_ids][]', nil # catch empty submissions
+      - @users.each do |user|
+        %span.user
+          = check_box_tag 'role[user_ids][]', user.id, @role.users.include?(user), :id => "role_users_#{user.id}"
+          %label{:for=>"role_users_#{user.id}"}= user.name
+    %td.help
+%p.buttons
+  = save_model_button(@role)
+  or
+  = link_to 'Cancel', roles_path

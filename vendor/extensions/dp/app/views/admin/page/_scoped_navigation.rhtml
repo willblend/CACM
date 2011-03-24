@@ -1,0 +1,9 @@
+<%- content_for :page_scripts do -%>
+  // Override so the expander causes it to be rescoped
+  SiteMap.prototype.toggleBranch = function(row, img) {
+    this.expandedRows = [];
+    this.saveExpandedCookie();
+    var id = row.id.split("-").last();
+    window.location = <%= page_index_url.to_json %> + "?root=" + id;
+  };
+<%- end -%>

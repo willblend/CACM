@@ -1,0 +1,17 @@
+environments:
+  - test
+
+browsers:
+  # Mac OS X
+  firefox: '/Applications/Firefox.app/Contents/MacOS/firefox-bin'
+  safari: '/Applications/Safari.app/Contents/MacOS/Safari'
+
+host: 'localhost'
+port_start: 3000
+port_end: 3005
+base_url_path: '/'
+max_browser_duration: 120
+multi_window: false
+
+# result_dir: '~/results' # the directory where the results will be
+# stored after a test:acceptance run

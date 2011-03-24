@@ -1,0 +1,64 @@
+<div id="BodyWrapper" class="HomePage">
+
+	<!-- BEGIN: MainColumn -->
+	<div id="MainColumn">
+
+		<!-- googleoff:index -->
+		<div id="MainContentArea">
+
+			<div class="column-1">
+
+				<div class="home-feature" id="homepage-featured-article">
+                                    <r:homepage_featured_article>
+                                        <r:if_part_has_content part="featured_video">
+                                            <r:content part="featured_video" />
+                                            <a href="<r:featured_url />"><r:featured_video_caption /></a>
+                                        </r:if_part_has_content>
+				        <r:unless_part_has_content part="featured_video">
+  				            <a href="<r:featured_url />"><r:featured_image /></a>
+                                        </r:unless_part_has_content>
+				    </r:homepage_featured_article>
+				    <div class="Summary">
+				        <r:snippet name="featured_summary" />
+				    </div>
+				</div>
+
+				<div class="Layout">
+
+					<div class="innercolumn-1">
+					  <r:widgets part="widget_column_1" />
+					</div>
+
+					<div class="innercolumn-2">
+					  <r:widgets part="widget_column_2" />
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="column-2">
+				  <r:widgets part="widget_column_3" />
+		  </div>
+
+		</div>
+		<!-- googleon:index -->
+
+	</div>
+	<!-- END: MainColumn -->
+
+	<div id="SideColumn">
+
+		<div class="ad">
+		  <r:content part="Right Column Ad Top" />
+		</div>
+
+		<div class="ad">
+		  <r:content part="Right Column Ad Bottom" />
+		</div>
+
+	</div>
+	<!-- END: SideColumn -->
+
+</div>
+<!-- END: BodyWrapper -->

@@ -1,0 +1,5 @@
+%h1 Edit ContentType
+- form_for :content_type, current_object, :url => content_type_path(current_object), :html => {:method => :put } do |f|
+  = render :partial => 'form', :locals => {:f => f}
+- content_for :page_css do
+  = content_types_css

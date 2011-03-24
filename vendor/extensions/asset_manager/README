@@ -1,0 +1,12 @@
+= Asset Manager
+
+== Dependencies
+=== Gems & Plugins
+ * paperclip
+ * acts_as_modified
+ * HAML
+ * mocha
+ * will_paginate
+ * rubyzip
+=== System Packages
+ * ImageMagick

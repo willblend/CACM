@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+# vim:set filetype=ruby
+
+# This script is built for integration with runit. For a standalone /etc/init.d
+# script or for use with Mongrel, see ar_sendmail.init.
+
+ENV['LD_LIBRARY_PATH'] = "<%= default_environment['LD_LIBRARY_PATH'] %>"
+ENV['ORACLE_HOME'] = "<%= default_environment['ORACLE_HOME'] %>"
+ENV['JAVA_HOME'] = "<%= default_environment['JAVA_HOME'] %>"
+
+require 'yaml'
+
+config_file = '/etc/ar_sendmail.conf'
+
+begin
+  config = YAML::load(IO.read(config_file)) 
+rescue Errno::ENOENT
+  puts "Config file not found at '#{config_file}'!"
+  exit
+end
+
+default_options = {'pidfile' => './tmp/pids/ar_sendmail.pid'}.merge(config.delete('defaults') || {})
+
+def command_error(msg)
+  puts msg
+  exit
+end
+
+command_error "No such app defined in ar_sendmail config" unless config.include?('<%= application %>')
+options = config['<%= application %>']
+command_error "Must specify chdir for app in ar_sendmail config" if options['chdir'].nil?
+     
+options = default_options.merge(options)
+switches = ""
+options.each {|k, v| switches << " --#{k} #{v}"}
+exec "/usr/bin/ar_sendmail #{switches}"

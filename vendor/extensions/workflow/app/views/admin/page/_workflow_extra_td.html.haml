@@ -1,0 +1,34 @@
+- unless simple
+  %td.workflow-status
+    %ul.workflow-status-menu
+      / if the page has a draft or the page itself is unpublished
+      - if page.draft || !page.published?
+        %li.publish= link_to "Publish", publish_path(:id => page.id)
+
+      / if the page is unpublished and has children
+      - if !page.children.blank?
+        %li.publish-tree= link_to "Publish tree", publish_tree_path(:id => page.id, :root => params[:root])
+
+      / if the page is published and has no draft
+      - if page.published? && !page.draft
+        %li.draft= link_to "Unpublish", update_status_path(:id => page.id, :status_id => Status[:draft].id), :method => :post, :confirm => "Are you sure you want to unpublish this page?"
+
+      / if the page is published and has a draft
+      - if page.published? && !!page.draft
+        %li.draft= link_to_function "Unpublish", "alert('To unpublish this page you must first discard its draft, or to retain your work, publish it so your changes are saved to the master copy and then unpublish it to remove from the live website')"
+
+      / if the page is published and has children
+      - if !page.children.blank?
+        %li.hide-tree= link_to "Unpublish tree", draft_tree_path(:id => page.id, :root => params[:root])
+
+      / if the page or its draft is in an edit state
+      - if (page.draft && page.draft.status.id.eql?(1)) || page.status.id.eql?(1)
+        %li.review= link_to "Mark for Review", update_status_path(:id => page.id, :status_id => Status[:review].id), :method => :post
+
+      / if the page or its draft has been marked for review
+      - if (page.draft && page.draft.status.id.eql?(50)) || page.status.id.eql?(50)
+        %li.review= link_to "Mark as a Draft", update_status_path(:id => page.id, :status_id => Status[:draft].id), :method => :post
+
+      / if the page has a draft
+      - if page.draft
+        %li.revert= link_to "Discard Draft", revert_path(:id => page.id), :confirm => "Are you sure you want to discard this draft?"

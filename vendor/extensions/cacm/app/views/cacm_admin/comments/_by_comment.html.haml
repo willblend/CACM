@@ -1,0 +1,16 @@
+%tr.node
+  %td{ :colspan => 2 }
+    %h3
+      %strong= "#{by_comment.owner}"
+      = " on #{by_comment.created_at.to_s(:mdy_time)}"
+      %br/
+      %small= "&nbsp;&nbsp;&nbsp; re: #{link_to by_comment.commentable.title, default_article_path(by_comment.commentable)}"
+
+    .Comment= simple_format(h(by_comment.comment))
+
+    %p= link_to "Review Comment", :action => "edit", :id => by_comment.id
+
+  %td
+    = link_to "Approve", :action => "approve", :id => by_comment.id
+    |
+    = link_to "Reject",  {:action => "reject" , :id => by_comment.id}, :confirm => "Rejecting this comment will permanently delete it and cannot be undone. Are you sure you want to reject it?"

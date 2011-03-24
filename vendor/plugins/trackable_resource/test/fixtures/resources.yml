@@ -1,0 +1,31 @@
+one:
+  id: 1
+  name: Resource 1
+  city: New York
+  state: New York
+  zip: 10021
+  
+two: 
+  id: 2
+  name: Resource 2
+  city: New York
+  state: New York
+  zip: 10021
+three:
+  id: 3
+  name: Another Resource
+  city: Dallas
+  state: Texas
+  zip: 10021
+four:
+  id: 4
+  name: Fourth Resource
+  city: Garden City
+  state: New York
+  zip: 11530
+five:
+  id: 5
+  name: Fifth Resource
+  city: Brooklyn
+  state: New York
+  zip: 11530

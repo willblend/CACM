@@ -1,0 +1,41 @@
+<!-- googleoff:all -->
+#BodyWrapper.ArticlePage
+  #MainColumn
+    #MainContentArea
+      #Breadcrumbs
+        %r:breadcrumbs_with_rails{ :separator => " &#187; "} /
+      %div.Layout
+        %div.column-1
+          = render :partial => '/articles/dl_navigation'
+          = render :partial => '/articles/supplemental_nav' if @article.respond_to? :source and not @article.source.nil?
+          = render :partial => '/articles/reviews_nav' if @article.respond_to? :source and not @article.source.nil?
+
+        %div.column-2#article-wrapper
+          %div.Article
+            .kicker= publication_source_name(@article)
+
+            %h1= @article.is_dl_article? ? @article.full_title : h(@article.title)
+
+            = render :partial => "/articles/article_image" if @article.image_id?
+
+            - unless @article.author.blank?
+              %p.byline= h(@article.author)
+
+            %p.metadata= @article.date.to_s :date
+
+            - if controller.action_name.eql?("comments")
+              = truncate(@article.short_description, 500, "...")
+            - else
+              = @article.short_description
+            
+          = yield :barrier
+
+          <!-- googleon:all -->
+
+          = render :partial => "/articles/comments_full"
+
+          <!-- googleoff:all -->
+
+          = render :partial => "/articles/comment_form"
+
+  = render :partial => "/articles/side_column"

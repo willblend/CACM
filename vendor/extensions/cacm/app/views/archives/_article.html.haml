@@ -1,0 +1,29 @@
+- if article[:oracle].section
+  - unless article[:oracle].section.title.eql?(@current_section)
+    - @current_section = article[:oracle].section.title
+    %a{:name => @current_section.parameterize}
+    %h2= "#{article[:oracle].section["type"]}: #{@current_section}"
+- else
+  %a{:name => article[:local].title.parameterize}
+
+.item
+  %h3
+    = link_to_if(article[:local].approved?, article[:local].full_title, :controller => 'magazines', :action => 'index', :year => @issue.pub_date.year, :month => @issue.pub_date.month, :article => article[:local])
+  - if article[:local].short_description
+    .short= truncate_html(article[:local].short_description, 225, "&nbsp;&hellip;")
+  .byline= article[:local].author
+  .pages= "#{article[:pages].size > 1 ? 'Pages ' : 'Page ' }#{article[:pages].join('-')}"
+
+  .Links
+    = link_or_span_for(!article[:local].approved?, "Abstract", { :controller => 'magazines', :action => 'abstract', :year => @issue.pub_date.year, :month => @issue.pub_date.month, :article => article[:local] })
+    &nbsp;|&nbsp; 
+    = link_or_span_for(!(article[:local].approved? && article[:local].full_text?), "Full Text (HTML)",  { :controller => 'magazines', :action => 'fulltext', :year => @issue.pub_date.year, :month => @issue.pub_date.month, :article => article[:local] },  { :rel => 'nofollow' } )
+    &nbsp;|&nbsp;
+    = link_or_span_for(!(article[:local].approved? && article[:full_text_types].include?("pdf")), "Full Text (PDF)",  { :controller => 'magazines', :action => 'pdf', :year => @issue.pub_date.year, :month => @issue.pub_date.month, :article => article[:local], :dl => :no},  { :rel => 'nofollow' })
+    %r:any_comments{:article_id => article[:local].id }
+      &nbsp;|&nbsp;
+      = link_or_span_for(!(article[:local].approved? && article[:local].user_comments?), "User Comments (<r:comments_count article_id='#{article[:local].id}' />)", :controller => 'magazines', :action => 'comments', :year => @issue.pub_date.year, :month => @issue.pub_date.month, :article => article[:local])
+    &nbsp;|&nbsp;
+    = link_or_span_for(!article[:digital_edition_url], "In the Digital Edition", h(article[:digital_edition_url]), :target => "_blank")
+    &nbsp;|&nbsp;
+    = link_or_span_for(!article[:local].has_digital_library?, "In the Digital Library", h(article[:local].citation_url), :target => "_blank")

@@ -1,0 +1,43 @@
+- content_for :page_css do
+  :plain
+    #widget_notes { height: 4em; padding: 3px; }
+
+%h1{:style => "margin:0;"} Edit Widget
+= restrict_to(CACM::FULL_ACCESS_ROLES) do  
+  = link_to "Safe Edit", :action => :safeedit
+
+%table{:width => "60%"}
+  %tr
+    %td
+      %h2= @widget.name.titleize
+
+      - form_for :widget, @widget, :url => admin_widget_path(@widget),	:html => { :method => :put, :class => "CACMForm" } do
+        .Field
+          %label{ :for => "widget_notes" } Description:
+          = text_area :widget, :notes, :class => "TextAreaInput"
+        .Field
+          %label{ :for => "widget_fck_content" } Widget Content:
+          = text_area :widget, :fck_content, :class => 'wysiwyg-widget'
+          
+          -# Since the abstract widget does not have any widget attributes
+          -# we need to output the help text conditionally on the view.
+          
+          - if @widget.name.eql?("abstract_widget")
+            %p.HelpText This widget will automatically expand to fill the full width of its containing element when placed on a page.
+            
+        .FieldWrapper
+          - fields_for :widget do |widget_abstracts|
+            - if @widget.rtag_blocks
+              - @widget.rtag_blocks.each_pair do |index,block|
+                = hidden_field "tag_blocks", index, :value => h(block)
+            - if @widget.rtag_abstracts
+              - @widget.rtag_abstracts.each_pair do |tag,abstract|
+                - unless abstract.nil?
+                  .Field
+                    %h2 Widget Settings
+                    - abstract.each_pair do |name,form_props|
+                      .radius_partial{ :style => form_props['form_display'] }
+                        = render :partial => "radius_widget_abstract", :locals => {:tag => tag, :name => name, :form_props => form_props}
+                        
+        .ClearFix <!-- do not remove -->
+        = submit_tag "Save Changes"

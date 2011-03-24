@@ -1,0 +1,10 @@
+#BodyWrapper.UtilityPage
+  #MainContentArea
+    #PageHdr
+      %h1#create-a-web-account
+        %span create a web account
+      %p.Intro
+        %strong You're all set. Please sign in...
+      %p Enter your web account username and password to gain access to special site features, including email alerts and reader comments. If your account is associated with an ACM membership, signing in will also provide access to premium content and other membership benefits. 
+      %p= "Your username is <strong>#{@account.username}</strong>"
+      = render :partial => '/session/form'

@@ -1,0 +1,43 @@
+#BodyWrapper.UtilityPage.TwoColumnUtility
+  #MainColumn
+    #MainContentArea
+      #PageHdr
+        %h1#hdr_forgot-your-password
+          %span forgot your password?
+
+        %p.Intro
+          %strong Please provide the answer to your security question...
+        %p For verification purposes you now have three chances to enter the exact answer you provided.
+        
+        - if @account && @account.question
+          - form_tag answer_question_url do
+            = hidden_field_tag "username", @account.username
+            %fieldset#forgot-password
+              
+              %p.question
+                %strong Your security question:
+                %br
+                = @account.question
+              
+              .Field.answer
+                %label{ :for => "answer" } Enter your security answer:
+                = text_field_tag "answer", params['answer'], :class => "TextInput"
+                %input{ :type => :image, :src => '/images/btn.continue.gif' }
+              %p.help-text 
+                %strong Case matters!
+                You need to match upper and lower case to your original answer. Three wrong answers will force you back to the account creation facility where you will have to start over.
+        
+        - else
+          - if @account and not @account.question
+            %p 
+              %strong Sorry, there is no security question associated with your username.
+          - else # no account!
+            %p 
+              %strong Sorry, the username you provided is not in our system.
+          %p
+            Please contact ACM by emailing
+            %a{ :href => "mailto:cacm-admin@cacm.acm.org" } cacm-admin@cacm.acm.org
+            to retrieve your account information.
+              
+  #Banner.AccountAds
+    %r:snippet{ :name => "account_right_column_ads" }

@@ -1,0 +1,16 @@
+%tr
+  %th.label= 'Article Options'
+  %td.field
+    %ul.Inputs
+      %li
+        =check_box :article, :news_opinion, { :checked => @article.feed.news_opinion }
+        %label{ :for => 'article_news_opinion' } Show Related News &amp; Opinions
+      %li
+        =check_box :article, :digital_library, { :checked => @article.feed.digital_library }
+        %label{ :for => 'article_digital_library' } Show Related Digital Library
+      %li
+        =check_box :article, :acm_resource, { :checked => @article.feed.acm_resource }
+        %label{ :for => 'article_acm_resource' } Show Related ACM Resources
+      %li
+        =check_box :article, :user_comments, { :checked => @article.feed.user_comments }
+        %label{ :for => 'article_user_comments' } Enable User Comments

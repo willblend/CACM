@@ -1,0 +1,25 @@
+- content_for :page_scripts do
+  = " Event.addBehavior({"
+  = "  '\#selected-articles-field-#{issue.id}' : MultipleAssociationPicker({"
+  = "    picker_popup_value : #{issue.id},"
+  :plain
+        picker_popup_param : 'issue',
+        associated_items : 'articles',
+        fieldset_class_selector : '.edit_issue_form',
+        requires_unique_associations : true,
+        table_cols_markup : '<col width=\"60%\" /><col width=\"40%\" />',
+        associations_href : '/admin/picker/associated_articles',
+        update_callback : function(scope){
+          // Somebody interacted with our form! Enable the submit button!
+          var form = scope.form_element;
+          
+          new Ajax.Request(form.action,{
+            method: "post",
+            parameters: form.serialize(true)
+          });
+        }
+      })
+    });
+
+- form_for :issue, issue, :url => admin_issue_path(issue), :html => { :method => :put, :name => "edit_issue_form_#{issue.id}", :class => "edit_issue_form"} do |f|
+  = f.text_field :selected_article_ids, :value => issue.selected_article_ids, :class => "magazine-selected-articles-field", :id => "selected-articles-field-#{issue.id}"

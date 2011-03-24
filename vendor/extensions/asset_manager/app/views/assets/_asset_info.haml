@@ -1,0 +1,38 @@
+- content_for :page_css do
+  :plain
+    #asset-preview { }
+    #asset-preview .Preview { background: #FFF; padding: 9px; border: 1px solid #999; margin-bottom: 1em; }
+    
+    .CalendarHelperText { font-size: .72em; }
+    
+    #asset-usage { width: 180px; margin: 0 0 1em; }
+    #asset-usage LI { margin-bottom: 4px; }
+    #asset-usage LI .edit A { font-size: .8em; text-decoration: none; }
+    #asset-usage LI .edit A:hover { text-decoration: underline; }
+    #asset-usage .Placeholder { font-size: .8em; text-align: left; }
+
+    #control_overlay { background-color: #999; }
+    .modal { background-color: #FFF; padding: 10px; border: 1px solid #333; }
+
+- content_for :page_scripts do
+  :plain
+    document.observe('dom:loaded', function(){
+      var modal = new Control.Modal($('image-viewer'),{ className: 'modal', fade: false, closeOnClick : true });
+    });
+
+#asset-preview
+  - if asset.image?
+    %a{ :href => asset.public_filename, :target => :_blank, :id => 'image-viewer' }
+      %img{ :src => asset.public_filename(:medium), :class => 'Preview', :alt => "Asset Preview" }
+  - else
+    %img{ :src => asset_icon(asset), :height => 48, :width => 48, :class => :Icon, :alt => :icon }
+
+#asset-usage
+  %h3 Usage Report
+  - unless @asset_usage.empty?
+    - @asset_usage.each_pair do |klass,objs|
+      %h4= klass.pluralize.capitalize
+      %ul
+        = render :partial => "#{klass.underscore}_usage", :collection => objs
+  - else
+    %p.Placeholder This asset has not been used yet.

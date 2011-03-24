@@ -1,0 +1,9 @@
+%p.buttons
+  = submit_tag 'Preview', :id => "preview-button" if @article.is_displayed_on_site?
+  = submit_tag 'Save Changes'
+  = submit_tag 'Save & Approve' unless @article.state == 'approved'
+  = submit_tag 'Save & Reject'
+  = link_to 'Cancel', {:action => "index"}.merge!(index_options)
+
+- if @article.is_displayed_on_site?
+  = render :partial => 'preview_js'

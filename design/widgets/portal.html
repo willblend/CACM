@@ -1,0 +1,17 @@
+<r:placeholder properties="width:300px;height:300px;">
+  <r:add_tokens>
+    <r:related_articles_by_subject>
+      <div id="portal">
+      	<h3><img width="300" height="36" alt="Portal - Related in the Digital Library" src="/images/hdr.portal.gif"/></h3>
+      	<div class="content">
+          <r:each>
+            <div class="item">
+               <h4><r:dynamic_tag tag="a" target="_blank" href="r:article:url"><r:article:title/> <r:snippet name="external_link_icon"/></r:dynamic_tag></h4>
+               <div class="byline"><r:article:main_parent_title /></div>
+             </div>
+          </r:each>
+      	</div>
+      </div>
+    </r:related_articles_by_subject>
+  </r:add_tokens>
+</r:placeholder>

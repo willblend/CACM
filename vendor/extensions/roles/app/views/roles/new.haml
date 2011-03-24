@@ -1,0 +1,4 @@
+%h1 New Role
+- form_for(@role) do |f|
+  = render :partial => 'form', :locals => { :f => f }
+= focus 'role_name'

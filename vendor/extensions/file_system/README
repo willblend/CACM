@@ -1,0 +1,9 @@
+= File System
+
+== Dependencies
+=== Gems & Plugins
+ * acts_as_list
+ * mocha
+=== Extensions
+ * shards
+ * ContentTypes

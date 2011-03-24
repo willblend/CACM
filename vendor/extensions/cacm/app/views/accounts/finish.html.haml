@@ -1,0 +1,45 @@
+#BodyWrapper.UtilityPage.TwoColumnUtility
+  #MainColumn
+    #MainContentArea
+      #PageHdr
+        %h1#create-a-web-account
+          %span create a web account
+
+        %h3.AccountHeader#welcome-back Welcome back! Please finish creating your ACM Web Account below.
+        %p.Intro We need just a few more account details and then you'll be all set.
+                
+        %script{ :type => "text/javascript" }
+          :plain
+            document.observe('dom:loaded', function(){
+              
+              Validation.add('validate-password-length', 'Must be 6-32 characters.', function(v){
+                return (v.length > 5 && v.length < 33) ? true : false;
+              });
+              
+              Validation.add('validate-matching-passwords', 'Passwords do not match.', function(v){
+                var passwords = $$('.validate-matching-passwords');
+                if (passwords.length == 2) {
+                  return (passwords[0].value == passwords[1].value) ? true : false;
+                }
+              });
+              
+              Validation.add('validate-cant-have-spaces', 'Cannot contain spaces.', function(v){
+                return (v.indexOf(' ') == -1) ? true : false;
+              });
+              
+              new Validation('finish_web_account_registration_form');
+              
+            });
+
+        - form_for @account, :url => complete_account_url, :html => { :class => "AccountForm" , :id => "finish_web_account_registration_form"} do |f|
+          = f.hidden_field :token, :value => (params[:t]||params[:oracle_web_account][:token])
+          = f.hidden_field :client
+          %fieldset#create-account
+            %table.FormLayout
+              %tbody
+                = render :partial => "account", :object => f
+            .FormAction
+              %input{ :type => :image, :src => '/images/btn.continue.gif' }
+              
+  #Banner.AccountAds
+    %r:snippet{ :name => "account_right_column_ads" }

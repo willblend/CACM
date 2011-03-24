@@ -1,0 +1,49 @@
+- content_for :page_css do
+  :plain
+    .validation-advice { color: #F00; font-weight: bold; padding: 3px 0; }
+
+- content_for :page_scripts do
+  :plain
+    document.observe('dom:loaded', function(){
+      
+      // Sometimes it's the new article form, sometimes it's the edit.
+      var form = $("content").down("form");
+      if (!form) { return; }
+      
+      var article_validation = new Validation(form, { onSubmit : false });
+      
+      $('preview-button').observe('click', function(e){
+        // stop the FORM from submitting
+        e.stop();
+
+        // FCK Editor only updates the linked field onSubmit of the FORM, 
+        // so we have to force it here for preview functionality.
+        //
+        // NOTE: FCKeditorAPI.Instances does not return all of the instances 
+        // when Firebug is active! http://dev.fckeditor.net/ticket/2566
+        if (window['FCKeditorAPI']) {
+          $H(FCKeditorAPI.Instances).each(function(pair){
+            pair.value.UpdateLinkedField();
+          });
+        }
+        
+        // if the form validates, pop the preview
+        if (article_validation.validate()) {
+          // serialize the FORM and send it to the article_preview controller
+          new Ajax.Request('#{preview_admin_article_path(:id => params[:id])}', {
+            method: "put",
+            parameters: e.element().form.serialize(),
+            onSuccess : function(transport) {
+              var preview_win = window.open('', 'previewWin', 'location=no,toolbar=no,scrollbars=yes,resizable=yes', true);
+              preview_win.document.write(transport.responseText);
+              preview_win.document.close();
+            },
+            onFailure : function(transport) {
+              // our article preview controller broke down? alert user, we'll get the exception.
+              alert("The article preview failed to generate.");
+            }
+          })
+        }
+      });
+
+    });

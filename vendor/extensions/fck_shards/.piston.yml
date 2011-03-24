@@ -1,0 +1,8 @@
+--- 
+format: 1
+handler: 
+  commit: 4ca3f9556139f6b586c01b7b2f55909c1b9b792a
+  branch: master
+lock: false
+repository_url: git@github.com:digitalpulp/fck-shards-extension.git
+repository_class: Piston::Git::Repository

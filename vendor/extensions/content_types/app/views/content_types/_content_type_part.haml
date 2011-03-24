@@ -1,0 +1,17 @@
+%tr{:class => "content_type_part", :id => "content_type_part_#{content_type_part.index}"}
+  - fields_for "content_type[content_type_parts][#{content_type_part.index}]", content_type_part do |t|
+    %td.name
+      %label{:for => "content_type_content_type_parts_#{content_type_part.index}_name"} Name
+      = t.text_field :name, :id => "content_type_content_type_parts_#{content_type_part.index}_name"
+    %td.desc
+      %label{:for => "content_type_content_type_parts_#{content_type_part.index}_description"} Description
+      = t.text_field :description, :id => "content_type_content_type_parts_#{content_type_part.index}_description"
+    %td.filter
+      %label{:for => "content_type_content_type_parts_#{content_type_part.index}_part_type_id"} Type
+      = t.select :part_type_id, part_type_options, {}, :id => "content_type_content_type_parts_#{content_type_part.index}_part_type_id"
+    %td.controls
+      = link_to_function image("remove", :alt => "Remove part"), "$('content_type_part_#{content_type_part.index}').remove();"
+      = link_to_function image('move_to_top', :alt => "Move to top"), "reorder_content_type_part(this, 'top');"
+      = link_to_function image('move_higher', :alt => "Move up"), "reorder_content_type_part(this, 'up');"
+      = link_to_function image('move_lower', :alt => "Move down"), "reorder_content_type_part(this, 'down');"
+      = link_to_function image('move_to_bottom', :alt => "Move to bottom"), "reorder_content_type_part(this, 'bottom');"

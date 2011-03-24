@@ -1,0 +1,9 @@
+%tr
+  %th.label= label(:article, :short_description, 'Article Short Description')
+  %td.field
+    = f.text_area :short_description, :cols => '80', :rows => '5', :class => 'wysiwyg-article-inline required'
+
+    .DebugHTML
+      %h4 Raw Markup (debug)
+      .DebugHTMLContent
+        = simple_format(h(@article.short_description))

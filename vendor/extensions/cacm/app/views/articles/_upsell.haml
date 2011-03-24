@@ -1,0 +1,34 @@
+<!-- googleoff:all -->
+
+.ClearFix <!-- do not remove -->
+#premium-content-barrier
+
+  - if controller.action_name.eql?("fulltext")
+    %h3#full-text-is-premium-content
+      %span full text is premium content
+
+  %h4#join-or-subscribe-access
+    %span Join or subscribe to get access
+  %ul.PremiumContent
+    %li
+      %a{ :href => "http://campus.acm.org/public/quickjoin/interim.cfm" }
+        Join The ACM
+      %span Get a member account to view this article and take advantage of all ACM member benefits.
+    %li
+      %a{ :href => "https://campus.acm.org/Public/renewal_url/get_url_login.cfm?rdr=https://campus.acm.org/public/renewal_url/get_urls.cfm?" }
+        Renew Membership
+      %span If your membership has expired, renew it now to get access.
+    %li
+      %a{ :href => "/subscribe", :target => :_blank }
+        Subscribe
+      %span Get full access to 50+ years of Communications Magazine and receive the print version.
+    
+  %h5 Already a member or subscriber?
+  %p
+    Please
+    %a{ :href => "/login" } sign-in
+    or
+    = link_to "set up a web account", new_account_path
+    using your ACM member number to gain access.
+    
+<!-- googleon:all -->

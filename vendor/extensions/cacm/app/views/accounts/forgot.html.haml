@@ -1,0 +1,19 @@
+#BodyWrapper.UtilityPage.TwoColumnUtility
+  #MainColumn
+    #MainContentArea
+      #PageHdr
+        %h1#hdr_forgot-your-password
+          %span forgot your password?
+
+        %p.Intro We can help you if you still remember your username for your account.
+
+        - form_tag find_question_url(:protocol => %w(test development).include?(RAILS_ENV) ? 'http' : 'https') do
+          %fieldset#forgot-password
+            
+            .Field
+              %label{ :for => "username" } Enter your username:
+              = text_field_tag "username", params['username'], :class => "TextInput"
+              %input{ :type => :image, :src => '/images/btn.continue.gif' }
+              
+  #Banner.AccountAds
+    %r:snippet{ :name => "account_right_column_ads" }

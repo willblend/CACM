@@ -1,0 +1,17 @@
+= ActionMailerMock =
+
+Adds delivery mocking to ActionMailer. ActionMailerMock allows you to set ActionMailer::Base.perform_deliveries = :mock (in addition to the default
+true/false values.) When ActionMailer is mocked, all deliveries will be sent
+to a single, configurable address so you can test mailings without spamming
+live users.
+
+The two variables you will need to configure are 
+ActionMailer::Base.mock_address and ActionMailer::Base.exception_address:
+
+ActionMailer::Base.mock_address = 'dev-account@digitalpulp.com
+ActionMailer::Base.exception_address = 'exception-list@digitalpulp.com'
+
+mock_address is the email that all mail will be redirected to.
+exception_address is the address that your exceptions come from.
+ActionMailerMock does _not_ redirect exceptions, so that they may reach your
+alerts list.

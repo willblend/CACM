@@ -1,0 +1,40 @@
+<!-- googleoff:all -->
+#BodyWrapper.ArticlePage
+  #MainColumn{ :class => @article.is_a?(CacmArticle) ? "CACMArticleWrapper" : "Normal" }
+    #MainContentArea
+      #Breadcrumbs
+        %r:breadcrumbs_with_rails{ :separator => " &#187; "} /
+      %div.Layout
+        %div.column-1
+          = render :partial => '/articles/dl_navigation'
+          = render :partial => '/articles/supplemental_nav' if @article.respond_to? :source and not @article.source.nil?
+          = render :partial => '/articles/reviews_nav' if @article.respond_to? :source and not @article.source.nil?
+          
+        %div.column-2#article-wrapper
+          %div.Article
+            .kicker= publication_source_name(@article)
+
+            %h1= @article.is_dl_article? ? @article.full_title : h(@article.title)
+
+            %p.metadata
+              - if @article.is_dl_article?
+                = @article.source.publication.title 
+                %br/
+                - if @article.respond_to? :issue
+                  = @article.vol_issue_page
+                  %br/
+                = @article.uuid
+              - else
+                = @article.date.to_s :date
+
+            #quicktime-movie
+              %object{ :classid => "clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B", :codebase => "http://www.apple.com/qtactivex/qtplugin.cab" }
+                %param{ :name => :scale, :value => "tofit" }
+                %param{ :name => :src, :value => correct_crawl_url(@fulltext.crawl_url) }
+                %param{ :name => :controller, :value => :true }
+                %param{ :name => :autoplay, :value => :true }
+                %param{ :name => :width, :value => 555 }
+                %param{ :name => :height, :value => 432 }
+                %embed{ :src => correct_crawl_url(@fulltext.crawl_url), :qtsrc => correct_crawl_url(@fulltext.crawl_url), :pluginspage => "http://www.apple.com/quicktime/download", :controller => :true, :autoplay => :true, :width => 555, :height => 432, :scale => :tofit }
+
+  = render :partial => "/articles/side_column"

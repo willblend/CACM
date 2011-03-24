@@ -1,0 +1,158 @@
+--- !map:FeedParser::FeedParserDict 
+feed: !map:FeedParser::FeedParserDict 
+  title: Slashdot
+  author: SourceForge, Inc. (help@slashdot.org)
+  link: http://slashdot.org/
+entries: 
+- !map:FeedParser::FeedParserDict 
+  title: FireFox 3.1 Leaves IE in the Dust
+  author: CmdrTaco
+  id: http://tech.slashdot.org/article.pl?sid=08/10/20/1352205&amp;from=rss
+  subtitle: &id001 |-
+    Anonymous writes \"Granted, FireFox 3.1 is just a beta and IE 8 is also in beta, but it looks like Microsoft has some ground to make up when it comes to browser performance. Given that Mozilla appears to be on a much faster cycle than Microsoft with this stuff, it's also possible that it could increase the gap even more before IE 8 is GA, no?\"<p><a href=\"http://tech.slashdot.org/article.pl?sid=08/10/20/1352205&amp;from=rss\"><img src=\"http://slashdot.org/slashdot-it.pl?from=rss&amp;op=image&amp;style=h0&amp;sid=08/10/20/1352205\" /></a></p><p><a href=\"http://tech.slashdot.org/article.pl?sid=08/10/20/1352205&amp;from=rss\">Read more of this story</a> at Slashdot.</p>
+    <p><a href=\"http://feedads.googleadservices.com/~a/B-cfgghplyo7cUsmSUWOucBX13Q/a\"><img ismap=\"true\" src=\"http://feedads.googleadservices.com/~a/B-cfgghplyo7cUsmSUWOucBX13Q/i\" border=\"0\" /></a></p><img src=\"http://feedproxy.google.com/~r/Slashdot/slashdotatom/~4/JCVafDA7cus\" height=\"1\" width=\"1\" />
+  content: 
+  - !map:FeedParser::FeedParserDict 
+    language: en-us
+    type: text/html
+    value: *id001
+    base: http://rss.slashdot.org/Slashdot/slashdotatom
+  link: http://rss.slashdot.org/~r/Slashdot/slashdotatom/~3/JCVafDA7cus/article.pl
+  updated: \"2008-10-20T15:00:00+00:00\"
+  updated_time: 2008-10-20 15:00:00 Z
+  updated_parsed: 
+  - 2008
+  - 10
+  - 20
+  - 15
+  - 0
+  - 0
+  - 0
+  - 294
+  - 0
+- !map:FeedParser::FeedParserDict 
+  title: FireFox 3.2 Leaves Firefox 3.1 in the Dust
+  author: Burritoman
+  id: http://tech
+  subtitle: &id001 |-
+    Anonymous writes \"Yo! but it looks like Microsoft has some ground to make up when it comes to browser performance. Given that Mozilla appears to be on a much faster cycle than Microsoft with this stuff, it's also possible that it could increase the gap even more before IE 8 is GA, no?\"<p><a href=\"http://tech.slashdot.org/article.pl?sid=08/10/20/1352205&amp;from=rss\"><img src=\"http://slashdot.org/slashdot-it.pl?from=rss&amp;op=image&amp;style=h0&amp;sid=08/10/20/1352205\" /></a></p><p><a href=\"http://tech.slashdot.org/article.pl?sid=08/10/20/1352205&amp;from=rss\">Read more of this story</a> at Slashdot.</p>
+    <p><a href=\"http://feedads.googleadservices.com/~a/B-cfgghplyo7cUsmSUWOucBX13Q/a\"><img ismap=\"true\" src=\"http://feedads.googleadservices.com/~a/B-cfgghplyo7cUsmSUWOucBX13Q/i\" border=\"0\" /></a></p><img src=\"http://feedproxy.google.com/~r/Slashdot/slashdotatom/~4/JCVafDA7cus\" height=\"1\" width=\"1\" />
+  content: 
+  - !map:FeedParser::FeedParserDict 
+    language: en-us
+    type: text/html
+    value: *id001
+    base: http://rss.slashdot.org/Slashdot/slashdotatom
+  link: http://rss.slashdot.org/~r/Slashdot/upoierqwjfslashdotatom/~3/JCVafDA7cus/article.pl
+  updated: \"2008-10-20T15:00:00+00:00\"
+  updated_time: 2008-10-20 15:00:00 Z
+  updated_parsed: 
+  - 2008
+  - 10
+  - 20
+  - 15
+  - 0
+  - 0
+  - 0
+  - 294
+  - 0
+- !map:FeedParser::FeedParserDict 
+  title: FireFox 3.2 Leaves Firefox 3.1 in the Dust With No P Tags
+  author: Burritoman
+  id: http://technoiwerfeic
+  subtitle: &id001 |-
+    Anonymous writes \"Yo! but it looks like Microsoft has some ground to make up when it comes to browser performance. Given that Mozilla appears to be on a much faster cycle than Microsoft with this stuff, it's also possible that it could increase the gap even more before IE 8 is GA, no?\"
+  content: 
+  - !map:FeedParser::FeedParserDict 
+    language: en-us
+    type: text/html
+    value: *id001
+    base: http://rss.slashdot.org/Slashdot/slashdotatom
+  link: http://rss.slashdot.org/~r/Slashdot/upoierqwjfslashdotatom/~3/JCVafDA7cus/article.pl
+  updated: \"2008-10-20T15:00:00+00:00\"
+  updated_time: 2008-10-20 15:00:00 Z
+  updated_parsed: 
+  - 2008
+  - 10
+  - 20
+  - 15
+  - 0
+  - 0
+  - 0
+  - 294
+  - 0
+- !map:FeedParser::FeedParserDict 
+  title: FireFox 3.2 Leaves Firefox 3.1 in the Dust With No P Tags But Block Tags
+  author: Burritoman
+  id: http://23487fywyei58
+  subtitle: &id001 |-
+    Anonymous writes \"Yo! but it looks like <div class='msft'>Microsoft</div> has some ground to make up when it comes to browser performance. Given that Mozilla appears to be on a much faster cycle than Microsoft with this stuff, it's also possible that it could increase the gap even more before IE 8 is GA, no?\"
+  content: 
+  - !map:FeedParser::FeedParserDict 
+    language: en-us
+    type: text/html
+    value: *id001
+    base: http://rss.slashdot.org/Slashdot/slashdotatom
+  link: http://rss.slashdot.org/~r/Slashdot/upoierqwjfslashdotatom/~3/JCVafDA7cus/article.pl
+  updated: \"2008-10-20T15:00:00+00:00\"
+  updated_time: 2008-10-20 15:00:00 Z
+  updated_parsed: 
+  - 2008
+  - 10
+  - 20
+  - 15
+  - 0
+  - 0
+  - 0
+  - 294
+  - 0
+- !map:FeedParser::FeedParserDict 
+  title: Feedburner is nasty!
+  author: feedburrito
+  id: ewt45wvwtt4
+  subtitle: &id001 |-
+    my tags are inherently evil.  <div class="feedflare">tracking images go here!</div><img src="http://feeds.feedburner.com/9438rfhfwk4" width="1" height="1" />
+  content: 
+  - !map:FeedParser::FeedParserDict 
+    language: en-us
+    type: text/html
+    value: *id001
+    base: http://rss.slashdot.org/Slashdot/slashdotatom
+  link: http://rss.slashdot.org/~r/Slashdot/upoierqwjfslashdotatom/~3/JCVafDA7cus/article.pl
+  updated: \"2008-10-20T15:00:00+00:00\"
+  updated_time: 2008-10-20 15:00:00 Z
+  updated_parsed: 
+  - 2008
+  - 10
+  - 20
+  - 15
+  - 0
+  - 0
+  - 0
+  - 294
+  - 0
+- !map:FeedParser::FeedParserDict 
+  title: Non-Feedburner is not nasty!
+  author: feedburrito
+  id: 234rfi2j2wre
+  subtitle: &id001 |-
+    my tags are inherently evil.  <div class="pleasant">tracking images go here!</div><img src="http://www.digitalpulp.com" width="10" height="10" />
+  content: 
+  - !map:FeedParser::FeedParserDict 
+    language: en-us
+    type: text/html
+    value: *id001
+    base: http://rss.slashdot.org/Slashdot/slashdotatom
+  link: http://rss.slashdot.org/~r/Slashdot/upoierqwjfslashdotatom/~3/JCVafDA7cus/article.pl
+  updated: \"2008-10-20T15:00:00+00:00\"
+  updated_time: 2008-10-20 15:00:00 Z
+  updated_parsed: 
+  - 2008
+  - 10
+  - 20
+  - 15
+  - 0
+  - 0
+  - 0
+  - 294
+  - 0

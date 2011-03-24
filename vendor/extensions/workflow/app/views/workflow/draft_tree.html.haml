@@ -1,0 +1,21 @@
+%h2 Draft Tree
+
+%p
+  Unpublishing the tree affects all of the following pages. All pages will no longer appear on the live website, and all drafts and reviews will be lost. Are you sure you want to proceed?
+
+%table.index#page-picker
+  %col{:width => "70%"}
+  %col{:width => "30%"}
+  %thead
+    %tr
+      %th Page
+      %th Status
+  %tbody
+    = render :partial => "admin/page/dp_node", :object => @homepage, :locals => {:level => 0}
+
+- form_tag do
+  %p.buttons
+    = hidden_field_tag :root, params[:root]
+    = submit_tag "Unpublish Tree", :name => "unpublish", :class => "button", :style => "margin-left: 2em;"
+    or
+    = link_to 'Cancel', page_index_url(:root => params[:root])

@@ -1,0 +1,65 @@
+<!-- googleoff:all -->
+#BodyWrapper.ArticlePage
+  #MainColumn{ :class => (@article.is_a?(CacmArticle) and not @article.has_special_markup?) ? "CACMArticleWrapper" : "Normal" }
+    #MainContentArea
+      #Breadcrumbs
+        %r:breadcrumbs_with_rails{ :separator => " &#187; "} /
+      %div.Layout
+        %div.column-1
+          = render :partial => '/articles/dl_navigation'
+
+          - if @article.is_dl_article? && @article.toc && !@article.toc.blank?
+            .SecondaryNav#article-contents
+              %h3 Article Contents
+              %ul
+                = @article.toc
+                
+          = render :partial => '/articles/supplemental_nav' if @article.respond_to? :source and not @article.source.nil?
+          = render :partial => '/articles/reviews_nav' if @article.respond_to? :source and not @article.source.nil?
+
+        %div.column-2#article-wrapper
+          - cache "/articles/#{@article.id}/display" do
+            %div.Article
+              .kicker= publication_source_name(@article)
+
+              %h1= @article.is_dl_article? ? @article.full_title : h(@article.title)
+
+              - if @article.is_dl_article?
+                %p.lead= @article.leadin
+
+              - unless @article.author.blank?
+                %p.byline= h(@article.author)
+
+              %p.metadata
+                - if @article.is_dl_article?
+                  = @article.source.publication.title 
+                  %br/
+                  - if @article.respond_to? :issue
+                    = @article.vol_issue_page
+                    %br/
+                  = @article.uuid
+                - else
+                  = @article.date.to_s :date
+                  
+              #article-branding-header= @article.top_branding if @article.is_dl_article? and @article.top_branding and not @article.top_branding.strip.blank?
+
+              = render :partial => "/articles/article_image" if @article.image_id?
+
+              <!-- googleon:all -->
+
+              %div#ArticleContents
+                -# FIXME: auto_link is failing. see ticket #514
+                =# auto_link(@article.full_text)
+                - if @article.is_a? UbiquityArticle
+                  .UbiquityArticleWrapper= @article.full_text
+                - else
+                  = @article.full_text
+              
+              #article-branding-footer= @article.bottom_branding if @article.is_dl_article? and @article.bottom_branding and not @article.bottom_branding.strip.blank?
+
+          - if @article.user_comments? && (!@article.is_a?(CacmArticle) || (@article.is_a?(CacmArticle) && current_member.can_access?(@article)))
+            = render :partial => "/articles/comments_preview"
+            <!-- googleoff:all -->
+            = render :partial => "/articles/comment_form"
+
+  = render :partial => "/articles/side_column"

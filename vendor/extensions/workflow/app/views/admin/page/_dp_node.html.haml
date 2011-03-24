@@ -1,0 +1,9 @@
+- rendering_node(dp_node)
+%tr{:id => "page-#{dp_node.id}", :class => "node level-#{level}#{children_class}#{virtual_class}"}
+  %td.page{:style => "padding-left: #{padding_left(level)}px"}
+    = icon
+    = node_title
+  %td.status
+    = dp_node.status.name
+
+= render :partial => "admin/page/dp_node", :collection => dp_node.children, :locals => {:level => level + 1}

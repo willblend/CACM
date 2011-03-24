@@ -1,0 +1,12 @@
+- restrict_to([:admin, :developers]) do
+  .row
+    %p
+      %label{:for=>"page_role_ids[]"} Grant access to
+      %br/
+      %small (Admins always have access)
+    %p
+      = hidden_field_tag 'page[role_ids][]', nil # Catch cases where no boxes are checked
+      - Role.all_except_admin.each do |role|
+        %span
+          = check_box_tag "page[role_ids][]", role.id, @page.inherited_roles.include?(role), :id => "page_role_ids_#{role.id}" 
+          %label{:for=>"page_role_ids_#{role.id}"}= role.name.pluralize.titleize

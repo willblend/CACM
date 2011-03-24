@@ -1,0 +1,20 @@
+%tr
+  %td
+    %span.label Are you an ACM or SIG member?
+    .options
+      %label{ :for => "member_true" }
+        = radio_button_tag :member, 'true'
+        Yes
+      %label{ :for => "member_false" }
+        = radio_button_tag :member, 'false', :checked => :checked
+        No
+  %td
+    .helptext ACM Membership is not required to create a web account. Please indicate if you are a ACM/SIG Member or subscriber to ensure you receive your membership privileges.
+%tr
+  %td
+    %label#label-for-email{ :for => "email" }
+      %em.Required{ :title => "This field is required." } *&nbsp;
+      Email Address
+    = text_field_tag :email, params[:email], :size => 33, :class => "required validate-email"
+  %td
+    .helptext If you are an ACM/SIG Member or subscriber, the email address you provide must match the one we have on file for you; this will enable you to take full advantage of member benefits.

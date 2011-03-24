@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title><%= @page_title || default_page_title %></title>
+
+<% @stylesheets.uniq.each do |stylesheet| -%>
+	<%= stylesheet_link_tag stylesheet %>
+<% end -%>
+
+  <script type="text/javascript">
+  // <![CDATA[
+  // fix for Firebug 1.2 in Firefox 2.x
+  if (/Firefox\/2/.test(navigator.userAgent) &&  window['loadFirebugConsole']) { window.loadFirebugConsole(); }
+  // ]]>
+  </script>
+<% @javascripts.uniq.each do |script| -%>
+	<%= javascript_include_tag script %>
+<% end -%>
+	<!--[if lt IE 7]>
+	<script defer type="text/javascript" src="/javascripts/pngfix.js"></script>
+	<![endif]-->
+<% if @content_for_page_scripts -%>
+	<script type="text/javascript">
+	// <![CDATA[
+<%= @content_for_page_scripts %>
+	// ]]>
+	</script>
+<% end -%>
+
+<% if @content_for_page_css -%>
+  <style type="text/css" media="screen">
+<%= @content_for_page_css -%>
+  </style>
+<% end -%>
+</head>
+
+
+<body>
+
+<!-- BEGIN: page -->
+<div id="page">
+
+	<!-- BEGIN: main -->
+	<div id="main">
+
+<% if flash[:notice] -%>
+		<div id="notice">
+			<p><%= flash[:notice] %></p>
+		</div>
+<% end -%>
+
+<% if flash[:error] -%>
+		<div id="error">
+			<p><%= flash[:error] %></p>
+		</div>
+<% end -%>
+
+		<!-- BEGIN: content -->
+		<div id="content">
+<%= yield %>
+		</div>
+		<!-- END: content -->
+
+	</div>
+	<!-- END: main -->
+
+</div>
+<!-- END: page -->
+
+
+</body>
+</html>

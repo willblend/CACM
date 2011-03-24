@@ -1,0 +1,29 @@
+<r:cache snippet="secondary_nav_help">
+	<div class="SecondaryNav">
+		<ul>
+			<li <r:if_current_url url="/help">class="active"</r:if_current_url>><a href="/help">Help</a></li>
+			<r:section_nav levels="3" no_list="true">
+
+			<r:selected>
+			<li class="submenu<r:if_current_page> active</r:if_current_page>">
+				<r:link:escape_html:title />
+				<r:next_level>
+				<ul>
+					<r:render_level />
+				</ul>
+			</r:next_level>
+			</li>
+			</r:selected>
+
+			<r:selected_childless>
+			<li class="active"><r:link:escape_html:title /></li>
+			</r:selected_childless>
+
+			<r:normal>
+			<li><r:link:escape_html:title /></li>
+			</r:normal>
+
+			</r:section_nav>
+		</ul>
+	</div>
+</r:cache>

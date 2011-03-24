@@ -1,0 +1,22 @@
+%table{ :class => "index", :id => "assets-table" }
+  %col{ :width => "60%" }
+  %col{ :width => "10%" }
+  / %col{ :width => "5%" }
+  %col{ :width => "20%" }
+  %col{ :width => "10%" }
+
+  %thead
+    %tr
+      %th Asset
+      %th File Size
+      / %th Usage
+      %th Modified
+      %th Actions
+
+  %tbody
+    = render :partial => "asset_row", :collection => @assets
+
+    - if @assets.empty?
+      %tr
+        %td{ :colspan => 4 }
+          %p.Placeholder No assets exist with the chosen criteria.

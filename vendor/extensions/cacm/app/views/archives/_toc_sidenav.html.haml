@@ -1,0 +1,19 @@
+%ul.TOC
+  - unless @sections.empty?
+    - ['departments', 'sections', 'columns', 'special issues'].each do |type|
+      - if(sections = @sections.send(type)).any?
+        %li
+          %h4= type.eql?('special issues') ? type.singularize.upcase : type.upcase
+          %ul
+            - sections.each do |section|
+              %li
+                %a{:href => "##{section.title.parameterize}"}= section.title
+  - else
+    %li
+      %h4 By Page
+      %ul
+        - @articles.each do |article|
+          - if article[:oracle].page_range # if we can use the actual page range ... page_range.gsub(/^\D*/,"") :: "Pages: 100-200" => "100-200"
+            %li= link_to "#{article[:oracle].page_range.gsub(/^\D*/,"")} #{(article[:local].author && (article[:local].author.split(',').size > 1)) ? article[:local].author.split(',').first : article[:local].author}", "##{article[:local].title.parameterize}"
+          - else # no page range. old data, just ignore.
+            %li= link_to "#{(article[:local].author && (article[:local].author.split(',').size > 1)) ? article[:local].author.split(',').first : article[:local].author}", "##{article[:local].title.parameterize}"

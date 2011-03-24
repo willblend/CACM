@@ -1,0 +1,7 @@
+<div class="row" id="featured">
+  <p><label for="article_featured_article"><%= check_box "article", "featured_article" %> Featured Article</label></p>
+</div>
+<% content_for :article_css do %>
+/* this is how all div.row should be, but we'll be conservative and just set this one */
+#featured { clear: left; overflow: hidden; }
+<% end %>

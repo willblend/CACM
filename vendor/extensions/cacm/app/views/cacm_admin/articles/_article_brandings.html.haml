@@ -1,0 +1,9 @@
+%tr
+  %th.label Article Branding Areas
+  %td.field
+    %label{ :for => "article_top_branding", :style => "display: block;" } Top Branding
+    = f.text_area :top_branding, :cols => '80', :rows => '5', :class => 'wysiwyg-article-branding'
+    %br
+    %br
+    %label{ :for => "article_bottom_branding", :style => "display: block;" } Bottom Branding
+    = f.text_area :bottom_branding, :cols => '80', :rows => '5', :class => 'wysiwyg-article-branding'

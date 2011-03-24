@@ -1,0 +1,23 @@
+%tr{ :class => asset_expire_class(asset_row_picker), :id => "asset_#{asset_row_picker.id}" }
+  %td{ :class => "filename #{asset_class(asset_row_picker)}" }
+    .Asset
+      %a{ :href => edit_asset_path(:id => asset_row_picker.id, :format => params[:format], :type => params[:type]), :class => 'file' }= h(asset_row_picker.filename)
+      - unless asset_row_picker.title.blank?
+        .title= h(asset_row_picker.title) 
+      - unless asset_row_picker.description.blank?
+        .description= h(truncate(asset_row_picker.description, 80))
+
+      - if params[:format].eql?("rad")
+        -select_function = "window.top.opener.CurrentPicker.setAssetInfo({ 'id' : '#{asset_row_picker.id}', 'url' : '#{escape_javascript(remove_cachebuster(asset_row_picker.public_filename))}', 'description' : '#{escape_javascript(asset_row_picker.description)}', 'filename' : '#{escape_javascript(asset_row_picker.file_file_name)}' })"
+      - elsif params[:format].eql?("fck")
+        -select_function = "window.top.opener.SetUrl(\"#{escape_javascript(remove_cachebuster(asset_row_picker.public_filename))}\", #{asset_row_picker.width}, #{asset_row_picker.height}, \"#{escape_javascript(asset_row_picker.title)}\")"
+      %span.Link{ :onclick => "#{select_function}; window.top.close(); return false;" }
+        Select
+  
+  %td= asset_row_picker.dimensions
+
+  %td.filesize= number_to_human_size(asset_row_picker.size)
+
+  / %td.usage= asset_row_picker.all_uses.size
+
+  %td.updated-at= adjust_time(asset_row_picker.updated_at).to_s(:mdy_time)

@@ -1,0 +1,23 @@
+.ReaderTools
+  .header
+    %h4 Tools For Readers
+  .content
+    %ul
+      %li.comment
+        %span.Link Comments
+      %li.print
+        %span.Link Print
+
+    %img{ :src => "http://s7.addthis.com/static/btn/lg-share-en.gif", :width => 125, :height => 16, :border => 0, :alt => "" }
+
+    #Font-Sizer
+      %span#font-default{:class => "Link"}
+        %img{:src => "/images/font-size.default.gif", :width => 11, :height => 11, :alt => "Default Font Size", :title => "Default Font Size"}
+      %span#font-large{:class => "Link"}
+        %img{:src => "/images/font-size.large.gif", :width => 13, :height => 13, :alt => "Large Font Size", :title => "Large Font Size"}
+      %span#font-xlarge{:class => "Link"}
+        %img{:src => "/images/font-size.x-large.gif", :width => 14, :height => 14, :alt => "X-Large Font Size", :title => "X-Large Font Size"}
+      %span.title Text Size
+  - if @article.is_dl_article?
+    .footer
+      = link_to "Author profiles and more in the Digital Library", h(@article.citation_url)

@@ -1,0 +1,27 @@
+/*
+	handheld.css
+	---------
+	defines rules for printer-friendly version of site
+*/
+
+#LayoutWrapper { width: 800px !important; }
+
+#logo-CACM { top: 40px !important; }
+
+#sign-in-column-one { width: 100% !important; margin-bottom: 2em !important; }
+
+#mn_news { border-left: 0px !important; }
+
+#MainNav LI .SubMenu,
+.Flash,
+.byline,
+.metadata,
+.kicker,
+.slugline,
+#promo-wrapper,
+#mn_home,
+A .icon,
+.ArticlePage #SideColumn,
+.BrowseBySubjectPage #SideColumn,
+#current-issue H2,
+.UtilityPage #sign-in-wrapper .column-2 { display: none !important; }

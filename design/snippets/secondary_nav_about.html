@@ -1,0 +1,34 @@
+<r:cache snippet="secondary_nav_about">
+	<div class="SecondaryNav">
+		<ul>
+			<li<r:if_current_url url="/about-communications"> class="active"</r:if_current_url>><a href="/about-communications">About Communications</a></li>
+			<li><a href="<r:link_to_current_issue />">Current Issue</a></li>
+			<li><a href="http://mags.acm.org/communications/current" target="_blank">Digital Edition</a></li>
+			<li><a href="http://mags.acm.org/communications/200902/" target="_blank">Sample Issue</a></li>
+			<r:section_nav levels="3" no_list="true">
+
+			<r:selected>
+			<li class="submenu<r:if_current_page> active</r:if_current_page>">
+				<r:link:escape_html:title />
+				<r:next_level>
+				<ul>
+					<r:render_level />
+					<r:if_path_includes slug="author-center"><li><a href="http://mc.manuscriptcentral.com/cacm" target="_blank">Submit an Article</a></li></r:if_path_includes>
+				</ul>
+			</r:next_level>
+			</li>
+			</r:selected>
+
+			<r:selected_childless>
+			<li class="active"><r:link:escape_html:title /></li>
+			</r:selected_childless>
+
+			<r:normal>
+			<li><r:link:escape_html:title /></li>
+			</r:normal>
+
+			</r:section_nav>
+			<li><a href="http://www.acm-media.org/" target="_blank">For Advertisers</a></li>
+		</ul>
+	</div>
+</r:cache>

@@ -1,0 +1,7 @@
+%tr
+  %th.label Article Date
+  %td.field
+    - if @article.is_dl_article?
+      = @article.date.to_s :date
+    - else
+      = f.text_field :date, :class => "DatePicker required", :size => 12, :value => (@article.date? ? @article.date.to_s(:mdy) : Time.now.to_s(:mdy))

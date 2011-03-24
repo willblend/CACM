@@ -1,0 +1,9 @@
+.AdminTabSet.Static#cae-tabs
+  %ul.AdminTabNav
+    %li{ :class => ( (!params[:filter] || params[:filter].empty?) ? "Selected" : "" ) }
+      %a{ :href => url_for({:action => "index", :filter => "" }.merge!(params)) }
+        = "Grouped by Article <small>(#{@comments.size})</small>"
+    %li{ :class => ( params[:filter].eql?("by_date") ? "Selected" : "" ) }
+      %a{ :href => url_for({:action => "index", :filter => "by_date" }.merge!(params)) }
+        = "Listed by Date <small>(#{@comments.size})</small>"
+  .TabBorder.ClearFix

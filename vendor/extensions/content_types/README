@@ -1,0 +1,27 @@
+= ContentTypes
+
+Created by Sean Cribbs, September 2007
+
+ContentTypes provide internal structure to Radiant pages to create an extra layer of
+flexibility in Layout development.  This is accomplished by:
+
+ * Specifying the Layout that will be used by pages with a given content_type
+ * Specifying the parts (and their filters) that will be editable in the 
+   page interface
+ * Adding a popup menu to the site map in which a content_type for a new
+   page can be chosen
+   
+== Dependencies
+=== Gems
+ * mocha
+=== Plugins
+ * acts_as_list
+ * routing_tricks
+=== Extensions
+ * shards
+ * multi_site, but only for the arrow images...
+    $ rake radiant:extensions:multi_site:update
+    Copying /public/images/admin/move_higher.png...
+    Copying /public/images/admin/move_lower.png...
+    Copying /public/images/admin/move_to_bottom.png...
+    Copying /public/images/admin/move_to_top.png...

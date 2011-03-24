@@ -1,0 +1,28 @@
+%h1 ContentTypes
+%p
+  ContentTypes define and constrain the content structure of pages that use them.
+%table{ruled_table_attributes}
+  %thead
+    %tr
+      %th.content_type ContentType
+      %th.modify{:colspan => "2"} Modify
+  %tbody
+    - unless current_objects.empty?
+      - current_objects.each do |content_type|
+        %tr.node.level-1
+          %td.content_type
+            = link_to content_type.name, edit_content_type_path(content_type)
+          %td.remove
+            = link_to image('remove', :alt => "Remove content_type"), content_type_path(content_type), :method => :delete, :confirm => "Are you sure you want to delete this content_type?"
+          %td.order
+            = order_links(content_type)
+    - else
+      %tr
+        %td.note{:colspan => "2"} No content_types
+= javascript_tag "new RuledTable('content_types');"
+%p
+  = link_to "New ContentType", new_content_type_path
+
+- content_for :page_css do
+  = content_types_css
+

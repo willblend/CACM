@@ -1,0 +1,10 @@
+%tr
+  %th.label
+    %label Roles
+  %td.field
+    = hidden_field_tag 'user[role_ids][]', nil # Catch cases where no boxes are checked
+    - Role.find(:all, :order => 'name ASC').each do |role|
+      %span.checkbox
+        = check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role), :id => "user_role_ids_#{role.id}"
+        %label{:for=>"user_role_ids_#{role.id}"}= role.name
+  %td.help Roles restrict user privileges and turn parts of the administrative interface on or off.

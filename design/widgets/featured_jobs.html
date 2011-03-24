@@ -1,0 +1,14 @@
+<div class="FeatureBox" id="featured-jobs-wrapper">
+	<h3><span>Featured Jobs</span></h3>
+	<div class="content">
+		<r:featured_jobs properties="width: 240px; height: 80px;" limit="6">
+			<ul id="featured-jobs">
+				<r:each>
+					<r:check_for_feed_switch/>
+					<li><r:dynamic_tag tag="a" href="r:link" target="_blank"><r:title /></r:dynamic_tag><r:short_description/></li>
+				</r:each>
+			</ul>
+		</r:featured_jobs>
+		<div class="more"><a href="http://www.jobtarget.com/c/search_results.cfm?site_id=1603">More Jobs</a></div>
+	</div>
+</div>

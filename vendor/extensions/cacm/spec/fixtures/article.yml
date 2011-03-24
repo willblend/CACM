@@ -1,0 +1,24 @@
+blog:
+    id: 1
+    title: Computers are awesome.
+    author: cacm_dude
+    short_description: Here is a blog entry about why we think computers rock.
+    full_text: 1. computers let us use the internet. 2. the internet is a series of tubes. 3. tubes rock.
+    state: new
+    
+job:
+    id: 2
+    title: High-paying computer gig
+    author: job_man
+    short_description: Topeka, KS
+    full_text: Come work for us in Topeka doing vague things! Funded by VC!
+    state: new
+
+book:
+    id: 3
+    title: Python Web Development with Django
+    author: Jeff Forcier, Paul Bisseux, Wesley Chun
+    short_description: Using the simple, robust, Python-based Django framework, you can build powerful Web solutions with remarkably few lines of code.
+    full_text: Jeff Forcier is a systems administrator and backend Web developer at Digital Pulp, a New York-based interactive agency and Web development company.
+    state: new
+    

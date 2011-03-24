@@ -1,0 +1,18 @@
+--- 
+layout_name: standard_full_cached
+page_class_name: ""
+146: 
+  name: about_blog_content
+  filter_id: 
+  part_type_name: WYSIWYG Article
+  description: Content for the main column
+2048: 
+  name: Right Column Ad Top
+  filter_id: 
+  part_type_name: Plain textarea
+  description: 160x160 Ad
+2049: 
+  name: Right Column Ad Bottom
+  filter_id: 
+  part_type_name: Plain textarea
+  description: 160x600 Ad

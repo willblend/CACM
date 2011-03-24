@@ -1,0 +1,19 @@
+-content_for :page_css do
+  :plain
+    #feeds_filter_form.InlineForm { display: block; margin: 1em 0; }
+
+-form_tag moderate_comments_path, :method => 'get', :id => 'feeds_filter_form', :class => 'InlineForm' do
+  .Field
+    %label.Invisible{ :for => 'feed_id' } Filter by Feed:
+    %select#feed_id.ShowTitle.AutoSubmitField{ :name => 'feed_id', :title => 'Select a feed to filter by' }
+      %option
+      - unless params[:feed_id] && params[:feed_id].blank?
+        %option{ :value => '' } [All Feeds]
+      = options_for_select(@feed_options, (params[:feed_id].to_i || ""))
+
+  .FormAction
+    = hidden_field_tag :filter, params[:filter]
+
+    = submit_tag "Filter Articles", :id => "filter-articles-button"
+
+  .ClearFix <!-- do not remove -->

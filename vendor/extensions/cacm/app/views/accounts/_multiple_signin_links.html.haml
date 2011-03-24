@@ -1,0 +1,9 @@
+%p.Footer 
+  %strong Multiple Accounts Found
+  %br
+  Multiple ACM Web Accounts already exist for this email address. Please select a username to sign in as:
+  %p
+    %ul
+    - @account.each do |account|
+      %li
+        %strong= link_to account.username, "/login?username=#{account.username}"

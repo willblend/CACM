@@ -1,0 +1,75 @@
+- content_for :page_head do
+  %link{ :rel => "stylesheet", :type => "text/css", :href => "/stylesheets/sections/article.css" }
+
+#BodyWrapper.ArticlePage
+  #MainColumn{ :class => (@article.is_a?(CacmArticle) and not @article.has_special_markup?) ? "CACMArticleWrapper" : "Normal" }
+    #MainContentArea
+      #Breadcrumbs
+        %r:breadcrumbs_with_rails{ :separator => " &#187; "} /
+      %div.Layout
+        %div.column-1
+          .SecondaryNav#this-article
+            %h3 This Article
+            
+            %ul
+              - if @article.is_a? CacmArticle
+                
+                %li= link_to "Abstract", (contextual_article_preview_path(@article, :abstract) || "#")
+                = content_tag :li, link_to("Full Text (HTML)", (contextual_article_preview_path(@article, :fulltext) || "#")) if @article.has_html?
+                = content_tag :li, link_to("Full Text (PDF)", (contextual_article_preview_path(@article, :pdf) || "#")) if @article.has_pdf?
+
+              - else
+                %li.active= link_to "Full Text", (contextual_article_preview_path(@article, :fulltext) || "#")
+
+              - if @article.user_comments?
+                %li= link_to "User Comments (#{@article.comments_count})", (contextual_article_preview_path(@article, :comments) || "#")
+              
+              - if @article.is_dl_article?
+                = content_tag :li, link_to("In the Digital Edition", @article.digital_edition_url) if @article.has_digital_edition?
+                = content_tag :li, link_to("In the Digital Library", @article.citation_url) if @article.has_digital_library?
+          
+          - if @article.is_dl_article? && @article.toc && !@article.toc.blank?
+            .SecondaryNav#article-contents
+              %h3 Article Contents
+              %ul
+                = @article.toc
+
+        %div.column-2#article-wrapper
+          %div.Article
+            .kicker= publication_source_name(@article)
+
+            %h1= @article.is_dl_article? ? @article.full_title : h(@article.title)
+
+            - if @article.is_dl_article?
+              %p.lead= @article.leadin
+
+            - unless @article.author.blank?
+              %p.byline= @article.is_dl_article? ? @article.author : h(@article.author)
+
+            %p.metadata
+              - if @article.is_dl_article?
+                = @article.source.publication.title 
+                %br/
+                - if @article.respond_to? :issue
+                  = @article.vol_issue_page
+                  %br/
+                = @article.uuid
+              - else
+                = @article.date.to_s :date
+            
+            #article-branding-header= @article.top_branding if @article.is_dl_article? and @article.top_branding and not @article.top_branding.strip.blank?
+            
+            = render :partial => "/articles/article_image" if @article.image_id?
+
+            %div#ArticleContents
+              - if @article.is_a? UbiquityArticle
+                .UbiquityArticleWrapper= @article.full_text
+              - else
+                = @article.full_text
+            
+            #article-branding-footer= @article.bottom_branding if @article.is_dl_article? and @article.bottom_branding and not @article.bottom_branding.strip.blank?
+            
+  #SideColumn
+    =render :partial => "/articles/preview_article_tools"
+    %r:snippet{ :name => "preview_related_news" } /
+    %r:snippet{ :name => "preview_related_resources" } /

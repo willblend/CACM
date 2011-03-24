@@ -1,0 +1,101 @@
+<% include_javascript 'lowpro' %>
+<% content_for :page_scripts do %>
+  var StatusMenu = Behavior.create({
+    initialize: function(){
+      this.element.hide();
+
+      // move the node from the hidden TD to the status TD and start observing
+      this.td_node = this.element.up('td').previous('.status');
+      this.td_node.insert({ 'bottom' : this.element });
+      this.td_node.observe('click', this.tdClickHandler.bindAsEventListener(this));
+
+      // pre-bind the hideMenu function so we can stop observing it later
+      this.hideMenuBound = this.hideMenu.bindAsEventListener(this);
+    },
+
+    tdClickHandler: function(e){
+      this.element.visible() ? this.hideMenu(e) : this.showMenu(e);
+    },
+
+    showMenu: function(e){
+      this.element.show();
+      Event.observe(document, 'click', this.hideMenuBound);
+
+      // stop the event so the newly attached document observer above doesn't get this initial click event
+      e.stop();
+    },
+
+    hideMenu: function(e){
+      this.element.hide();
+      Event.stopObserving(document, 'click', this.hideMenuBound);
+    }
+  });
+
+  Event.addBehavior({
+    '.workflow-status-menu': StatusMenu
+  });
+<% end %>
+<% content_for :page_css do %>
+  th.workflow-status,
+  td.workflow-status { display: none; }
+
+  ul.workflow-status-menu {
+    position: absolute;
+    margin: -24px 0 0 18px;
+    padding: 0 0 0 18px;
+    background: url(/images/admin/menu_arrow.png) left 3px no-repeat;
+    z-index: 10000;
+  }
+  ul.workflow-status-menu li {
+    list-style: none;
+    display: block;
+    background-color: white;
+    border: 1px solid black;
+    border-top: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul.workflow-status-menu li:first-child {
+    border-top: 1px solid black;
+  }
+  ul.workflow-status-menu li a {
+    display: block;
+    padding: 6px;
+    text-decoration: none;
+    color: black;
+  }
+  ul.workflow-status-menu a:hover {
+    background-color: #eee;
+  }
+  td.status {
+    position: relative;
+  }
+  td.status span.link { background: url(/images/admin/workflow.png) right center no-repeat; padding-right: 20px; }
+  td.draft-status li.review, 
+  td.draft-status li.publish, 
+  td.draft-status li.publish-tree,
+  td.edit-draft-status li.revert, 
+  td.edit-draft-status li.review, 
+  td.edit-draft-status li.publish,
+  td.edit-review-status li.revert, 
+  td.edit-review-status li.draft, 
+  td.edit-review-status li.publish, 
+  td.edit-review-status li.publish-tree,
+  td.review-status li.publish, 
+  td.review-status li.publish-tree, 
+  td.review-status li.draft,
+  td.published-status li.hide-tree, 
+  td.published-status li.draft {
+    display: block;
+  }
+  td.editing-draft-status, td.editing-review-status {
+    color: gray;
+  }
+  td.review-status {
+    color: orange;
+  }
+  td.edit-draft-status li.review, td.draft-status li.review
+   {
+	border-top: 1px solid black;
+  }
+<% end %>

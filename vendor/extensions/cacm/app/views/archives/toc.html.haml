@@ -1,0 +1,63 @@
+- cache({:fragment => 'toc'}, 1.week) do
+  - generate_toc
+
+  <!-- googleoff:all -->
+  .BrowseBySubjectPage#BodyWrapper
+    #MainColumn
+      #MainContentArea
+        #Breadcrumbs
+          %r:breadcrumbs_with_rails{ :separator => " &#187; "} /
+
+        .Layout
+          .column-1
+            .SecondaryNav#browse-issue
+              %h3 Browse This Issue
+              = render :partial => "toc_sidenav"
+
+          .column-2 
+            .TOC
+              .header
+                %h1
+                  = "#{@issue.pub_date.to_s(:calendar)} (Vol. #{@issue.volume}, No. #{@issue.issue})"
+                  %br/
+                  %span= @issue.title
+                %h1 Table of Contents
+              %r:get_comments_count{:issue_id => @issue.local.id}
+              = render :partial => 'article', :collection => @articles
+
+    #SideColumn
+      .Box
+        .toc-issue
+          %img{:src => @issue.cover_url, :width => 132, :height => 171, :alt => 'magazine cover image', :title => "#{@issue.pub_date.to_s(:calendar)} (Vol. #{@issue.volume}, No. #{@issue.issue})", :class => "cover"}
+          - if @issue.previous 
+            = link_to "Previous Issue", magazine_issue_path(@issue.previous.pub_date.year, @issue.previous.pub_date.month)
+          - else
+            Previous Issue
+          |
+          - if @issue.next && @issue.next.local && @issue.next.local.approved?
+            = link_to "Next Issue", magazine_issue_path(@issue.next.pub_date.year, @issue.next.pub_date.month)
+          - else
+            Next Issue
+        %r:add_tokens
+          %ul.links
+            = content_tag(:li, link_to("View full citation in the Digital Library", h(@issue.citation_url))) unless @issue.citation_url.blank?
+            = content_tag(:li, link_to("View the Digital Edition", h(@issue.full_texts.digital_edition.url))) if @issue.full_texts.digital_edition
+            = content_tag(:li, link_to("Download a PDF of this issue", h(@issue.full_texts.pdf.url))) if @issue.full_texts.pdf
+
+      .RelatedItems
+        %h4 About Communications
+        %ul.links
+          %li= link_to "Editorial Board", "/about-communications/editorial-board/"
+          %li= link_to "CACM Staff", "/about-communications/editorial-staff/"
+          %li= link_to "Author Center", "/about-communications/author-center/"
+          %li= link_to "Editorial Calendar", "/about-communications/2009-editorial-calendar/"
+
+      .RelatedItems
+        %h4 Communicate!
+        %ul.links
+          %li= link_to "Send Us Feedback", "mailto:cacmfeedback@acm.org"
+          %li= link_to "Submit a Letter to the Editor", "mailto:letters@cacm.acm.org"
+          %li= link_to "Contact the Publisher", "mailto:publisher@cacm.acm.org"
+          %li= link_to "Contact the Editor-in-Chief", "mailto:eic@cacm.acm.org"
+      
+  <!-- googleoff:all -->

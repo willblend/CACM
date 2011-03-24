@@ -1,0 +1,35 @@
+-content_for :page_css do
+  :plain
+    .node h2 { margin: 0; font-weight: normal; }
+    .node h3 { margin-top: 0; font-weight: normal; }
+    .Comment { font-size: 87%; }
+    
+    * HTML .AdminTabNav { position: relative !important; padding-top: 2px !important; }
+
+%h1 Comment Moderation
+
+= render :partial => 'nav'
+= restrict_to(CACM::FULL_ACCESS_ROLES) do  
+  = render :partial => 'filters'
+
+%table#snippets.index{:cellspacing=>"0", :border=>"0", :cellpadding=>"0"}
+  %col{ :width => "5%" }
+  %col{ :width => "75%" }
+  %col{ :width => "20%" }
+
+  %thead
+    %tr
+      %th.snippet{ :colspan => 2 } Article / Comment
+      %th.action Actions
+
+  %tbody
+    - if !@comments.empty?
+      - if params[:filter] && !params[:filter].blank?
+        = render :partial => "by_comment", :collection => @comments
+      - else
+        = render :partial => "by_article", :collection => @comments
+    - else
+      %tr.node
+        %td{ :colspan => 3 }
+          %br
+          There are no comments currently waiting for approval.

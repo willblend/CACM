@@ -1,0 +1,20 @@
+%h1 Edit Comment
+
+- form_for :comment,  @comment, :url => {:action => "update", :id => @comment.id}, :html => { :method => :put, :name => "edit_comment_form", :id => "edit_comment_form"} do |f|
+  .form-area
+    %p 
+      Comment on
+      = link_to h(Article.find(@comment.commentable_id).title), default_article_path(Article.find(@comment.commentable_id)), :target => "_blank"
+      by
+      %strong= h(@comment.owner)
+      = "on #{@comment.created_at.to_s(:mdy_time)}:"
+
+    %p
+      %label{ :for => 'comment', :class => 'Invisible' } Comment Body
+      = f.text_area :comment, :cols => 70, :rows => 25, :style => 'width: 99%;'
+    
+  %p.buttons
+    = submit_tag 'Save Changes'
+    = submit_tag 'Save & Approve' unless @comment.state == 'approved'
+    = submit_tag 'Save & Reject'
+    = link_to 'Cancel', :action => "index"

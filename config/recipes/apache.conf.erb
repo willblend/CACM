@@ -1,0 +1,67 @@
+  ServerName <%= domain %>
+  DocumentRoot /srv/rails/<%= application %>/current/public
+
+  RewriteEngine on
+
+  # 301s to canonic URLs
+  RewriteCond %{HTTP_HOST} ^beta\.cacm\.acm\.org$ [NC,OR]
+  RewriteCond %{HTTP_HOST} ^www\.cacm\.acm\.org$ [NC]
+  RewriteRule ^/(.*) http://cacm.acm.org/$1 [R=Permanent,L]
+
+  ErrorDocument 503 /system/maintenance.html
+  RewriteCond %{REQUEST_URI} !\.(css|jpg|png|gif)$
+  RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
+  RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+  RewriteRule ^.*$ /system/maintenance.html [R=503,L]
+  
+  # GSA: proxy requests for pdf/10.1145/... to delivery.acm.org
+  RewriteCond %{REMOTE_ADDR} 63\.118\.7\.4[3|4] [OR]
+  RewriteCond %{REMOTE_ADDR} 10\.0\.0\.19
+  RewriteRule ^(.*)/pdf(.+)$ http://delivery.acm.org:8080$2 [L,P]
+
+  # !GSA: redirect /pdf/10.1145/... to /pdf and let Rails handle it
+  RewriteCond %{REMOTE_ADDR} !63\.118\.7\.4[3|4] [OR]
+  RewriteCond %{REMOTE_ADDR} !10\.0\.0\.19
+  RewriteRule ^(.*)/pdf(.+)$ $1/pdf [L,R=301]
+
+  # Legacy URLs
+  RewriteCond %{QUERY_STRING} ^pageIndex=1$
+  RewriteRule ^/communications$ /about-communications? [L,R=301]
+
+  RewriteCond %{QUERY_STRING} ^pageIndex=2$
+  RewriteRule ^/communications$ /magazines/2008/7? [L,R=301]
+
+  RewriteCond %{QUERY_STRING} ^pageIndex=3$
+  RewriteRule ^/communications$ /magazines? [L,R=301]
+
+  RewriteCond %{QUERY_STRING} ^pageIndex=4$
+  RewriteRule ^/communications$ /about-communications/2009-editorial-calendar? [L,R=301]
+
+  RewriteCond %{QUERY_STRING} ^pageIndex=5$
+  RewriteRule ^/communications$ /about-communications/editorial-board? [L,R=301]
+
+  RewriteCond %{QUERY_STRING} ^pageIndex=6$
+  RewriteRule ^/communications$ /about-communications/editorial-staff? [L,R=301]
+
+  RewriteCond %{QUERY_STRING} ^pageIndex=7$
+  RewriteRule ^/communications$ /about-communications/author-center? [L,R=301]
+
+  RewriteRule ^/guidelines/cacm-author-guidelines$ /about-communications/author-center/author-guidelines? [L,R=301]
+
+  RewriteRule ^/submissions/?$ http://mc.manuscriptcentral.com/cacm [L,R=302]
+  
+  # mod_deflate
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/x-javascript
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+
+  ExpiresActive On
+  ExpiresByType image/x-icon "now plus 365 days"
+  ExpiresByType image/png "now plus 365 days"
+  ExpiresByType image/jpeg "now plus 365 days"
+  ExpiresByType image/gif "now plus 365 days"
+  ExpiresByType application/javascript "now plus 365 days"
+  ExpiresByType application/x-javascript "now plus 365 days"
+  ExpiresByType text/javascript "now plus 365 days"
+  ExpiresByType text/css "now plus 365 days"

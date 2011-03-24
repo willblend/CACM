@@ -1,0 +1,105 @@
+#!/bin/bash
+
+if [ -z $2 ]; then
+    echo "Please specify service to operate on."
+    exit 1
+fi
+
+if [ -z $1 ]; then
+    echo "Please specify an action (create, remove, link, unlink)."
+    exit 1
+fi
+
+DIR=/etc/sv/$2
+SYMLINK=/etc/service/$2
+LOGDIR=/etc/sv/$2/log
+CODE="#!/bin/bash
+exec something"
+LOGCODE="#!/bin/bash
+exec svlogd -tt ./main"
+VARDIR=/var/lib/service/$2
+VARLOGDIR=/var/log/$2
+
+
+#
+# Create
+# 
+if [ $1 == "create" ]; then
+
+    if [ -d $DIR ]; then
+        echo "Service directory already exists!"
+        exit 1
+    fi
+
+    # Service directory
+    mkdir $DIR
+    # Dummy exec code
+    echo "$CODE" > $DIR/run
+    chmod +x $DIR/run
+    # Set up link to /var
+    ln -s $VARDIR $DIR/supervise
+    # Create log service dir
+    mkdir $LOGDIR
+    # Log exec code
+    echo "$LOGCODE" > $LOGDIR/run
+    chmod +x $LOGDIR/run
+    # Log program's link to /var
+    ln -s $VARDIR/log $LOGDIR/supervise
+    # Actual logfile link to /var/log
+    # (Need to actually make log dir; svlogd doesn't seem to have the same
+    # functionality vis-a-vis automaking dirs, as the other daemons do)
+    mkdir $VARLOGDIR
+    ln -s $VARLOGDIR $LOGDIR/main
+
+fi
+
+
+#
+# Remove
+#
+
+if [ $1 == "remove" ]; then
+
+    if [ ! -d $DIR ]; then
+        echo "Service directory does not exist!"
+        exit 1
+    fi
+
+    rm -rf $DIR
+    rm -rf $VARDIR
+    rm -rf $VARLOGDIR
+    rm $SYMLINK &>/dev/null # may fail if currently unlinked
+
+fi
+
+
+#
+# Link
+#
+
+if [ $1 == "link" ]; then
+
+    if [ ! -d $DIR ]; then
+        echo "Service directory does not exist!"
+        exit 1
+    fi
+
+    ln -s $DIR $SYMLINK
+
+fi
+
+
+#
+# Unlink
+#
+
+if [ $1 == "unlink" ]; then
+
+    if [ ! -d $DIR ]; then
+        echo "Service directory does not exist!"
+        exit 1
+    fi
+
+    rm $SYMLINK
+
+fi

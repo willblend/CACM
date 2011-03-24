@@ -1,0 +1,14 @@
+.AdminTabSet.Static#cae-tabs
+  %ul.AdminTabNav
+    -# NOTE: this madness is due to the fact that i wanted the tabs to link  
+    -# back to themselves *without* the feed selected (to reset the view). 
+    -# see navigation_list_item_feed in articles_helper.rb for more fun. 
+    -# - JSB 2008-12-11 
+
+    - #filter_options = { :feed_id => params[:feed_id], :month => params[:month_filter], :year => params[:year_filter] } 
+    = #navigation_list_item_feed %{Inbox <small>(#{@total_inbox})</small>},       admin_articles_path( (current_page_without_params?(admin_articles_path)       ? {                       } : filter_options                                 ) ) 
+    = #navigation_list_item_feed %{Approved <small>(#{@total_approved})</small>}, admin_articles_path( (current_page_without_params?({ :filter => 'approved' }) ? { :filter => 'approved' } : { :filter => 'approved' }.merge(filter_options)) ) 
+    = #navigation_list_item_feed %{Rejected <small>(#{@total_rejected})</small>}, admin_articles_path( (current_page_without_params?({ :filter => 'rejected' }) ? { :filter => 'rejected' } : { :filter => 'rejected' }.merge(filter_options)) ) 
+    = #navigation_list_item_feed %{All <small>(#{@total_articles})</small>},      admin_articles_path( (current_page_without_params?({ :filter => 'all'      }) ? { :filter => 'all'      } : { :filter => 'all'      }.merge(filter_options)) ) 
+    = build_navigation_bar(params)
+  .TabBorder.ClearFix

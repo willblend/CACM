@@ -1,0 +1,32 @@
+<%= render :partial => 'email/header' %>
+		
+		<div style="padding: 0.5em 10px 20px;">
+			<b><%= Date.today.to_s :date %></b><br/> <cite>Communications Online Email Alerts</cite> provide bi-weekly updates on new information appearing on the cacm.acm.org website in subject areas of interest to you. You are currently subscribed to Alerts for:
+			<div style="padding: 0.5em 20px;" id="internal-nav">
+        <% @alerts.each do |a| %>
+				<img src="http://<%= ActionMailer::Base.default_url_options[:host] %>/images/email/bullet.dn.gif" width="8" height="6" alt="" />&nbsp;
+				<a href="#<%= a.name.parameterize %>" style="color: #007DA7; text-decoration:none;"><%= a.name.upcase %></a><br/>
+				<% end %>
+			</div>
+			
+			To update your Alerts preferences, please <a href="http://<%= ActionMailer::Base.default_url_options[:host] %>/alerts-and-feeds/email-alerts" style="color: #007DA7; text-decoration:none;">sign in</a>.
+		</div>
+		<% @alerts.each do |a| %>
+		<a name="<%= a.name.parameterize %>" id="<%= a.name.parameterize %>" style="line-height:0;height:0;"><!-- link target --></a>
+		<h4 style="color: #31535E; background-color: #DFE3B0; padding: 0.3em 10px 0.2em; font-size: 1em; margin: 0; line-height: 1;">
+		  LATEST ARTICLES IN <%= a.name.upcase %>
+		</h4>
+		<div style="padding: 0.5em 10px 25px;">
+			<ul style="margin: 0 0 1em 10px; padding-left: 10px;">
+				<% if @html[a].blank? %>
+				  No articles this week.
+				<% else %>
+				  <%= @html[a] %>
+				<% end %>
+			</ul>
+			<img src="http://<%= ActionMailer::Base.default_url_options[:host] %>/images/email/bullet.up.gif" width="8" height="6" alt="">&nbsp;
+		  <a href="#top" style="color: #007DA7; text-decoration:none;">back to top</a>
+		</div>
+		<% end %>
+							
+<%= render :partial => 'email/footer' %>

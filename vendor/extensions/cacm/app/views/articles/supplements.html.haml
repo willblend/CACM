@@ -1,0 +1,84 @@
+<!-- googleoff:all -->
+#BodyWrapper.ArticlePage
+  #MainColumn{ :class => @article.is_a?(CacmArticle) ? "CACMArticleWrapper Supplements" : "Normal Supplements" }
+    #MainContentArea
+      #Breadcrumbs
+        %r:breadcrumbs_with_rails{ :separator => " &#187; "} /
+      %div.Layout
+        %div.column-1
+          = render :partial => '/articles/dl_navigation'
+          = render :partial => '/articles/supplemental_nav' if @article.respond_to? :source and not @article.source.nil?
+          = render :partial => '/articles/reviews_nav' if @article.respond_to? :source and not @article.source.nil?
+          
+        %div.column-2#article-wrapper
+          %div.Article
+            .kicker= publication_source_name(@article)
+
+            %h1= @article.is_dl_article? ? @article.full_title : h(@article.title)
+
+            = render :partial => "/articles/article_image" if @article.image_id?
+
+            - unless @article.author.blank?
+              %p.byline= h(@article.author)
+
+            %p.metadata
+              - if @article.is_dl_article?
+                = @article.source.publication.title 
+                %br/
+                - if @article.respond_to? :issue
+                  = @article.vol_issue_page
+                  %br/
+                = @article.uuid
+              - else
+                = @article.date.to_s :date
+
+            <!-- googleon:all -->
+
+          - if current_member and current_member.can_access?(@article)
+      
+            #ArticleContents
+            
+              - if @has_inclusion
+                -# then this is an inclusion, not a supplement...
+                
+                %h3.AdditionalResources Additional Resources
+
+                %p.Article= @supplement.inclusion
+
+              - else
+
+                - unless CACM::QUICKTIME_SUPPLEMENTS.include?(@supplement.type) or CACM::WINDOWS_SUPPLEMENTS.include?(@supplement.type)
+            
+                  %div{ :class => "download-#{@supplement.type} SupplementalDownload" }
+                  
+                    -# The gz/pdf links are truly downloads, but external/htm 
+                    -# supplements are going to open up in the browser, so let's
+                    -# make it clear what's about to happen...
+                  
+                    -# Possible download/linking types: gz, pdf, htm, html
+                  
+                    %h3= link_to "#{ ["gz","pdf"].include?(@supplement.type) ? "Download" : "View" } \"#{@supplement.crawl_url.split("/").last}\"", @supplement.url
+                    %h4= "#{number_to_human_size(@supplement.filesize)}. Start #{ ["gz","pdf"].include?(@supplement.type) ? "downloading" : "viewing" } this supplemental file by clicking the link above."
+                  
+                - unless @supplement.link_txt.blank?
+                  %h3= @supplement.link_txt
+
+                - unless @supplement.message_txt.blank?
+                  %p= @supplement.message_txt
+
+                - if CACM::QUICKTIME_SUPPLEMENTS.include?(@supplement.type)
+                  = render :partial => "articles/media/quicktime.html.haml"
+    
+                - elsif CACM::WINDOWS_SUPPLEMENTS.include?(@supplement.type)
+                  = render :partial => "articles/media/wmv.html.haml"
+            
+          - else
+            
+            #article-barrier
+              
+              %h3#supplement-premium-content
+                %span Supplemental materials are premium content!
+                
+              = render :partial => "articles/barrier_form.haml"
+                
+  = render :partial => "/articles/side_column"

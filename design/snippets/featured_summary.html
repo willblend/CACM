@@ -1,0 +1,13 @@
+<r:featured_summary>
+  <div class="MajorFeature">
+    <div class="inner">
+      <r:unless_current_url url="/careers"><r:image/></r:unless_current_url>
+      <r:if_current_url url="/careers"><r:thumbnail/></r:if_current_url>
+      <h3><a href="<r:url/>" <r:target/>><r:title/></a></h3>
+      <div class="byline"><r:byline/></div>
+      <r:summary />
+      <div class="metadata"><r:if_author><em><r:author/></em> <span class="separator">|</span>&nbsp;</r:if_author><r:date/> <r:if_comments> <span class="separator">|</span><r:comments /></r:if_comments></div>
+    </div>
+    <div class="shadow"></div>
+  </div>
+</r:featured_summary>

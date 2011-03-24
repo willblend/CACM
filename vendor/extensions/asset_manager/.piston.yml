@@ -1,0 +1,8 @@
+--- 
+format: 1
+handler: 
+  commit: cab3e1e5e53b3640de8d0685eec3dae18c57a0e6
+  branch: master
+lock: false
+repository_url: git@github.com:digitalpulp/asset-manager-extension.git
+repository_class: Piston::Git::Repository

@@ -1,0 +1,37 @@
+%h1 New Article
+
+- form_for :article, @article, :url => {:action => "create", :id => @article.id}.merge!(index_options), :html => { :name => "new_article_form", :id => "new_article_form"} do |f|
+
+  .form-area
+    =render :partial => 'article_title', :locals => {:f => f}
+
+    =f.hidden_field :feed_id
+
+    %table.fieldset
+      %col{ :width => '30%' }
+      %col{ :width => '70%' }
+
+      %tbody
+        =render :partial => 'article_content_provider',  :locals => {:f => f}
+        =render :partial => 'article_author',            :locals => {:f => f}
+        =render :partial => 'article_date',              :locals => {:f => f}
+        =render :partial => 'article_short_description', :locals => {:f => f}
+        =render :partial => 'article_full_text',         :locals => {:f => f}
+        =render :partial => 'article_image',             :locals => {:f => f}
+        =render :partial => 'article_metadata',          :locals => {:f => f}
+        =render :partial => 'article_subjects',          :locals => {:f => f}
+        =render :partial => 'article_sections',          :locals => {:f => f}
+        =render :partial => 'article_features',          :locals => {:f => f}
+        =render :partial => 'article_taggings',          :locals => {:f => f}
+        =render :partial => 'article_mobile',          :locals => {:f => f}
+        =render :partial => 'new_article_options',       :locals => {:f => f}
+
+  %p.buttons
+    = submit_tag 'Preview', :id => "preview-button"
+    = submit_tag 'Create'
+    = submit_tag 'Create and Approve'
+    
+    or
+    = link_to 'Cancel', :action => 'index'
+
+  = render :partial => 'preview_js'

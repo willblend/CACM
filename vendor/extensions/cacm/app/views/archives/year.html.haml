@@ -1,0 +1,45 @@
+- cache({:fragment => params['year']}, 1.week) do
+  - generate_year
+
+  <!-- googleoff:all -->
+  #BodyWrapper.MagArchivePage
+    #MainColumn
+      #MainContentArea
+        #PageHdr
+          %h1#hdr_cacm-archive= "Communications of the ACM archive"
+        %div{:class => "Layout Col-160_575"} 
+          .column-1
+            .Box#about-archive
+              %h3 About the Archive
+              %p 
+                The magazine archive includes every article published in 
+                %em
+                  Communications of the ACM
+                for over the past 50 years.
+              %p Click on a cover image or issue date to scan the table of contents, which leads to complete articles on this site, as well as in the ACM Digital Library. 
+          .column-2
+            .MagIssues
+              .header
+                .nav
+                  .SelectList
+                    .SelectList-Title Select another year
+                    %ul#archive_nav
+                      - Array.new(Time.now.year-1957) {|x| Time.now.year-x }.each do |year|
+                        %li= link_to year, "/magazines/#{year}"
+                    .ClearFix <!-- do not remove -->
+                %h2= "#{params[:year]} Issues"
+              - @issues.in_groups_of(4).each do |issue_row|
+                .row
+                  - issue_row.each do |issue|
+                    - if issue
+                      %div{:class => "issue #{'issue-first' if issue_row.first == issue}"}
+                        - cover = (!issue.cover_url || issue.cover_url.eql?("http://portalparts.acm.org")) ? "/images/img.image-not-available.gif" : issue.cover_url
+                        = link_to image_tag(cover, :width => 122, :height => 170, :alt => "", :class => "cover"), magazine_issue_path(issue.pub_date.year,issue.pub_date.month)
+                        %h3= issue.pub_date.to_s(:calendar)
+                        %p= link_to(issue.title||"Vol. #{issue.volume} No. #{issue.issue}", magazine_issue_path(issue.pub_date.year,issue.pub_date.month))
+                    - else
+                      %div{:class => "issue"} &nbsp;
+    #SideColumn
+      %r:snippet{ :name => "magazine_archive_right_column_ads" }
+
+  <!-- googleon:all -->

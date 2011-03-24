@@ -1,0 +1,6 @@
+%p.buttons
+  = submit_tag 'Save and Mark As a Draft', :name => 'draft', :class => 'button'
+  = submit_tag 'Save and Mark For Review', :name => 'review', :class => 'button'
+  = submit_tag 'Save and Publish', :name => 'publish', :class => 'button'
+  or
+  = link_to 'Cancel', request.env["HTTP_REFERER"] ? request.env["HTTP_REFERER"] : page_index_url(:root => (@page.draft_parent || @page).parent)

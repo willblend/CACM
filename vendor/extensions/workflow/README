@@ -1,0 +1,7 @@
+= Workflow
+
+== Dependencies
+=== Gems & Plugins
+ * HAML
+=== Extensions
+ * shards

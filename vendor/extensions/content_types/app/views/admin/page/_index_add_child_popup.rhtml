@@ -1,0 +1,68 @@
+<% include_javascript 'lowpro' %>
+<% content_for :page_scripts do %>
+var add_child_menu = <%= (render :partial => 'add_child_menu').to_json %>;
+var AddChildMenu = Behavior.create({
+  initialize: function() {
+    this.parent = $(this.element.parentNode);
+    Event.observe(document, 'click', this.hideMenu.bindAsEventListener(this))
+  },
+  onclick: function(event) {
+    Event.stop(event);
+    if(typeof this.menu == 'undefined'){
+      try {
+      new Insertion.Bottom(this.parent, add_child_menu);
+      this.menu = this.parent.down("ul.add_child_menu");
+      this.menu.getElementsBySelector("li a").each(function(element){
+        if(element.title != '') 
+          element.href = this.element.href + "?content_type=" + element.title;
+        else
+          element.href = this.element.href;
+        element.title = null;
+      }.bind(this));
+      } catch(e) { alert(e); }
+    }
+    this.menu.show();
+  },
+  hideMenu: function(){
+    if(typeof this.menu != 'undefined')
+      this.menu.hide();
+  }
+});
+Event.addBehavior({
+  '.add-child a': AddChildMenu
+});
+<% end %>
+<% content_for :page_css do %>
+  ul.add_child_menu {
+    position: absolute;
+    margin: -24px 0 0 18px;
+    padding: 0 0 0 18px;
+    background: url(/images/admin/menu_arrow.png) left 3px no-repeat;
+	z-index: 10000;
+  }
+  ul.add_child_menu li {
+    list-style: none;
+    display: block;
+    background-color: white;
+    border: 1px solid black;
+    border-top: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul.add_child_menu li:first-child {
+    border-top: 1px solid black;
+  }
+  ul.add_child_menu li a {
+    display: block;
+    padding: 6px;
+    text-decoration: none;
+    color: black;
+
+  }
+  ul.add_child_menu a:hover {
+    background-color: #eee;
+  }
+  td.add-child {
+    position: relative;
+  }
+<% end %>

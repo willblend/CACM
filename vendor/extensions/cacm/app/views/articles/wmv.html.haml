@@ -1,0 +1,44 @@
+<!-- googleoff:all -->
+#BodyWrapper.ArticlePage
+  #MainColumn{ :class => @article.is_a?(CacmArticle) ? "CACMArticleWrapper" : "Normal" }
+    #MainContentArea
+      #Breadcrumbs
+        %r:breadcrumbs_with_rails{ :separator => " &#187; "} /
+      %div.Layout
+        %div.column-1
+          = render :partial => '/articles/dl_navigation'
+          = render :partial => '/articles/supplemental_nav' if @article.respond_to? :source and not @article.source.nil?
+          = render :partial => '/articles/reviews_nav' if @article.respond_to? :source and not @article.source.nil?
+
+        %div.column-2#article-wrapper
+          %div.Article
+            .kicker= publication_source_name(@article)
+
+            %h1= @article.is_dl_article? ? @article.full_title : h(@article.title)
+            
+            %p.metadata
+              - if @article.is_dl_article?
+                = @article.source.publication.title 
+                %br/
+                - if @article.respond_to? :issue
+                  = @article.vol_issue_page
+                  %br/
+                = @article.uuid
+              - else
+                = @article.date.to_s :date
+            
+            -# Didja know that there is only one item in the DL that has a WMV
+            -# for fulltext? And that that one lonely WMV fulltext actually
+            -# will redirect to the PDF? So why is this here? For future generations.
+            
+            #wmv-movie
+              %object{ :classid => "clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95", :codebase => "http://www.microsoft.com/Windows/MediaPlayer", :width => 550, :height => 416 }
+                %param{ :name => "Filename", :value => correct_crawl_url(@fulltext.crawl_url) }
+                %param{ :name => "AutoStart", :value => :true }
+                %param{ :name => "ShowControls", :value => :true }
+                %param{ :name => "BufferingTime", :value => 3 }
+                %param{ :name => "ShowStatusBar", :value => :true }
+                %param{ :name => "AutoSize", :value => :true }
+                %embed{ :src => correct_crawl_url(@fulltext.crawl_url), :type => "application/x-mplayer2", :autostart => 1, :enabled => 1, :showstatusbar => 1, :showcontrols => 1, :pluginspage => "http://www.microsoft.com/Windows/MediaPlayer", :codebase => "http://www.microsoft.com/Windows/MediaPlayer", :width => 550, :height => 416 }
+
+  = render :partial => "/articles/side_column"

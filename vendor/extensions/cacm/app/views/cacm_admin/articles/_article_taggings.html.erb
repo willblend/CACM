@@ -1,0 +1,7 @@
+
+<tr><th class="label"> Taggings</th>
+  
+  <td class="field">
+    <%= f.collection_select(:meta_tags, MetaTag.find(:all), :name, :name, {}, {:multiple=>true})%>
+<input class="textbox" id="article_tags" name="article[meta_tags][]" size="160" type="text" value="<%= @article.tag_list %>" /></td>
+

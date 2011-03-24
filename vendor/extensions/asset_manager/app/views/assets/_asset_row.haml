@@ -1,0 +1,15 @@
+%tr{ :class => asset_expire_class(asset_row), :id => "asset_#{asset_row.id}" }
+  %td{ :class => "filename #{asset_class(asset_row)}" }
+    %a{ :href => edit_asset_path(:id => asset_row.id, :format => params[:format], :type => params[:type]), :class => 'file' }= h(asset_row.filename)
+    - unless asset_row.title.blank?
+      .title= h(asset_row.title) 
+    - unless asset_row.description.blank?
+      .description= h(truncate(asset_row.description, 80))
+  
+  %td.filesize= number_to_human_size(asset_row.size)
+
+  / %td.usage= asset_row.all_uses.size
+
+  %td.updated-at= adjust_time(asset_row.updated_at).to_s(:mdy_time)
+
+  %td.remove= link_to image_tag("/images/admin/remove.png"), asset_path(:id => asset_row.id, :format => params[:format], :type => params[:type]), :class => "destroy-asset-link", :method => :delete, :confirm => "Are you sure you want to delete #{asset_row.filename}?"

@@ -1,0 +1,28 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  id: 1
+  name: Part 1
+  filter_id:
+  content_type_id: 1
+  part_type_id: 3
+two:
+  id: 2
+  name: extended
+  filter_id: Textile
+  content_type_id: 1
+  part_type_id: 2
+three:
+  id: 3
+  name: featured?
+  content_type_id: 1
+  part_type_id: 4
+four:
+  id: 4
+  name: Feature image
+  content_type_id: 1
+  part_type_id: 5
+five:
+  id: 5
+  name: Tagline
+  content_type_id: 1
+  part_type_id: 1

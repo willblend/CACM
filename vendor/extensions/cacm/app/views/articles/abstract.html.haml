@@ -1,0 +1,41 @@
+<!-- googleoff:all -->
+#BodyWrapper.ArticlePage
+  #MainColumn
+    #MainContentArea
+      #Breadcrumbs
+        %r:breadcrumbs_with_rails{ :separator => " &#187; "} /
+
+      %div.Layout
+        %div.column-1
+          = render :partial => '/articles/dl_navigation'
+          = render :partial => '/articles/supplemental_nav' if @article.respond_to? :source and not @article.source.nil?
+          = render :partial => '/articles/reviews_nav' if @article.respond_to? :source and not @article.source.nil?
+
+        %div.column-2#article-wrapper
+          %div.Article
+            - cache "articles/#{@article.id}/abstract" do
+              .kicker= publication_source_name(@article)
+
+              %h1= @article.is_dl_article? ? @article.full_title : h(@article.title)
+
+              = render :partial => "/articles/article_image" if @article.image_id?
+
+              - unless @article.author.blank?
+                %p.byline= h(@article.author)
+
+              %p.metadata= @article.date.to_s :date
+
+              <!-- googleon:all -->
+
+              - unless @article.short_description.blank?
+                = @article.short_description
+              - else
+                %p There is no abstract available for this article.
+              
+              = render :partial => "articles/full_text_formats" if controller.action_name.eql?("abstract")
+
+              <!-- googleoff:all -->
+
+          = yield :barrier
+
+  = render :partial => "/articles/side_column"

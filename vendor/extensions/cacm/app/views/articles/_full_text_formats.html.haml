@@ -1,0 +1,22 @@
+#full-text-formats
+
+  %h5 Read the Full Article:
+
+  .Links
+    Abstract
+    - if @article.has_html?
+      &nbsp;|&nbsp; 
+      = link_or_span_for(!(@article.approved? && @article.full_text?), "Full Text (HTML)", contextual_article_path(@article, request.path)+"/fulltext", :rel => :nofollow)
+    - if @article.has_pdf?
+      &nbsp;|&nbsp; 
+      = link_or_span_for(!(@article.approved? && @article.has_pdf?), "Full Text (PDF)", contextual_article_path(@article, request.path)+"/pdf", article_pdf_link_options(@article))
+    - if @article.comments_count > 0
+      &nbsp;|&nbsp;
+      = link_or_span_for(!(@article.approved? && @article.user_comments?), "User Comments (#{@article.comments_count})", contextual_article_path(@article, request.path))
+      
+    - if @article.has_digital_edition?
+      &nbsp;|&nbsp;
+      = link_or_span_for(!@article.has_digital_edition?, "In the Digital Edition", h(@article.digital_edition_url), :target => "_blank")
+    - if @article.has_digital_library?
+      &nbsp;|&nbsp;
+      = link_or_span_for(!@article.has_digital_library?, "In the Digital Library", h(@article.citation_url), :target => "_blank")

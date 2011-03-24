@@ -1,0 +1,2 @@
+open '/'
+assert_title 'Communications of the ACM | CACM Homepage'

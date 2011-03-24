@@ -1,0 +1,49 @@
+- include_javascript 'admin/sitemap'
+
+%h1 Pages
+
+= render_region :top
+
+%table#site-map.index{:summary=>"Page hierarchy"}
+  %col{:width => "55%"}
+  %col{:width => "10%"}
+  %col{:width => "10%"}
+  %col{:width => "10%"}
+  %col{:width => "15%"}
+  
+  %thead
+    %tr
+      %th.page Page
+      %th.jump Jump To Node
+      %th.type Type
+      %th.status Status
+      %th.modify{:colspan=>"2"} Modify
+  %tbody
+    -if @results.any?
+      -for page in @results.compact # guard against nil items
+        - @current_node = page
+        %tr{:class =>"node level-0 no-children" }
+          %td.page
+            %span.w1
+              = icon 
+              %a{ :href => page_edit_url( :id => page), :title => page.url }
+                %span.title= h(page.title)
+          %td.jump
+            = link_to "Link", page_index_path(:root => page.id)
+          %td.type
+            = page.content_type.name if page.content_type
+          %td.status
+            = page.status.name
+          %td.modify
+            = link_to image('add-child', :alt => 'add child'), page_new_url(:parent_id => page)
+            = link_to image('remove', :alt => 'remove page'), page_remove_url(:id => page)
+            
+    -else
+      %tr
+        %td.note{:colspan => "5"}
+          - if params[:query]
+            = params[:query].strip.blank? ? "Empty search." : "No results from query."
+            Please Try Again.
+          - else
+            Empty search. Please Try Again.
+= render_region :bottom

@@ -1,0 +1,20 @@
+<r:placeholder properties="width:160px;height:300px;">
+    <r:related_articles_by_article>
+      <div class="FeatureBox">
+        <h3>In The Digital Library</h3>
+        <div class="content">
+          <ul>
+            <r:each>
+              <li>
+                <r:dynamic_tag tag="a" target="_blank" href="r:article:url">
+                  <r:article:title />
+                </r:dynamic_tag>
+                <br />
+                <span class="byline"><r:article:main_parent_title /></span>
+              </li>
+            </r:each>
+          </ul>
+        </div>
+      </div>
+    </r:related_articles_by_article>
+</r:placeholder>

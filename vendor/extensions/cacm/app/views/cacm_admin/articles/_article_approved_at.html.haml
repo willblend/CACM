@@ -1,0 +1,16 @@
+%tr
+  %th.label Article Approval Date
+  %td.field
+    = f.datetime_select :approved_at, :disabled => 'true'
+    %input#approval-date{ :type => 'checkbox' }
+    %label{ :for => 'approval-date' } Set approval date manually
+    .HelpText Applies only when approving the article
+
+- content_for :page_scripts do
+  :plain
+    document.observe('dom:loaded', function() {
+      $('approval-date').observe('click', function(){
+        /* FIXME: this should look at the state of the SELECT instead of the checkbox */
+        this.up('td').select('select').invoke(this.checked ? 'enable' : 'disable');
+      })
+    })

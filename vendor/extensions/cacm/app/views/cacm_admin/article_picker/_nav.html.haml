@@ -1,0 +1,15 @@
+- content_for :page_css do
+  :plain
+    .AdminTabSet LI { background: #FFF; }
+    .AdminTabSet LI SPAN { padding: 3px 5px; }
+    * HTML .AdminTabSet LI { border-top: 2px solid #CCC !important; }
+
+.AdminTabSet.Static
+  %ul.AdminTabNav
+    %li
+      %span= "#{@total_articles} Articles Available"
+    
+    - if params[:issue] || params[:feed_id] || params[:feed_ids] || params[:section_id]
+      %li= link_to "View All Article Sources", :overwrite_params => {:page => nil, :per_page => nil, :sort => nil, :direction => nil, :feed_id => nil, :feed_ids => nil, :issue => nil, :section_id => nil}
+    
+  .TabBorder.ClearFix

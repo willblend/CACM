@@ -1,0 +1,248 @@
+-
+    name: PhysOrg.com
+    feedurl: http://www.physorg.com/physorg.xml
+    class_name: RssFeed
+    feedtype: Article
+    sections:
+        - news
+    topics:
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true
+-
+    name: Putting People First
+    feedurl: http://feeds.feedburner.com/puttingpeoplefirst
+    class_name: RssFeed
+    feedtype: Article
+    sections:
+        - opinion
+        - blogs
+    topics:
+        - human-computer interaction
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true
+-
+    name: The Computing Community Consortium Blog
+    feedurl: http://feeds.feedburner.com/cccblog/wDnv
+    class_name: RssFeed
+    feedtype: Article
+    sections:
+        - opinion
+        - blogs
+    topics:
+        - computer systems
+        - hardware
+        - information systems
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true
+-
+    name: CSDiary
+    feedurl: http://www.csdhead.cs.cmu.edu/blog/feed/
+    class_name: RssFeed
+    feedtype: Article
+    sections:
+        - opinion
+        - blogs
+    topics:
+        - computer systems
+        - hardware
+        - information systems
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true
+-
+    name: insideHPC
+    feedurl: http://feeds.feedburner.com/InsideHPC
+    class_name: RssFeed
+    feedtype: Article
+    sections:
+        - opinion
+        - blogs
+    topics:
+        - computer systems
+        - hardware
+        - information systems
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true
+-
+    name: Springenwerk Blog
+    feedurl: http://feeds.feedburner.com/SpringenwerkBlog
+    class_name: RssFeed
+    feedtype: Article
+    sections:
+        - opinion
+        - blogs
+    topics:
+        - computer applications
+        - software
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true
+-
+    name: Sun Mink
+    feedurl: http://blogs.sun.com/webmink/feed/entries/atom
+    class_name: RssFeed
+    feedtype: Article
+    sections:
+        - opinion
+        - blogs
+    topics:
+        - software
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true
+-
+    name: The Eponymous Pickle
+    feedurl: http://eponymouspickle.blogspot.com/feeds/posts/default
+    class_name: RssFeed
+    feedtype: Article
+    sections:
+        - opinion
+        - blogs
+    topics:
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true
+-
+    name: Daniel Lemire's Blog
+    feedurl: http://feeds.feedburner.com/daniel-lemire/atom
+    class_name: RssFeed
+    feedtype: Article
+    sections:
+        - opinion
+        - blogs
+    topics:
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true
+-
+    name: ACM's Committee on Women in Computing News Blog
+    feedurl: http://acmwnews.blogspot.com/feeds/posts/default
+    class_name: RssFeed
+    feedtype: Article
+    sections:
+        - opinion
+        - blogs
+    topics:
+        - computers and society
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true
+-
+    name: U.S. Public Policy Committee of the ACM
+    feedurl: http://usacm.acm.org/usacm/weblog/rss2.php
+    class_name: RssFeed
+    feedtype: Article
+    sections:
+        - opinion
+        - blogs
+    topics:
+        - computers and society
+        - legal aspects
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true
+-
+    name: Computer Science Teachers Association
+    feedurl: http://blog.acm.org/csta/index.xml
+    class_name: RssFeed
+    feedtype: Article
+    sections:
+        - opinion
+        - blogs
+    topics:
+        - computers and society
+        - education
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true
+-
+    name: Books by Safari
+    feedurl: http://acmsel.safaribooksonline.com/rss
+    class_name: RssFeed
+    feedtype: Books
+    sections:
+    topics:
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true
+-
+    name: Jobs by Job Target
+    feedurl: http://www.jobtarget.com/distrib/jobs/rss.cfm?s=1603&m=xx
+    class_name: RssFeed
+    feedtype: Jobs
+    sections:
+    topics:
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true
+-
+    name: Hot Jobs
+    feedurl: http://jobs.acm.org/distrib/jobs/rss.cfm?s=1603&t=p&m=15
+    class_name: RssFeed
+    feedtype: Jobs
+    sections:
+    topics:
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true
+-
+    name: ACM TechNews
+    feedurl: http://www.infoinc.com/acm/TechNews.rss
+    class_name: RssFeed
+    feedtype: Article
+    sections:
+        - news
+    topics:
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true
+-
+    name: CACM Blog
+    class_name: ManualFeed
+    feedtype: Blog
+    sections:
+    topics:
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true
+-
+    name: ACM News
+    class_name: ManualFeed
+    feedtype: Blog
+    sections:
+    topics:
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true
+-
+    name: ACM Careers
+    class_name: ManualFeed
+    feedtype: Blog
+    sections:
+    topics:
+    user_comments: true
+    news_opinion: true
+    digital_library: false
+    acm_resource: true

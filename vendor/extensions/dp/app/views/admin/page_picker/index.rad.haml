@@ -1,0 +1,50 @@
+- content_for :page_css do
+  :plain
+    #content { position: relative; }
+    #pages-wrapper  H1 { margin-bottom: .25em; }
+    #pages-wrapper .Help { margin: 0 0 1em 0; }
+    #pages-wrapper TBODY TD .Link { cursor: pointer; color: #0000EE; text-decoration: underline; text-align: center; border: 1px solid #DDD; background: #FFF; padding: 4px 6px; }
+    #pages-wrapper TBODY TD .Link:hover { border-color: #BBB; }
+    #pages-wrapper TBODY TD.preview A { text-decoration: none !important; font-size: .85em; }
+    * HTML #pages-wrapper TBODY TD .Link { padding-top: 3px; }
+    *:first-child+html #pages-wrapper TBODY TD .Link { padding-top: 3px; }
+
+= render :partial => 'search', :locals => { :filtered => @filter }
+
+#pages-wrapper
+  %h1 Pages
+
+  = render :partial => 'breadcrumb'
+
+  %table.index#page-picker
+    %col{:width => "70%"}
+    %col{:width => "15%"}
+    %col{:width => "15%"}
+    %thead
+      %tr
+        %th Pages
+        %th{:colspan => "2"} View
+    %tbody
+      - unless @results
+        = render :partial => "node", :object => @homepage, :locals => {:level => 0}
+      - else
+        - for page in @results
+          %tr
+            - @current_node = page
+            %td.page
+              = icon
+              %span.w1
+                %span.title
+                  %strong
+                    = page.title
+
+            %td.content_type
+              - if page.status.name.eql?("Published")
+                = link_to "View", page.url, :target => "_blank" unless @site.nil?
+              - else
+                = link_to "Preview", @site.dev_url(page.url), :target => "_blank" unless @site.nil?
+
+            %td.select
+              = link_to_function "Select Page", "window.top.opener.CurrentPicker.addNewAssocation({'id' : #{page.id}, 'title' : '#{page.title}', 'status_id' : #{page.status_id}, 'url' : '#{page.status.name.eql?("Published") ? @site.url(page.url) : @site.dev_url(page.url)}', 'view_title' : '#{page.status.name.eql?("Published") ? "View" : "Preview"}' }); window.top.close();", :class => "Link"
+
+        = will_paginate(@results)

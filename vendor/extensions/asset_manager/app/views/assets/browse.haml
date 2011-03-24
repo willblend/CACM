@@ -1,0 +1,28 @@
+%h1 Asset Manager
+
+= render :partial => "search_form" if Asset.respond_to? :search
+
+- flash[:notice] # yep, - and not = since here flash() is a helper method
+- flash[:error]
+
+- unless (params[:search].blank?)
+  %p.InlineNav= link_to("Back to asset listing", assets_path(:format => params[:format], :type => params[:type]))
+  %h2
+    Search Results for 
+    %em= params[:search]
+
+- else
+  = render :partial => "upload_asset"
+  = render :partial => "tabs"
+  = render :partial => "asset_filtering"
+  = render :partial => "pagination"
+
+- if params[:format].eql?('fck') || params[:format].eql?('rad')
+  = render :partial => "table_picker"
+- else
+  = render :partial => "table"
+
+
+= will_paginate @assets
+
+= javascript_tag "new RuledTable('assets-table');"

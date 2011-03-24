@@ -1,0 +1,22 @@
+- cache :fragment => "supplemental_nav.pdf=#{current_member.can_access?(@article, :pdf)}" do
+  
+  - @supplements = @article.source.supplements
+  - @inclusions = @article.source.inclusions if @article.source.respond_to? :inclusions
+
+  - if (@supplements and @supplements.any?) or (@inclusions and @inclusions.any?)
+    .RelatedItems.SecondaryNav#article-supplements
+      %h3
+        %span Related Materials
+
+      %ul
+        
+        - if @supplements and @supplements.any?
+          - @supplements.each_with_index do |supplement, i|
+            %li{ :class => @supplement && @supplement.respond_to?(:url) && @supplement.url.eql?(supplement.url) ? "active" : "" }
+              = link_to supplement.link_txt, :action => "supplements", :id => (i+1)
+
+        - if @inclusions and @inclusions.any?
+          - @inclusions.each_with_index do |inclusion, i|
+            %li{ :class => @supplement && @supplement.respond_to?(:inclusion) && @supplement.id.eql?(inclusion.id) ? "active" : "" }
+              = link_to "Additional Resources", :action => "supplements", :id => 0
+

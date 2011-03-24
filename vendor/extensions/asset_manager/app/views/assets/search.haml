@@ -1,0 +1,17 @@
+%h1 Asset Manager : Search Results
+%table.index#assets-table
+  %col{ :width => "50%" }
+  %col{ :width => "10%" }
+  %col{ :width => "10%" }
+  %col{ :width => "20%" }
+  %col{ :width => "10%" }
+  %thead
+    %tr
+      %th Asset
+      %th File Size
+      %th Usage
+      %th Modified
+      %th Actions
+  %tbody= render :partial => "asset_row", :collection => @assets
+
+= javascript_tag "new RuledTable('assets-table');"

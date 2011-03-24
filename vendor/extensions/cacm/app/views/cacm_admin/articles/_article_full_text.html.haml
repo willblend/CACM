@@ -1,0 +1,49 @@
+%tr
+  %th.label
+    - if @article.is_displayed_on_site? && !@article.is_dl_article?
+      = label(:article, :full_text, 'Article Full Text')
+    - else
+      Article Full Text
+
+  %td.field
+    - if @article.is_displayed_on_site? && !@article.is_dl_article?
+      = f.text_area :full_text, :cols => '80', :rows => '20', :class => 'wysiwyg-article-standard required'
+    - else
+      - if @article.full_text.blank?
+        %p.Placeholder{ :style => 'text-align: left;' } (No full text available for this article)
+      - else
+        -# FIXME: auto_link is failing. see ticket #514
+        -#.ArticlePreview= auto_link(@article.full_text)
+        .ArticlePreview
+          - if @article.is_a? CacmArticle
+            .CacmArticleAdminWrapper= @article.full_text
+          - else
+            = @article.full_text
+
+    - if !@article.full_text.blank? && !(@article.is_displayed_on_site? && !@article.is_dl_article?)
+      .DebugHTML
+        %h4 Raw Markup (debug)
+        .DebugHTMLContent
+          = simple_format(h(@article.full_text))
+    
+    - # Trigger for editing article full text, hidden by default
+    
+    - if @article.is_dl_article? and not @article.is_a? CacmArticle
+      
+      %input{ :type => "button", :id => "edit-article-full-text", :value => "Edit Full Text", :style => "display: none;" }
+      
+      - if @article.is_a? UbiquityArticle
+        
+        - content_for :page_scripts do
+          :plain
+            Event.addBehavior({
+              "#edit-article-full-text" : EditFullTextTrigger("ubiquity-article-full-text")
+            });
+      
+      - else
+        
+        - content_for :page_scripts do
+          :plain
+            Event.addBehavior({
+              "#edit-article-full-text" : EditFullTextTrigger("article-full-text")
+            });

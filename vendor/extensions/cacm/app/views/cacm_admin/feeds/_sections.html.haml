@@ -1,0 +1,13 @@
+%tr#feed-sections
+  %th.label Default Sections
+  %td.field
+    %table.LayoutTable
+      %tr
+        -@sections.chunk(3).each do |chunk|
+          %td
+            %ul.categories_list.Inputs
+              -chunk.each do |sec|
+                %li
+                  =check_box_tag "feed[section_ids][]", sec.id, @feed.sections.include?(sec), :id => "feed_section_ids_#{sec.id}"
+                  %label{ :for => "feed_section_ids_#{sec.id}" }= h(sec.name)
+        =hidden_field_tag "feed[section_ids][]", nil, :id => 'feed_section_ids' # catch empty submissions

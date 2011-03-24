@@ -1,0 +1,56 @@
+- include_javascript 'livepipe'
+- include_javascript 'livepipe.window.js'
+
+- content_for :page_scripts_DISABLED do
+  :plain
+    Event.addBehavior({
+      'a.file' : Behavior.create({
+        initialize : function() {
+          new Control.Window(this.element, {  
+            position : [
+              function(e){
+                if (!e) { return; }
+                var el = e.element();
+                return el.cumulativeOffset()[0] + el.offsetWidth + 10;
+              },
+              function(e){
+                if (!e) { return; }
+                var el = e.element();
+                return el.cumulativeOffset()[1] - 45;
+              }
+            ],
+            hover : true,
+            className : 'tooltip',
+            iframeshim : false
+          })
+        }
+      })
+    });
+
+- content_for :page_css do
+  :plain
+    .tooltip { border: 1px solid #000; background-color: #FFF; padding: 4px; }
+    TD.Picker { line-height: 1.8; font-size: .8em; }
+
+%table{ :class => "index PickerTable", :id => "assets-table" }
+  %col{ :width => "55%" }
+  %col{ :width => "15%" }
+  %col{ :width => "10%" }
+  / %col{ :width => "5%" }
+  %col{ :width => "20%" }
+
+  %thead
+    %tr
+      %th Asset
+      %th Dimensions
+      %th File Size
+      / %th Usage
+      %th Modified
+
+  %tbody
+    = render :partial => "asset_row_picker", :collection => @assets
+
+    - if @assets.empty?
+      %tr
+        %td{ :colspan => 4 }
+          %p.Placeholder No assets exist with the chosen criteria.

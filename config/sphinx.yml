@@ -1,0 +1,22 @@
+development: &dev
+  html_strip: 1
+  enable_star: 1
+  html_remove_elements: script
+  mem_limit: 64M
+
+test:
+  <<: *dev
+
+sandbox:
+  bin_path: /usr/local/bin/
+  <<: *dev
+    
+staging:
+  bin_path: /usr/local/bin/
+  pid_file: /etc/service/searchd/supervise/pid
+  <<: *dev
+    
+production:
+  bin_path: /usr/local/bin/
+  pid_file: /etc/service/searchd/supervise/pid
+  <<: *dev  

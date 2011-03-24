@@ -1,0 +1,3 @@
+module FCK
+
+end

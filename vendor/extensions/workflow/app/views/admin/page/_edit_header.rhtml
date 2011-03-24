@@ -1,0 +1,5 @@
+<% if @page.new_record? && !@page.is_draft? -%>
+<h1 id="new_page">New Page</h1>
+<% else -%>
+<h1 id="edit_page">Edit Page</h1>
+<% end -%>

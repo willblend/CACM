@@ -1,0 +1,36 @@
+# MySQL backup script for backupgem
+# Sample crontab:
+# 3 4 * * * /usr/lib/ruby/gems/1.8/gems/backupgem-0.0.11/bin/backup -r <%= shared_path %>/<%= filename %>
+
+set :backup_path, '/srv/rails/<%= application %>/shared/backups/'
+set :tmp_dir, '/srv/rails/<%= application %>/shared/tmp'
+
+before_content = lambda do
+ dump = c[:tmp_dir] + "/<%= application %>.sql"
+ sh "mysqldump <%= user %> <%= passwd %> <%= db %> > #{dump}"
+ dump
+end
+
+Backup::Actor.send(:define_method, :before_content, before_content)
+
+action :smart_tar do
+  # just grab a single file, not entire path -- better for simple sql dumps
+  name = File.basename(last_result)
+  sh "tar -cvjf #{c[:tmp_dir]}/#{name}.tar.bz2 -C #{c[:tmp_dir]} #{name}"
+  c[:tmp_dir] + '/' + name + '.tar.bz2'
+end
+
+action :content do
+  last_result
+end
+
+action :compress, :method => :smart_tar
+
+action :rotate
+
+set :son_promoted_on,    :sun
+set :father_promoted_on, :last_sun_of_the_month
+
+set :sons_to_keep,         14
+set :fathers_to_keep,      8
+set :grandfathers_to_keep, 12

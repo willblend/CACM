@@ -1,0 +1,14 @@
+%tr
+  %th.label Section(s)
+  %td.field.required-checkboxes#article-sections-field
+    %table.LayoutTable
+      %tr
+        -@sections.chunk(3).each do |chunk|
+          %td
+          
+            %ul.categories_list.Inputs
+              -chunk.each do |sec|
+                %li
+                  =check_box_tag "article[section_ids][]", sec.id, @article.sections.include?(sec), :disabled => disable_section_buttons(sec,request.request_uri), :id => "article_section_ids_#{sec.id}", :class => "section-or-subject-required"
+                  %label{ :for => "article_section_ids_#{sec.id}" }= h(sec.name)
+    =hidden_field_tag "article[section_ids][]", nil, :id => 'article_section_ids' # catch empty submissions

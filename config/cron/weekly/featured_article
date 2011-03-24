@@ -1,0 +1,5 @@
+#!/bin/bash
+export ORACLE_HOME=<%= default_environment['ORACLE_HOME'] %>
+export LD_LIBRARY_PATH=<%= default_environment['LD_LIBRARY_PATH'] %>
+export JAVA_HOME=<%= default_environment['JAVA_HOME'] %>
+cd <%= current_path %> && for x in 1 2 3 4 5; do /usr/bin/rake <%= stage %> radiant:extensions:featured_pages:remove_first; done

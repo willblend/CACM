@@ -1,0 +1,32 @@
+<a href="/"><img src="/images/logo.CACM.gif" width="584" height="60" alt="CACM logo" title="Communications of the ACM - The World's Leading Source For Advanced Computing" id="logo-CACM" /></a>
+
+<ul id="UtilityNav">
+	<li><a href="http://www.acm.org/">acm.org</a></li>
+	<li><a href="/subscribe" target="_blank" title="This link opens off-site">Join ACM</a></li>
+	<li><a href="http://www.acm.org/" title="acm.org"><img src="/images/logo.ACM.gif" width="45" height="45" alt="acm.org" /></a></li>
+	<li<r:if_section section="about-communications"> class="active"</r:if_section>><a href="/about-communications">About Communications</a></li>
+	<li<r:if_section section="alerts-and-feeds"> class="active"</r:if_section>><a href="/alerts-and-feeds">Alerts &amp; Feeds</a></li>
+	<r:if_logged_in>
+	<li><a href="/logout">Sign Out</a>&nbsp;(<r:current_username />)</li>
+	</r:if_logged_in>
+	<r:unless_logged_in>
+	<li<r:if_current_url url="/login"> class="active"</r:if_current_url>><a href="/login">Sign In</a></li>
+	</r:unless_logged_in>
+</ul>
+
+<div id="SiteSearch">
+	<form action="/search">
+		<fieldset>
+			<r:dl_session_tokens_input />
+			<div class="field">
+				<label for="site_search_query" class="hide">Search Term</label>
+				<input type="text" name="q" id="site_search_query" />
+				<input type="image" src="/images/input.search.gif" name="submit" alt="Submit" />
+			</div>
+			<div class="toggle">
+				<input type="radio" name="site_search" value="" id="site_search_communications" checked="checked" /><label for="site_search_communications">Communications</label>
+				<input type="radio" name="site_search" value="" id="site_search_digital_library" /><label for="site_search_digital_library">Digital Library</label>
+			</div>
+		</fieldset>
+	</form>
+</div>

@@ -1,0 +1,4 @@
+%li
+  = link_to(page_usage.title.strip, page_usage.url)
+  %br
+  %span.edit= link_to '(edit)', page_edit_path(:id => page_usage)

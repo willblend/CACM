@@ -1,0 +1,30 @@
+<!-- googleoff:all -->
+%r:add_tokens
+  - cache :fragment => "navigation.pdf=#{current_member.can_access?(@article, :pdf)}" do
+    .SecondaryNav#this-article
+      %h3 This Article
+      %ul
+        - if @article.is_dl_article?
+          = active_li_if(controller.action_name == 'abstract') do link_to("Abstract", :action => 'abstract') end
+          = active_li_if(controller.action_name == 'fulltext') do link_to("Full Text (HTML)", { :action => 'fulltext' }, { :rel => :nofollow }) end if @article.has_html?
+          = active_li_if(controller.action_name == 'pdf') do link_to("Full Text (PDF)", { :action => 'pdf' }, article_pdf_link_options(@article)) end if @article.has_pdf?
+
+          - [:htm,:ps,:txt,].each do |format|
+            = active_li_if(controller.action_name == format.to_s) do link_to("Full Text (#{format.to_s.upcase})", {:action => format.to_s}, { :target => '_blank', :rel => 'nofollow' }) end if @article.send "has_#{format}?"
+
+          = active_li_if(controller.action_name == 'external') do link_to("Full Text (External)", { :action => 'external' }, { :target => "_blank" }) end if @article.has_external?
+
+          - [:mp3,:mp4,:mov,:wmv].each do |format|
+            = active_li_if(controller.action_name == format.to_s) do link_to("Full Text (#{format.to_s.upcase})", :action => format.to_s) end if @article.send "has_#{format}?"
+
+        - else
+          = active_li_if(controller.action_name == 'fulltext') do link_to("Full Text", { :action => 'fulltext' }, { :rel => 'nofollow' }) end
+
+        - if @article.user_comments?
+          = active_li_if(controller.action_name == 'comments') do link_to("User Comments (#{@article.approved_comments.size})", :action => 'comments') end if @article.user_comments?
+
+        - if @article.is_dl_article?
+          = content_tag :li, link_to("In the Digital Edition", h(@article.digital_edition_url), :target => "_blank") if @article.has_digital_edition?
+          = content_tag :li, link_to("In the Digital Library", h(@article.citation_url), :target => "_blank") if @article.has_digital_library?
+          
+<!-- googleon:all -->

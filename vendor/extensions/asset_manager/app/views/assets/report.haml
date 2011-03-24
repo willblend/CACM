@@ -1,0 +1,36 @@
+%h1 Asset Manager
+
+= render :partial => "search_form" if Asset.respond_to? :search
+
+- flash[:notice] # yep, - and not = since here flash() is a helper method
+- flash[:error]
+
+= render :partial => "tabs"
+= render :partial => "pagination"
+
+= will_paginate @assets
+
+%table{ :class => params[:format].eql?('fck') || params[:format].eql?('rad') ? "index PickerTable" : "index", :id => "assets-table" }
+  %col{ :width => "50%" }
+  %col{ :width => "10%" }
+  %col{ :width => "10%" }
+  %col{ :width => "20%" }
+  %col{ :width => "10%" }
+  %thead
+    %tr
+      %th Asset
+      %th File Size
+      %th Usage
+      %th Modified
+      %th Actions
+  %tbody
+    = render :partial => "asset_row", :collection => @assets
+    - if @assets.empty?
+      %tr
+        %td{ :colspan => 5, :class => 'note' } No assets exist with the chosen criteria.
+
+.ClearFix <!-- do not remove -->
+
+= will_paginate @assets
+
+= javascript_tag "new RuledTable('assets-table');"

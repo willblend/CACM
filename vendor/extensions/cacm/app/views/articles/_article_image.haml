@@ -1,0 +1,11 @@
+- # FIXME: retrieving this in real-time is non-optimal, but we need to know 
+- # the image width in order to keep the layout sane. maybe keep the 
+- # dimensions on the model?
+- width = Paperclip::Geometry.from_file(@article.image.file.path(:large)).width.to_i rescue 250
+.ArticleImage{ :style => "width : #{width}px;" }
+  = image_tag(@article.image.public_filename(:large), :class => "pic", :alt => '[article image]', :title => @article.image.title)
+  .ClearFix <!-- do not remove -->
+  - unless @article.image.description.nil? or @article.image.description.empty?
+    %span.title= @article.image.description
+  - unless @article.image.credit.nil? or @article.image.credit.empty?
+    %span.credit= @article.image.credit

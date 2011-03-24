@@ -1,0 +1,87 @@
+%h1 Magazine Archive
+
+%p#new-item-link
+  = link_to "Fetch A CACM Issue", '/admin/issues/fetch', :id => 'fetch-cacm-issue'
+
+-content_for :page_css do
+  :plain
+    .Issues { font-size: 90%; width: 100%; margin-bottom: 2em; border-bottom: 1px solid #eaeaea; }
+    .Issues td, table.index th { text-align: left; }
+    .Issues th { background-color: #f5f5f5; font-size: 90%; font-weight: normal; padding: 2px 4px; }
+    .Issues td { border-top: 1px solid #eaeaea; padding: 4px; }
+    .SelectList-Title { font-size: 16px; }
+    #year_filter { margin: 16px 0; }
+    #year_filter li { font-size: 16px; }
+    .PickerTable { float: left; }
+    .PickerTable TD { border: 0 !important; }
+    #pagination-table { margin-bottom: .5em; }
+    #content .Issues TR:hover, #content .index TR.Hover { background: #FFF !important; }
+    P.HelpText { margin: 0 0 4px; font-size: .75em; width: 650px; }
+    .Issues .Submit { float: right; background: #FFF; border: 1px solid #DDD; cursor: pointer; font-size: 83%; margin: 10px 15px 0 0; padding: 6px 9px; color: #00E; }
+    .Issues .Submit:hover { text-decoration: underline; }
+    .Issues .DisabledSubmit { border-color: #EEE; color: #DDD; cursor: default; }
+    .Issues .DisabledSubmit:hover { text-decoration: none; }
+    
+    * HTML .Issues .Submit { padding-left: 0; padding-right: 0; }
+    * HTML .Issues .PickerLink { float: right !important; margin-right: 8px; }
+    * HTML .pagination { padding: 2px 0px; }
+    
+    *:first-child+html .Issues .Submit { padding-left: 0; padding-right: 0; }
+    *:first-child+html .Issues .PickerLink { float: right !important; }
+    *:first-child+html .pagination { padding: 2px 0px; }
+    
+.SelectList
+  .SelectList-Title Select A Year
+  %ul#year_filter
+    - (1958..Time.now.year).each_with_index do |year,index|
+      - reverse_year = Time.now.year-index
+      %li= link_to reverse_year, "/admin/issues/?year=#{reverse_year}"
+- if params[:year]
+  %p.pagination-status= link_to "<strong>Return to All Issues by Page</strong>", "/admin/issues/"
+
+- unless params[:year]
+  %table.LayoutTable#pagination-table
+    %tr
+      %td.Left
+        %p.pagination-status= page_entries_info @issues, :entry_name => 'issues'
+      %td.Right
+        = will_paginate @issues
+
+%p.HelpText Click "Pick Articles" to choose articles for each issue. Your changes will be saved automatically. These articles will appear next to the current issue on the home pages `Homepage Current Issue` widget.
+
+%table.Issues
+  %col{:width=>'10%'}
+  %col{:width=>'67%'}
+  %col{:width=>'8%'}
+  %col{:width=>'15%'}
+
+  %thead
+    %tr
+      %th Issue
+      %th &nbsp;
+      %th 
+        = "# of Articles"
+        %small (published/total)
+      %th 
+        %strong Status
+        = "/ Action"
+  %tbody
+    - @issues.each do |issue|
+      %tr
+        %td{:valign => "top"}= image_tag(issue.source.cover_url||"/images/placeholder.gif", :width => '105', :height => '136')
+        %td{:valign => "top"}
+          %strong= "Volume #{issue.source.volume}, No. #{issue.source.issue}"
+          = render :partial => "selected_articles_for_issue_form", :locals => {:issue => issue}
+        %td{:valign => "top"}= "#{issue.articles.find(:all, :select => 'id, state, issue_id').collect(&:state).reject{|x| !x.eql?("approved")}.size} / #{issue.articles.count}"
+        %td{:valign => "top"}
+          - if issue.state.eql?("approved")
+            %strong Published 
+            %br
+            = link_to "Unpublish", unpublish_admin_issue_path(issue)
+          - else
+            %strong Unpublished
+            %br
+            = link_to "Publish", publish_admin_issue_path(issue)
+
+- unless params[:year]
+  = will_paginate @issues

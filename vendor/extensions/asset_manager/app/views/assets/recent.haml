@@ -1,0 +1,19 @@
+%h1 Asset Manager
+
+= render :partial => "search_form" if Asset.respond_to? :search
+
+- flash[:notice] # yep, - and not = since here flash() is a helper method
+- flash[:error]
+
+= render :partial => "upload_asset"
+= render :partial => "tabs"
+= render :partial => "pagination"
+
+- if params[:format].eql?('fck') || params[:format].eql?('rad')
+  = render :partial => "table_picker"
+- else
+  = render :partial => "table"
+
+= will_paginate @assets
+
+= javascript_tag "new RuledTable('assets-table');"

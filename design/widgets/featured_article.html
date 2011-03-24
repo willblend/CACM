@@ -1,0 +1,14 @@
+<div class="item featured-article">
+  <r:featured_article properties="width: 350px; height: 200px;">
+  	<div class="kicker">
+  	  <b><r:slugline/></b> <span class="separator">|</span> <r:date />
+  	</div>
+  	<r:dynamic_tag tag="a" href="r:link">
+  	  <r:dynamic_tag tag="img" src="r:thumbnail" alt="r:title" class="pic" />
+  	</r:dynamic_tag>
+  	<h3><r:dynamic_tag tag="a" href="r:link"><r:title /></r:dynamic_tag></h3>
+  	<div class="byline">from <r:by_line/></div>
+  	<p><r:short_description/></p>
+  	<div class="more"><r:slug_url /></div>
+  </r:featured_article>
+</div>

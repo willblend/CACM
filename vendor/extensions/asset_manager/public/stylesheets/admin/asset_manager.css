@@ -1,0 +1,90 @@
+/* ----------------------------------------------------------------- common */
+
+A,
+A:visited { /*color: black;*/ }
+
+P.actions A { margin: 0 5px; color: black; }
+
+#usage { margin-left: 370px; }
+#usage UL { font-size: 90%; line-height: 1.5em; }
+
+* HTML #content { zoom: 1; }
+*:first-child+html #content { zoom: 1; }
+
+P#tab-description { font-size: .8em; margin-bottom: .5em; }
+
+* HTML .AdminTabSet .AdminTabNav { padding-top: 3px !important; }
+* HTML .pagination { padding: 3px 0px !important; zoom: 1; }
+*:first-child+HTML .pagination { padding: 3px 0px !important; zoom: 1; }
+
+/* ---------------------------------------------------------------- listing */
+
+TABLE.index { /* clear: both; border-collapse: collapse; margin-bottom: 10px !important; */ }
+
+TABLE.index TR.highlight { background-color: #FFC; }
+TABLE.index TR.expiring-soon { background-color: #FDF1B6; }
+TABLE.index TR.expired { background-color: #FDCCCC; }
+
+TABLE.index TD.filename { line-height: 1.2; }
+TABLE.index TD .Asset { position: relative; }
+TABLE.index TD A.file { margin-left: 20px; font-weight: bold; text-decoration: underline; }
+TABLE.index TD .title { margin-left: 20px; margin-right: 4em; }
+TABLE.index TD .description { font-size: .818em; margin-left: 20px; margin-right: 4em; }
+TABLE.index TD SPAN.Link { position: absolute; top: 0; right: 0; padding: 0 5px 1px; border: 1px solid #008CBC; font-size: .87em; color: #008CBC; }
+TABLE.index TD SPAN.Link:hover { background: #EEE;}
+TABLE.index TD .description { display: block; }
+
+.filename { padding-left: 20px; background-position: 2px 3px; background-repeat: no-repeat !important; }
+
+.asset-video   { background-image: url(/images/admin/icon.file.video.s.gif);   }
+.asset-audio   { background-image: url(/images/admin/icon.file.audio.s.gif);   }
+.asset-pdf     { background-image: url(/images/admin/icon.file.pdf.s.gif);     }
+.asset-flash   { background-image: url(/images/admin/icon.file.flash.s.gif);   }
+.asset-image   { background-image: url(/images/admin/icon.file.image.s.gif);   }
+.asset-doc     { background-image: url(/images/admin/icon.file.doc.s.gif);     }
+.asset-ppt     { background-image: url(/images/admin/icon.file.ppt.s.gif);     }
+.asset-xls     { background-image: url(/images/admin/icon.file.xls.s.gif);     }
+.asset-generic { background-image: url(/images/admin/icon.file.generic.s.gif); }
+
+/* -------------------------------------------------------------- filtering */
+
+#asset-type-filtering H3,
+#asset-name-filtering H3 { margin: 0 0 8px 0; font-size: 1.15em; }
+
+/* ------------------------------------------------------ swfuploader popup */
+
+#upload-dialog { width: 250px; font-size: .8em; }
+.queued-files { min-height: 300px; }
+#upload-dialog H3 { margin: 0 0 .25em; padding: 0 0 .25em; font-size: 1.25em; }
+#upload-dialog H4 { margin: 0 0 .5em; }
+
+#current-upload { margin-bottom: 10px; padding: 8px 4px; border: 1px solid #CCC; }
+#upload-filename { margin: 0 0 .5em; }
+#progress-bar { position: relative; height: 7px; border: 1px solid #CCC; padding: 0; margin: 0; background-image: url("/images/livepipe.progress_bar.gif"); background-repeat: repeat-x; } 
+#progress-bar DIV { background-color: #FFF; }
+#queued-files { background: #F6F6F6; padding: 4px; min-height: 200px; }
+#queued-files UL { max-height: 180px; overflow: auto; margin: 0 0 .5em; padding-left: 8px; }
+#queued-files UL LI { margin-bottom: .25em; }
+
+.unzip-prompt { }
+.unzip-prompt .Field { margin-bottom: .5em; }
+
+/* for Control.Window */
+#control_overlay { background-color: #000; } 
+.modal { background-color: #FFF; padding: 10px; border: 1px solid #333; }
+
+/* -------------------------------------------------------------- edit form */
+
+.AssetHeader { float: left; }
+.InlineAssetNav { float: right; margin-top: .25em; }
+
+/* ----------------------------------------------------------- replace form */
+
+#replace-asset-link { display: none; }
+
+#replace_asset_form { position: absolute; top: 100px; left: 450px; background: #EEE; padding: 10px 10px 20px; border: 1px solid #AAA; width: 350px; }
+#replace_asset_form H2 { float: left; margin: 0 0 .25em; }
+#replace_asset_form .close { float: right; font-size: .85em; text-transform: uppercase; font-weight: bold; cursor: pointer; color: #F00; }
+#replace_asset_form .close:hover { text-decoration: underline; }
+#replace_asset_form .HelpText { font-size: .92em; color: #333; padding: .5em 0; }
+#replace_asset_form #replace-asset-submit { font-size: 1.25em; }

@@ -1,0 +1,97 @@
+%tr
+  %td.HeaderRow{ :colspan => 3}
+    %h4.AccountHeader Account Information
+
+%tr
+  %td
+    %label Email Address
+    %strong= @account.email
+  %td
+    
+    
+- unless @client
+  %tr
+    %td
+      %label{ :for => "oracle_web_account_name_first" }
+        %em.Required{ :title => "This field is required." } *&nbsp;
+        First Name
+      = account.text_field :name_first, :size => 33, :class => "required"
+      - if @account.errors[:name_first]
+        .validation-advice= @account.errors[:name_first]
+    %td
+
+  %tr
+    %td
+      %label{ :for => "oracle_web_account_name_last" }
+        %em.Required{ :title => "This field is required." } *&nbsp;
+        Last Name
+      = account.text_field :name_last, :size => 33, :class => "required"
+      - if @account.errors[:name_last]
+        .validation-advice= @account.errors[:name_last]
+    %td
+        
+- else # else we already have a first and last name stored.
+  
+  %tr
+    %td
+      %p Based on your email address, we've located your existing ACM / SIG Membership record. Once you complete this form, your new ACM Web Account will be associated it, giving you all of your membership privileges.
+  
+%tr
+  %td
+    %label ACM Web Account Username
+    %input{ :type => :text, :name => :web_account_disabled, :disabled => :disabled, :value => "Automatically Generated" }
+  %td
+    .helptext Your ACM Web Account username is automatically generated and will be provided upon creation of your web account. You will receive an email conﬁrmation with your account details for your records. You may change your username later by visiting my.acm.org. 
+
+%tr
+  %td
+    %label{ :for => "oracle_web_account_password" }
+      %em.Required{ :title => "This field is required." } *&nbsp;
+      Password
+    = password_field_tag "oracle_web_account[password]", nil, :class => "required validate-password-length validate-matching-passwords validate-cant-have-spaces", :id => "oracle_web_account_password"
+    - if @account.errors[:password]
+      .validation-advice= @account.errors[:password]
+  %td
+    .helptext A password must be between 6 and 26 characters in length and cannot contain spaces.
+      
+%tr
+  %td
+    %label{ :for => "oracle_web_account_password_confirmation" }
+      %em.Required{ :title => "This field is required." } *&nbsp;
+      Confirm Password
+    = password_field_tag "oracle_web_account[password_confirm]", nil, :class => "required validate-password-length validate-matching-passwords validate-cant-have-spaces", :id => "oracle_web_account_password_confirmation"
+    - if @account.errors[:password_confirm]
+      .validation-advice= @account.errors[:password_confirm]
+  %td
+
+%tr
+  %td.HeaderRow{ :colspan => 3}
+    %h4.AccountHeader Create a Security Question and Answer
+
+%tr
+  %td
+    %label{ :for => "oracle_web_account_security_question" }
+      %em.Required{ :title => "This field is required." } *&nbsp;
+      Enter Security Question
+    - if params[:oracle_web_account]
+      = text_field_tag "oracle_web_account[question]", params[:oracle_web_account][:question], :class => "required", :id => "oracle_web_account_security_question"
+    - else
+      = text_field_tag "oracle_web_account[question]", nil, :class => "required", :id => "oracle_web_account_security_question"
+    - if @account.errors[:question]
+      .validation-advice= @account.errors[:question]
+  %td
+    .helptext Please create a question that you will be able to answer in the future exactly as you enter it now. The question and answer combination are kept confidential and are solely for your use, in the event that you forget your password.
+    
+%tr
+  %td
+    %label{ :for => "oracle_web_account_security_answer" }
+      %em.Required{ :title => "This field is required." } *
+      Enter Answer
+    - if params[:oracle_web_account]
+      = text_field_tag "oracle_web_account[answer]", params[:oracle_web_account][:answer], :class => "required", :id => "oracle_web_account_security_answer"
+    - else
+      = text_field_tag "oracle_web_account[answer]", nil, :class => "required", :id => "oracle_web_account_security_answer"
+    - if @account.errors[:answer]
+      .validation-advice= @account.errors[:answer]
+  %td
+    .helptext Case matters: you will be expected to reproduce your answer precisely as you enter it.

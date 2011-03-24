@@ -1,0 +1,51 @@
+/*
+	print.css
+	---------
+	defines rules for printer-friendly version of site
+*/
+ 
+* { background: none !important; text-indent: 0 !important; }
+
+/* Layout fixes */
+#LayoutWrapper { width: auto; }
+#HeaderWrapper,
+#MainNavBar,
+#BodyWrapper { padding-left: 0; padding-right: 0; }
+
+/* Fix page width in IE6 */
+* HTML #LayoutWrapper { width: 650px !important; }
+* HTML #MainColumn { width: 100% !important; }
+
+/* Header fixes */
+H1, H2, H3, H1 SPAN, H2 SPAN, H3 SPAN { height: auto !important; overflow: visible !important; position: static !important; display: block !important; }
+
+/* Hidden from print */
+#UtilityNav,
+#SiteSearch,
+#MainNavBar,
+#FooterWrapper,
+.Flash,
+.ArticlePage .column-1,
+.ArticlePage #SideColumn,
+.ArticlePage #comment-form-wrapper,
+#article-wrapper #article-barrier,
+#at15s, /* addthis popup */
+SPAN.CommentHeader,
+P.totop { display: none !important; }
+
+/* Fix article dropping to second page, clearing floats */
+.ArticlePage #article-wrapper { float: none !important; width: auto !important; }
+.ArticlePage #article-wrapper .Article { overflow: visible !important; }
+
+/* Clean appearance, fonts */
+.ArticlePage #Breadcrumbs { margin-bottom: 0 !important; }
+.ArticlePage #ArticleContents { font-size: 1.25em !important; line-height: 1.5em !important; }
+.ArticlePage #ArticleContents LI { margin-bottom: .5em !important; line-height: 1.5em !important; }
+
+/* Deal with those BLOCKQUOTEs... */
+.CACMArticleWrapper #ArticleContents BLOCKQUOTE { border-top: 2px solid #000 !important; }
+.CACMArticleWrapper #ArticleContents BLOCKQUOTE P { color: #000 !important; font-size: 1em !important; font-weight: normal !important; }
+.CACMArticleWrapper #ArticleContents BLOCKQUOTE P I, .CACMArticleWrapper #ArticleContents BLOCKQUOTE P B, .CACMArticleWrapper #ArticleContents BLOCKQUOTE P STRONG, .CACMArticleWrapper #ArticleContents BLOCKQUOTE P EM { font-style: normal !important; font-weight: normal !important; }
+
+/* A bit more spacing for the headers */
+.ArticlePage H2, .ArticlePage H3 { margin-top: 1em; }

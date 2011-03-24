@@ -1,0 +1,85 @@
+/*sign in page*/
+.UtilityPage H1#sign-in { overflow: hidden; height: 40px; background: url(/images/hdr.ph.sign-in.gif) no-repeat; }
+.UtilityPage H1#sign-in SPAN { display: none; }
+
+/* both sign in pages */
+
+#access-options { width: 100%; margin-bottom: 2em; }
+#access-options:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+#access-options H3 { font-size: 1em; margin-bottom: 0.25em; }
+#access-options .option { background: #FBFBF6 url(/images/bullet.arrow.blue.gif) no-repeat 0 1.21em; border: 1px solid #00AEEF; margin-bottom: 12px; padding: 0.75em 12px 0.25em; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; line-height: 1.5; }
+#access-options .option-1 { width: 243px; float: left; }
+#access-options .option-2 { width: 323px; float: right; }
+#access-options .option-3 { width: 323px; float: right; }
+#access-options .option-2 P.more A { white-space: nowrap; }
+#access-options .option-2 P.more SPAN { padding: 0 0.25em; }
+
+/*create account*/
+.UtilityPage H1#create-a-web-account { overflow: hidden; height: 40px; background: url(/images/hdr.ph.sub.create-account.gif) no-repeat; margin-bottom: .3em; }
+.UtilityPage H1#create-a-web-account SPAN { display: none; }
+
+.AccountForm { padding-left: 100px; }
+.AccountForm TABLE { font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin-top: 2em; }
+.AccountForm TD .options { white-space: nowrap; margin: .75em 0; }
+.AccountForm TD .options label { display: inline; font-weight: normal; }
+.AccountForm TD .options INPUT { margin-top: 0; }
+.AccountForm TD .helptext { padding-top: 0; }
+.AccountForm .label,
+.AccountForm label { font-weight: bold; margin-bottom: .35em; display: block; font-size: 1.2em; }
+.AccountForm INPUT[type="text"],
+.AccountForm INPUT[type="password"] { width: 16em; }
+.AccountForm .helptext { font-size: 0.917em; color: #999; font-style: italic; line-height: 1.1; padding: 5px 20px; }
+.AccountForm .FormLayout { margin-top: 1em; }
+.AccountForm .FormAction { margin-left: 60px; }
+.AccountForm #submit-help-text { margin: 1em 0; width: 200px; font-family: Arial, 'Helvetica Neue', helvetica, sans-serif; padding: 0; text-align: center; }
+#create-new-account .FormLayout { margin-top: 2em; }
+
+.AccountForm span.error,
+.AccountForm .validation-advice { color: #F00; font-weight: bold; padding: 3px 0; display: block; }
+.AccountForm .validation-failed { background: #ffcbcb; }
+.AccountForm .Flash { padding: 3px 0; }
+.AccountForm small.error { display: none !important; }
+
+.AccountForm .HeaderRow { padding-bottom: .75em; }
+.AccountForm .HeaderRow H4 { font-weight: bold; }
+
+P.NextStep { margin-left: 50px; padding-left: 150px; background: url(/images/img.next-step.gif) top left no-repeat; min-height: 140px; padding-top: 20px; width: 400px; }
+P.NextStep STRONG { display: block; font-size: 1.25em; }
+* HTML P.NextStep { height: 140px; }
+
+#acm-member-not-found { padding-left: 0; list-style-type: disc; }
+#acm-member-not-found LI { margin-bottom: 1em; }
+
+.AccountHeader { margin-bottom: .5em; font-size: 1.4em; font-weight: normal; }
+.AccountHeader STRONG { font-weight: bold; }
+#welcome-back { margin-bottom: .5em; }
+
+#multiple-usernames-form FIELDSET { margin-bottom: .5em; }
+#multiple-usernames-form LABEL { display: inline; font-size: 1em; margin-bottom: 0; }
+#multiple-usernames-form P.Field { margin-bottom: .5em; }
+#multiple-usernames-form .FormAction { margin-left: 0; }
+
+#direct-login { margin-left: 335px; }
+
+* HTML #finish_web_account_registration_form INPUT.required { width: 195px; }
+
+#create-account .form-message { background: #EBF4F8; margin: 0 0 2em 75px; padding: 1em 15px 0; width: 625px; line-height: 1.3; }
+.option-1 { float: left; width: 262px; }
+.option-or { font-size: 1.667em; float: left; width: 100px; text-align: center; padding-top: 0.5em; }
+.option-2 { float: left; width: 262px;}
+#create-account .form-message P.field { margin: 1.5em 12px; }
+#create-account P.field LABEL { margin-right: 5px; }
+#create-account TD label { font-weight: normal; }
+
+#hdr_forgot-your-password { height: 37px; background: url(/images/hdr.ph.forgot-your-password.gif) 0px 6px no-repeat; margin-bottom: .65em !important; }
+#hdr_forgot-your-password span { display: none; }
+#forgot-password .Field .TextInput { margin: 0 6px; }
+#forgot-password .answer { margin-bottom: 1em; }
+#forgot-password .help-text { font-size: .912em; }
+
+#hdr_reset-your-password { height: 39px; background: url(/images/hdr.ph.reset-your-password.gif) top left no-repeat; margin-bottom: .5em !important; }
+#hdr_reset-your-password span { display: none; }
+#reset-password-table { width: 65%; margin: .75em 0 1.5em; }
+#reset-password-table td { padding-bottom: .5em; }
+#reset-password-table input { width: 90%; }
+#reset-password-table .help-text { font-size: .86em; }

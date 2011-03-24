@@ -1,0 +1,85 @@
+ListableResource
+================
+
+------------------------------------------------------------------------------------
+                     _/                  |     Michael Wenzel
+                    _/                   |     Programer
+                   _/                    |     Digital Pulp Inc.
+              _/_/_/  _/_/_/             |     Email: michael@digitalpulp.com
+             _/  _/  _/  _/              |     Desk:   ?
+            _/_/_/  _/_/_/               |     Mobile: 516.987.2748
+                   _/                    |
+                  _/                     |     Postal: 220 E. 23rd Street
+                 _/                      |             New York, NY
+                                         |             United States
+s o f t w a r e  e n g i n e e r i n g   |
+-------------------------------------------------------------------------------------
+
+
+Adds simple searching, filtering and indexing to an the ActiveRecord::Base class
+
+Usage:
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+
+MODEL
+----------------------------------------------------------------------------------
+class Resource < ActiveRecord::Base
+  has_many :assets
+
+  listable_resource :filters => %w( pending approved rejected ),
+                    :filter_field => 'status',
+                    :index_search_field => 'name',
+                    :searchable_fields => %w( name street_address city state ),
+                    :sortable_fields => %w( name city state )
+end
+
+class Asset < ActiveRecord::Base
+  belongs_to :resource
+end
+----------------------------------------------------------------------------------
+
+
+CONTROLLER
+----------------------------------------------------------------------------------
+class ResourcesController < ApplicationController
+  listable_resource :resource,
+                    :sorts => [:col1, :col2],
+                    :default => :col1,
+                    :only => :index
+
+  def index
+    @resources = Resource.paginate( :page => params[:page],
+                                    :filter => params[:filter],
+                                    :search => params[:search],
+                                    :index => params[:index],
+                      :order => order_and_direction)
+  end
+end
+
+---------------------------------------------------------------------------------
++:sorts+ defines which columns may be passed in the request params. Defaults to
+  Model.sortable_fields.
++:default+ determines which column gets sorted if none is specified in the params.
+  Defaults to Model.sortable_fields.first.
++order_and_direction+ parses params[:sort] and params[:direction], respecting the
+  defaults set above. Returns a string suitable for use in an ActiveRecord query.
+
+----------------------------------------------------------------------------------
+
+
+Listable_Resource Default Options
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+
+FILTER
+Note: filter_field must be defined in order to use filtering
+
+filter_field => nil
+
+SEARCH
+searchable_fields => All fields
+
+INDEXING
+Note: index_search_field must be defined in order to user indexing
+index_search_field => nil

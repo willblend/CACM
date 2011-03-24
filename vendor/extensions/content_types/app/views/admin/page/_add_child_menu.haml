@@ -1,0 +1,4 @@
+%ul.add_child_menu{:style => "display: none;"}
+  - ::ContentType.find(:all).each do |content_type|
+    %li= link_to content_type.name.humanize.titleize, "#", :title => content_type.id
+  %li= link_to "Blank Page", "#"

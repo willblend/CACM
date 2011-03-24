@@ -1,0 +1,12 @@
+<div class="ItemsBlock" id="featured-in-interviews">
+	<h3>Featured: In Interviews</h3>
+	<r:featured_interviews properties="width: 240px; height: 80px;"><r:each>
+	<div class="item">
+		<h4><r:dynamic_tag tag="a" href="r:url"><r:escape_html:title /></r:dynamic_tag></h4>
+		<div class="metadata"><r:author /><span class="separator"> | </span><r:date /><span class="separator"> | </span><r:comments /></div>
+	</div>
+	</r:each></r:featured_interviews>
+	<div class="item more">
+		<a href="/opinion/interviews">More Interviews</a>
+	</div>
+</div>

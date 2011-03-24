@@ -1,0 +1,52 @@
+/* fckeditor base styling */
+
+/* -- BEGIN: HTML Tags ---------------------------------------------------- */
+
+BODY { /*color: #111; font-family: Georgia, 'Palatino Linotype', Palatino, serif; line-height: 1.6;*/ }
+
+A { text-decoration: none; /*color: #787E13;*/ }
+A:hover { text-decoration: underline; }
+
+P, BLOCKQUOTE, DL, ADDRESS { margin: 0 0 1em; }
+
+ADDRESS { font-style: normal; } 
+
+H1, H2, H3, H4, H5, H6 { font-size: 1em; line-height: 1.4; margin: 0; }
+H1 { margin-bottom: 0.5em; }
+H3 { font-size: 1.167em; }
+
+UL { margin: 0 0 1em 0.9em; padding-left: 0.9em; }
+OL { margin-top: 0; margin-bottom: 1em; }
+OL LI { margin-bottom: 1em; }
+UL LI { line-height: 1.3; }
+DT { font-weight: bold; }
+DD { margin: 0 0 1em; }
+
+TABLE { border-collapse: collapse; }
+CAPTION, TH { padding: 0; }
+TD { padding: 0; vertical-align: top; }
+
+IMG { border: 0; }
+
+HR { display: block; height: 1px; border: 0; margin-bottom: 1em; clear: both; background: #E8EBD5; color: #E8EBD5; }
+
+SUP, SUB { vertical-align: 0; position: relative; }
+SUP { bottom: 1ex; }
+SUB { top: 0.8ex; }
+
+FORM { margin: 0; }
+FIELDSET { display: block; margin: 0; padding: 0; border: 0; }
+LEGEND { padding: 0; }
+*:first-child+HTML LEGEND { position: relative; left: -7px; }
+* HTML LEGEND { position: relative; left: -7px; }
+INPUT, SELECT, BUTTON { vertical-align: middle; font-size: 1em; }
+LABEL { line-height: 1; }
+
+/* font sizing */
+BODY { font-size: 12px; }
+*:first-child+HTML BODY { font-size: 75%; }
+* HTML BODY { font-size: 75%; } 
+
+TABLE { font-size: 1em; } /* preview fix */
+
+/* ------------------------------------------------------ END: HTML Tags -- */

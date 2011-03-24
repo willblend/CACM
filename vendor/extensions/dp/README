@@ -1,0 +1,31 @@
+------------------------------------------------------------------------------------
+                     _/                  |     
+                    _/                   |     
+                   _/                    |     Digital Pulp Inc.
+              _/_/_/  _/_/_/             |     Email: dp-rails@digitalpulp.com
+             _/  _/  _/  _/              |     Desks: The back area of the cave
+            _/_/_/  _/_/_/               |     
+                   _/                    |       
+                  _/                     |     Postal: 220 E. 23rd Street
+                 _/                      |             New York, NY
+                                         |             United States 
+s o f t w a r e  e n g i n e e r i n g   |
+-------------------------------------------------------------------------------------
+
+DigitalPulp Radiant Core Extensions
+***********************************
+
+NOTES
+* Please keep every file in the lib directory to a sole dependency unless absolutely necessary
+* Two methods having two separate dependencies should use two separate files even if their behaviors are being injected into the same class
+* The goal is to allow you to proceed with a normal radiant install as described in the radiant docs without errors or warnings that aren't caught and explained
+
+EXTENSIONS
+* Should call out the plugins they need on activate
+* No plugins should live in the individual extensions
+* Place the plugins in vendor/plugins
+* Plugins may live in this extension that are truly required for every project (?)
+
+TODOs
+* Add WillPaginateForRadiant
+* Extract Search from VNSNY, Update to the latest TS & Update the SphinxSearchExtension

@@ -1,0 +1,22 @@
+%h1 New Widget
+
+- error_messages_for :widget
+
+- form_for :widget, @widget, :url => admin_widget_path(@widget),	:html => { :class => "CACMForm" } do
+  %table.fieldset
+    %col{ :width => '20%' }
+    %col{ :width => '80%' }
+
+    %tbody
+      %tr
+        %th.label Widget Title
+        %td.field
+          = text_field :widget, :name
+      %tr
+        %th.label Widget Content
+        %td.field
+          = text_area :widget, :content, :cols => '80', :rows => '12', :class => 'widget-editor'
+      %tr
+        %th.label
+        %td.field
+          = submit_tag "Create Widget"

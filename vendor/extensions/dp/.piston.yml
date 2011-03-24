@@ -1,0 +1,8 @@
+--- 
+format: 1
+handler: 
+  commit: ac79e9378aa34413f65ab8f5e344198e5a71536e
+  branch: master
+lock: false
+repository_url: git@github.com:digitalpulp/dp-extension.git
+repository_class: Piston::Git::Repository

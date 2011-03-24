@@ -1,0 +1,48 @@
+#PageHdr H1#hdr_cacm-archive { font-size: 2.5em; text-indent: -9999px; overflow: hidden; height: 40px; background: url(/images/hdr.ph.cacm-archive.gif) no-repeat; }
+
+.MagIssues { margin-bottom: 1.5em; }
+.MagIssues .header { border-bottom: 5px solid #D7EAF1; }
+.MagIssues .header .nav { font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; }
+.MagIssues .header .nav .SelectList { padding: 1em 0; }
+.MagIssues .header .nav #archive_nav LI { float: left; display: block; padding: 4px; }
+.MagIssues .header .nav SELECT { float: right; }
+.MagIssues .header .nav LABEL { font-size: 0.917em; padding-right: 5px; vertical-align: middle; }
+.MagIssues .header H2 { font: 2.333em Arial, Helvetica, sans-serif; line-height: 1.3; color: #007AA4; text-transform: lowercase; line-height: 0.8; clear: both; }
+.MagIssues .issue { float: left; margin-left: 13px; padding-top: 1.625em; width: 134px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; line-height: 1.2; }
+.MagIssues .issue H3 { font-weight: normal; font-size: 1em; color: #009DD2; margin-bottom: 0.2em; }
+.MagIssues .issue P { margin-bottom: 0.25em; }
+.MagIssues IMG.cover { display: block; margin-bottom: 0.5em; }
+.MagIssues A { color: #00364D; }
+.MagIssues A IMG.cover { border: 1px solid #BBB; }
+.MagIssues A:hover IMG.cover { border-color: #00364D; }
+.MagIssues .issue-first { margin: 0; }
+.MagIssues .issue-current { padding: 0; }
+.MagIssues .issue-current .title { font: bold 1.083em Georgia, 'Palatino Linotype', Palatino, serif; line-height: 1; color: #009DD2; min-height: 1.5em; }
+* HTML .MagIssues .issue-current .title { height: 1.5em; }
+
+.Archive { margin-bottom: 25px; }
+.Archive H2 { font: 1.5em Arial, Helvetica, sans-serif; line-height: 1.3; color: #007AA4; }
+.Archive .wrap { border: 1px solid #E5E8D0; padding-bottom: 1em; }
+.Archive TABLE { width: 100%; border-top: 5px solid #3395B6; }
+.Archive TH { font-size: 1.167em; padding: 0.75em 0 1px; }
+.Archive TD { width: 9%; text-align: center; vertical-align: bottom; padding-bottom: 2px; }
+.Archive TABLE A { text-decoration: underline; }
+
+#about-archive.Box H3 { text-indent: -9999px; overflow: hidden; height: 17px; background: url(/images/hdr.about-archive.gif) no-repeat; }
+
+#browse-issue.SecondaryNav H3 { text-indent: -9999px; overflow: hidden; height: 15px; background: url(/images/hdr.browse-issue.gif) no-repeat; }
+
+.TOC .header { padding-top: 12px; }
+.TOC H1 { font-size: 1.417em; margin: 0; line-height: 1.4; margin-bottom: 1em; }
+.TOC H1 SPAN { font-weight: normal; }
+.TOC .header .issue { font-size: 1.417em; color: #666; font-weight: bold; line-height: 1.2; }
+.TOC H2 { font-size: 0.917em; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; text-transform: uppercase; color: #007AA4; margin-bottom: 0.1em; }
+.TOC .item { margin-bottom: 2em; }
+.TOC .item P { margin-bottom: 0.5em; }
+.TOC .item .short P { margin-bottom: 0; font-style: normal; }
+.TOC .item .short P I { font-style: normal !important; }
+.TOC H3 { margin-bottom: 0.1em; }
+
+.Box .toc-issue { padding-top: 5px; margin-bottom: 1em; }
+.Box .toc-issue IMG.cover { display: block; margin: 0 auto 0.1em; }
+.Box .toc-issue A { white-space: nowrap; }

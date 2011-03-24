@@ -1,0 +1,24 @@
+# Assets backup script for backupgem
+# Sample cron:
+# 3 4 * * * /usr/lib/ruby/gems/1.8/gems/backupgem-0.0.11/bin/backup -r <%= shared_path %>/<%= filename %>
+
+set :backup_path, '/srv/rails/<%= application %>/shared/backups/'
+set :tmp_dir, '/srv/rails/<%= application %>/shared/tmp/'
+
+action :content do
+  # stub; everything is handled in compress
+end
+
+action :compress do
+  sh "tar -cjf #{c[:tmp_dir]}assets.tar.bz2 -C <%= shared_path %>/system assets"
+  c[:tmp_dir] + 'assets.tar.bz2'
+end
+
+action :rotate
+
+set :son_promoted_on,    :sun
+set :father_promoted_on, :last_sun_of_the_month
+
+set :sons_to_keep,         14
+set :fathers_to_keep,      8
+set :grandfathers_to_keep, 12

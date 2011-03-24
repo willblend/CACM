@@ -1,0 +1,16 @@
+#BodyWrapper.UtilityPage.TwoColumnUtility
+  #MainColumn
+    #MainContentArea
+      #PageHdr
+        %h1#create-a-web-account
+          %span create a web account
+          
+        %p.Intro
+          %strong Expired or Invalid Token
+          %br
+          We're sorry, but this token is no longer valid. If you'd like to sign up for a
+          = link_to "new ACM Web Account click here.", new_account_path
+          %br
+          %br
+          If you'd like to sign into your 
+          = link_to "existing ACM Web Account click here.", member_login_path

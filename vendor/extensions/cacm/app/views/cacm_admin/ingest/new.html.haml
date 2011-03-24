@@ -1,0 +1,17 @@
+%h1 New DL Article
+
+%p
+  This tool can only accept DOIs from the following publications: 
+  = link_to("Communications of the ACM", "http://portal.acm.org/browse_dl.cfm?linked=1&part=magazine&idx=J79&coll=portal&dl=ACM", {:target => "_blank"}) + ","
+  = link_to("Computers in Entertainment", "http://portal.acm.org/browse_dl.cfm?linked=1&part=magazine&idx=J912&coll=portal&dl=ACM", {:target => "_blank"}) + ","
+  = link_to("Crossroads", "http://portal.acm.org/browse_dl.cfm?linked=1&part=magazine&idx=J190&coll=portal&dl=ACM", {:target => "_blank"}) + ","
+  = link_to("Queue", "http://portal.acm.org/browse_dl.cfm?linked=1&part=magazine&idx=J882&coll=portal&dl=ACM", {:target => "_blank"}) + ","
+  = link_to("Ubiquity", "http://portal.acm.org/browse_dl.cfm?linked=1&part=magazine&idx=J793&coll=portal&dl=ACM", {:target => "_blank"}) + ","
+  = link_to("eLearn", "http://portal.acm.org/browse_dl.cfm?linked=1&part=magazine&idx=J815&coll=portal&dl=ACM", {:target => "_blank"}) + ","
+  = link_to("netWorker", "http://portal.acm.org/browse_dl.cfm?linked=1&part=magazine&idx=J582&coll=portal&dl=ACM", {:target => "_blank"}) + "."
+- form_for :article, :html => { :name => 'ingest_article_form', :id => 'ingest_article_form' } do
+  %p
+    %label{ :for => 'article_id' } DOI
+    = text_field_tag :id, params[:id]
+  %br/
+  = submit_tag 'Retrieve article'

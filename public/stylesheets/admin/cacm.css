@@ -1,0 +1,91 @@
+A { color: #008CBC; }
+#header { background: #008CBC; color: #FFF; }
+
+P#new-item-link SPAN.Link { color: #008CBC; }
+
+
+/* possible candidates for dp_customizations.css */
+.AddMenu { background-color: #FFD; font-size: .8em; }
+.AddMenu UL { list-style: none; margin: 0; padding: 0; border: 1px solid #CCC; border-bottom: none; }
+.AddMenu UL LI { margin: 0; padding: 0; border-bottom: 1px solid #CCC; }
+.AddMenu UL LI A { display: block; padding: 4px 4px 3px 10px; }
+
+.ArticlePreview { font-family: Georgia, Times, serif; font-size: 14px; line-height: 22px; border: 1px solid #000; padding: 8px 75px 8px 8px; width: 555px; max-height: 400px; overflow: auto; }
+.ArticlePreview { background: #FFF url(/images/fckeditor.bg.right-margin.gif) 571px 0 repeat-y; /* 555 + (8px * 2) */ }
+
+/* Additional CAE article preview styling */
+
+.ArticlePreview A { color: #787E13; }
+.ArticlePreview .totop { margin-bottom: 2em; font-size: .9em; text-align: right; clear: both; }
+.ArticlePreview .totop A { text-transform: lowercase; text-decoration: underline; }
+.ArticlePreview .known-headings { border-bottom: 1px solid #C9C9C9; font-size: 1em; margin-bottom: 1em; }
+.ArticlePreview P.ThumbnailParagraph { position: relative; padding-left: 120px; min-height: 100px; margin-bottom: 1.5em; }
+.ArticlePreview P.ThumbnailParagraph A.ThumbnailLink IMG { position: absolute; left: 0; top: 0; margin-top: .6em; }
+* HTML .ArticlePreview P.ThumbnailParagraph { height: 100px; }
+
+/* Used to target CACM articles for styling in article full text preview */
+.ArticlePreview .CacmArticleAdminWrapper HR { display: block; height: 1px; border: 0; margin-bottom: 1em; clear: both; background: #E8EBD5; color: #E8EBD5; }
+.ArticlePreview .CacmArticleAdminWrapper BLOCKQUOTE { border-top: 13px solid #636466; float: left; width: 280px; margin: 1em 40px 1em 0; clear: left; }
+.ArticlePreview .CacmArticleAdminWrapper BLOCKQUOTE P { text-align: left !important; font-style: normal !important; color: #acca02; font-size: 1.4em; margin: .5em 0 0 0; font-family: arial, helvetica, sans-serif; line-height: 1.2em; font-weight: bold !important; }
+.ArticlePreview .CacmArticleAdminWrapper BLOCKQUOTE P I,
+.ArticlePreview .CacmArticleAdminWrapper BLOCKQUOTE P B,
+.ArticlePreview .CacmArticleAdminWrapper BLOCKQUOTE P STRONG,
+.ArticlePreview .CacmArticleAdminWrapper BLOCKQUOTE P EM { font-style: normal !important; font-weight: bold !important; }
+
+.DebugHTML { border-top: 2px solid #999; margin: 1em 0; width: 640px; }
+.DebugHTML H4 { margin: .5em 0; font-size: .8em !important; }
+.DebugHTMLContent { height: 100px; overflow: auto; border: 1px solid #000; padding: 5px; font-family: courier; font-size: 11px; }
+
+FIELDSET.PickerInterface { border: 0px; padding: 0; margin: .5em 0 0; }
+FIELDSET.PickerInterface .AssociationInput { margin-bottom: 1em; width: 80%; font-size: 1.1em; padding: 3px; display: block; }
+FIELDSET.PickerInterface .AssociationPreview { display: none; margin-bottom: 3px; }
+FIELDSET.PickerInterface TABLE.PickerTable { margin-bottom: 12px !important; clear: both; font-size: 90%; width: 100%; }
+FIELDSET.PickerInterface TBODY { background: #FFF; }
+FIELDSET.PickerInterface TBODY TD { padding: 4px; }
+FIELDSET.PickerInterface TBODY TR:hover { background: #ffffb3; }
+
+FIELDSET.PickerInterface .controls { text-align: right; }
+FIELDSET.PickerInterface .controls IMG { cursor: pointer; }
+
+/* keep ie7 hidden from first-child pointer rules*/
+*:first-child+html FIELDSET.PickerInterface .controls IMG { cursor: pointer !important; }
+
+FIELDSET.PickerInterface TR:first-child .controls IMG.move-to-top,
+FIELDSET.PickerInterface TR:first-child .controls IMG.move-up,
+FIELDSET.PickerInterface TR:last-child .controls IMG.move-to-bottom,
+FIELDSET.PickerInterface TR:last-child .controls IMG.move-down { opacity: .5; cursor: default; }
+
+FIELDSET.PickerInterface TR.Placeholder TD { text-align: center !important; padding: .75em 0 !important; }
+FIELDSET.PickerInterface .PickerLink { font-size: 83%; cursor: pointer; color: #0000EE; text-decoration: none; background: #FFF; padding: 6px 9px; text-align: center; border: 1px solid #DDD; margin-right: 15px; margin-top: 0 !important; }
+FIELDSET.PickerInterface .RemoveLink { color: #F00; float: none; }
+FIELDSET.PickerInterface .PickerWarning { display: block; color: #F00; font-weight: bold; }
+FIELDSET.PickerInterface .PickerLink:hover { text-decoration: underline; }
+FIELDSET.PickerInterface .error-with-field { color: #FF0000; padding-top: .75em; position: absolute; }
+
+FIELDSET.PickerInterface FIELDSET.PickerInterface .AssociationInput { width: 90%; margin-bottom: 4px; font-size: .92em; }
+FIELDSET.PickerInterface FIELDSET.PickerInterface .PickerLink { padding: 3px 6px; margin-bottom: 5px; float: left; display: inline; }
+
+.edit_issue_form FIELDSET.PickerInterface TABLE.PickerTable { width: 80%; }
+.edit_issue_form FIELDSET.PickerInterface .PickerLink { float:right; }
+.edit_issue_form FIELDSET.PickerInterface FIELDSET.PickerInterface .PickerLink { float: right; }
+
+* HTML FIELDSET.PickerInterface .PickerLink { display: block; float: left; zoom: 1; margin-bottom: 0 !important; }
+*:first-child+html FIELDSET.PickerInterface .PickerLink { display: block; float: left; zoom: 1; margin-bottom: 0 !important; }
+
+#widget-picker-wrapper UL { list-style-type: none; margin-left: 0; padding: 0; }
+#widget-picker-wrapper UL LI { margin-bottom: .25em; }
+#widget-picker-wrapper UL LI A:hover { text-decoration: underline; }
+
+#article-picker-wrapper  H1 { margin-bottom: .25em; }
+#article-picker-wrapper .Help { margin: 0 0 1em 0; }
+#article-picker-wrapper TBODY TD { padding: 12px 0 !important; }
+#article-picker-wrapper TBODY TD .Link { cursor: pointer; color: #0000EE; text-decoration: underline; text-align: center; border: 1px solid #DDD; background: #FFF; padding: 4px 6px; }
+#article-picker-wrapper TBODY TD .Link:hover { border-color: #BBB; }
+#article-picker-wrapper TBODY TD.preview A { text-decoration: none !important; font-size: .85em; }
+* HTML #article-picker-wrapper TBODY TD .Link { padding-top: 3px; }
+*:first-child+html #article-picker-wrapper TBODY TD .Link { padding-top: 3px; }
+#article-picker-wrapper #article-picker TBODY TR TD { padding: 12px 5px 12px 0 !important; }
+
+#part_Right_Column_Ad_Top textarea.textarea,
+#part_Right_Column_Ad_Bottom textarea.textarea,
+#part_Second_Column_Ad textarea.textarea { height: 120px !important; }

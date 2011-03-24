@@ -1,0 +1,11 @@
+#search-box
+  - form_tag browse_assets_path(:format => params[:format], :type => params[:type]), :method => :get, :id => 'asset_search_form', :class => 'InlineForm' do
+    %fieldset
+      %legend Search Assets
+
+      .Field
+        %label{ :for => 'search', :class => 'Invisible' } Search
+        = text_field_tag :search, params[:search], :class => "TextInput ShowTitle", :title => "Search Assets"
+
+      .FormAction
+        = submit_tag "Search"

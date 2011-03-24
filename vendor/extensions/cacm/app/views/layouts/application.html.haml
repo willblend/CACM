@@ -1,0 +1,54 @@
+!!!
+%html{html_attrs}
+  %head
+    %meta{"http-equiv"=>"Content-type", :content=>"text/html; charset=utf-8"}/
+    %title= @page_title || default_page_title
+    - @stylesheets.uniq.each do |stylesheet|
+      = stylesheet_link_tag stylesheet
+    %script{:type=>"text/javascript"}
+      :plain
+        // fix for Firebug 1.2 in Firefox 2.x
+        if (/Firefox\/2/.test(navigator.userAgent) &&  window['loadFirebugConsole']) { window.loadFirebugConsole(); }
+    - @javascripts.uniq.each do |javascript|
+      = javascript_include_tag javascript
+    /[if lt IE 7]
+      %script{:type=>"text/javascript", :src=>"/admin/javascripts/pngfix.js"}
+    - if @content_for_page_scripts
+      = javascript_tag @content_for_page_scripts
+    - if @content_for_page_css
+      %style{:type => "text/css"}= @content_for_page_css
+
+  %body
+
+    #page
+
+      #header
+        #Logo
+          = link_to image_tag('/images/admin/logo.CACM.admin.trans.gif', :size => '343x60', :alt => 'CACM Logo', :class => 'Logo', :id => 'cacm-logo'), "/admin/"
+
+        - if logged_in?
+          %p#UserTools
+            logged in as 
+            %strong= current_user.name 
+            %br/
+            = nav_link_to 'Account Settings', user_preferences_url
+            &bull; 
+            = nav_link_to 'Log Out', logout_url
+
+          #navigation
+            = links_for_navigation
+
+        %p#live-sites
+          = link_to "View Live Site", homepage_url
+
+      %hr{:class=>"hidden"}/
+
+      #main
+        - if flash[:notice]
+          #notice
+            %p= flash[:notice]
+        - if flash[:error]
+          #error
+            %p= flash[:error]
+        #content
+          = find_and_preserve(yield)

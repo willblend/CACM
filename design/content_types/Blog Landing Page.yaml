@@ -1,0 +1,28 @@
+--- 
+layout_name: standard_full_cached
+page_class_name: 
+147: 
+  name: featured_article
+  filter_id: 
+  part_type_name: Associated Article
+  description: Featured article for top level page
+146: 
+  name: widget_column
+  filter_id: 
+  part_type_name: Associated Widgets
+  description: Right widget column
+2046: 
+  name: Second Column Ad
+  filter_id: 
+  part_type_name: Plain textarea
+  description: 300x250 or 180x150 Ad
+2044: 
+  name: Right Column Ad Top
+  filter_id: 
+  part_type_name: Plain textarea
+  description: 160x160 Ad
+2045: 
+  name: Right Column Ad Bottom
+  filter_id: 
+  part_type_name: Plain textarea
+  description: 160x600 Ad

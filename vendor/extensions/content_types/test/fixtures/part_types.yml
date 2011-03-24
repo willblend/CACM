@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one_line:
+  id: 1
+  name: One-line
+  field_type: text_field
+  field_class: text
+  field_styles: "width: 500px;"
+plaintext:
+  id: 2
+  name: Plain textarea
+  field_type: text_area
+  field_class: plain
+  field_styles:
+wysiwyg:
+  id: 3
+  name: WYSIWYG Editor
+  field_type: text_area
+  field_class: textarea
+  field_styles: "width: 100%"
+boolean:
+  id: 4
+  name: Boolean
+  field_type: check_box
+  field_class:
+  field_styles:
+asset:
+  id: 5
+  name: Asset
+  field_type: hidden
+  field_class: asset-manager-field
+  field_styles:

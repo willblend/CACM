@@ -1,0 +1,23 @@
+- if @comments.index(by_article).eql?(0) || (@comments[@comments.index(by_article)-1].commentable_id != by_article.commentable_id)
+  %tr.node
+    %td{ :colspan => 3 }
+      %h2
+        %strong= link_to h(by_article.commentable.title), default_article_path(by_article.commentable), :target => "_blank"
+        =" - "
+        %small= by_article.commentable.date.to_s :date
+
+%tr.node
+  %td
+  %td
+    %h3
+      %strong= "#{by_article.owner}"
+      = " on #{by_article.created_at.to_s(:mdy_time)}"
+
+    .Comment= simple_format(h(by_article.comment))
+
+    %p= link_to "Review Comment", :action => "edit", :id => by_article.id
+
+  %td
+    = link_to "Approve", :action => "approve", :id => by_article.id
+    |
+    = link_to "Reject",  {:action => "reject",  :id => by_article.id}, :confirm => "Rejecting this comment will permanently delete it and cannot be undone. Are you sure you want to reject it?"

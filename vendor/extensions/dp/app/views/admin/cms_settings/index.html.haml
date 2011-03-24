@@ -1,0 +1,12 @@
+%h1 CMS Settings
+%ul#subnav.admin-list
+  - if defined? MultiSiteExtension
+    %li= link_to 'Sites', sites_path 
+  %li= link_to 'Layouts', layout_index_path
+  - if defined? ContentTypesExtension
+    %li= link_to 'Content Types', content_types_path
+  %li= link_to 'Snippets', snippet_index_path
+  %li= link_to 'Extensions', extension_index_path
+  %li= link_to 'Administrators', user_index_path
+  - if defined? RolesExtension
+    %li= link_to 'Roles', roles_path

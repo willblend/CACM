@@ -1,0 +1,7 @@
+= ARMailer
+
+AR Mailer bridge for use in Radiant. Please use the shiny new version of
+ARMailer: http://github.com/adzap/ar_mailer and remember to inherit
+your mailers from ActionMailer::ARMailer.
+
+There are additional config goodies copied directly from the gem in share/.

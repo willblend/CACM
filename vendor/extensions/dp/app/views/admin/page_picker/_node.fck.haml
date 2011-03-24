@@ -1,0 +1,19 @@
+- rendering_node(node)
+%tr{:id => "page-#{node.id}", :class => "node level-#{level}#{children_class}#{virtual_class}"}
+  %td.page{:style => "padding-left: #{padding_left(level)}px"}
+    %span.w1
+      - if @current_node.children.any?
+        %a{ :href => formatted_page_picker_path(:format => :fck, :root => expanded ? @current_node.parent : @current_node) }
+          %img{ :class=>"expander", :src=>"/images/admin/expand.png", :alt=>"toggle children" }
+      = icon
+      = node_title
+  %td.preview
+    - if node.status.name == "Published"
+      = link_to "View", node.url, :target => "_blank" unless @site.nil?
+    - else
+      = link_to "Preview", @site.dev_url(node.url), :target => "_blank" unless @site.nil?
+  %td.modify
+    = link_to_function "Select Page", "window.top.opener.SetUrl(#{node.url.to_json}); window.top.close();", :class => "Link"
+
+- if level == 0 && @homepage
+  = render :partial => "admin/page_picker/node.fck.haml", :collection => node.children, :locals => {:level => level + 1}

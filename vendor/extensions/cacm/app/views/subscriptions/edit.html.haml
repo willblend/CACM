@@ -1,0 +1,42 @@
+- content_for :page_css do
+  :plain
+    .wysiwig { font-size: 1.167em; }
+    .FormAction INPUT { margin-left: 18px; }
+
+#BodyWrapper.AlertsFeedsPage.TwoColumnUtility
+  #MainColumn
+    #MainContentArea
+      #PageHdr
+        %h1#hdr_alerts-feeds Alerts &amp; Feeds
+      %div.Layout
+        %div.column-1
+          %div.SecondaryNav
+            %ul
+              %li
+                %a{:href =>"/alerts-and-feeds"}
+                  Alerts &amp; Feeds
+              %li.active
+                %a{:href=>"/alerts-and-feeds/email-alerts"}
+                  Email Alerts
+              %li
+                %a{:href=>"/alerts-and-feeds/rss-feeds"}
+                  RSS Feeds
+        %div.column-2
+          %div.wysiwig
+            %h2 email alerts
+            %p
+              Sign up for 
+              %em Communications of the ACM
+              email alerts to receive a list of the latest articles in subject areas of interest to you, to be notified when a new issue of
+              %em Communications
+              is posted online, or to keep track of the latest resources in our news, opinions and careers sections.
+              
+              - if current_member.indv?
+                = render :partial => 'preferences'
+              - else
+                %h3#hdr_sign-in-for-email-alerts
+                  %span sign in to set your email alerts preferences
+                #article-barrier= render :partial => "articles/barrier_form"
+
+  #Banner
+    %r:snippet{ :name => "email_right_column_ads" }

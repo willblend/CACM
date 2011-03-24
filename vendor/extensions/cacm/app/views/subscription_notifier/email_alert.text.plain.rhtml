@@ -1,0 +1,34 @@
+<%= Date.today.to_s :date %> Communications Online Email Alerts provide bi-weekly updates on new information appearing on the cacm.acm.org website in subject areas of interest to you. You are currently subscribed to Alerts for:
+<% @alerts.each do |a| %>
+  * <%= a.name.upcase %>
+<% end %>
+
+To update your Alerts preferences, please sign in:
+  http://<%= ActionMailer::Base.default_url_options[:host] %>/alerts-and-feeds/email-alerts
+
+<% @alerts.each do |a| %>
+LATEST ARTICLES IN <%= a.name.upcase %>
+<% if @plaintext[a].blank? %>
+No articles this week.
+<% else %>
+<%= @plaintext[a] %>
+<% end %>
+<% end %>
+
+For more of the latest news, opinion, and research in advanced computing, visit our Web site, http://cacm.acm.org .
+
+Sign In: http://<%= ActionMailer::Base.default_url_options[:host] %>/login
+About Communications: http://<%= ActionMailer::Base.default_url_options[:host] %>/about-communications
+Privacy Policy: http://<%= ActionMailer::Base.default_url_options[:host] %>/privacy">Privacy Policy
+Terms of Use:
+
+The Communications Online Email Alerts newsletter is a service of:
+Association for Computing Machinery
+2 Penn Plaza, Suite 70
+New York, NY 10121-0701
+Phone: 1-800-342-6626
+Email: cacm-info@hq.acm.org
+
+Manage Alerts or Unsubscribe: http://<%= ActionMailer::Base.default_url_options[:host] %>/alerts-and-feeds/email-alerts
+
+Copyright © <%= Date.today.year %> by the ACM. All rights reserved.

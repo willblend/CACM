@@ -1,0 +1,29 @@
+- content_for :page_css do
+  :plain
+    #page_filter_form FIELDSET { padding-right: 10px; }
+    #page_search_form FIELDSET { padding-left: 20px; border-left: 1px solid #CCC; }
+
+#search-box
+  - form_tag formatted_page_picker_path(:format => params[:format]), :method => :get, :id => "page_filter_form", :class => 'InlineForm' do
+    %fieldset
+      %legend Filter Pages
+      = hidden_field_tag :search_type, "filter", :id => "filter_search_type"
+
+      .Field
+        %label{ :for => 'filter' } Page Status:
+        = select_tag :filter, options_for_select([["all", "0"], ["draft", "1"], ["published","100"], ["review", "50"],["hidden","101"]],filtered), :class => 'AutoSubmitField'
+
+      .FormAction
+        = submit_tag "Go"
+  
+  - form_tag formatted_page_picker_path(:format => params[:format]), :method => :get, :id => "page_search_form", :class => 'InlineForm' do
+    %fieldset
+      %legend Search Pages
+      = hidden_field_tag :search_type, "full-text", :id => "search_search_type"
+  
+      .Field
+        %label{ :for => 'query', :class => 'Invisible' } Search: 
+        = text_field_tag :query, @query, :title => "Search Pages", :class => 'ShowTitle TextInput'
+
+      .FormAction
+        = submit_tag "Search"

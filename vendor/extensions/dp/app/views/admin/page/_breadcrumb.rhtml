@@ -1,0 +1,15 @@
+<%- content_for :page_css do -%>
+#breadcrumbs { font-size: .867em; }
+<%- end -%>
+
+<%- if @homepage -%>
+<p id="breadcrumbs">
+<%- [@homepage, @homepage.ancestors].flatten.reverse.each do |page| -%>
+  <%- unless page == @homepage -%>
+    <%= link_to h(page.title), page_index_path(:root => page.id) %> &gt; 
+  <%- else -%>
+    <strong><%= h(page.title) %></strong>
+  <%- end -%>
+<%- end -%>
+</p>
+<%- end -%>

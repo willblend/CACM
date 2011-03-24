@@ -1,0 +1,18 @@
+--- 
+layout_name: standard_full_cached
+page_class_name: 
+140: 
+  name: main_content
+  filter_id: 
+  part_type_name: WYSIWYG Narrow Article
+  description: Main Content
+141: 
+  name: widget_slot_1
+  filter_id: 
+  part_type_name: Associated Widgets
+  description: Side Column 1st Widget
+142: 
+  name: widget_slot_2
+  filter_id: 
+  part_type_name: Associated Widgets
+  description: Side Column 2nd Widget

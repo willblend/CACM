@@ -1,0 +1,118 @@
+%p.title
+  %label{ :for => 'feed_name' } Name
+  = f.text_field :name, :class => 'textbox'
+
+%br/
+
+%table.fieldset
+  %col{ :width => '30%' }
+  %col{ :width => '70%' }
+
+  %tbody
+    %tr
+      %th.label= label(:feed, :class_name, 'Class')
+      %td.field= f.select :class_name, [ ["RSS Feed", "RssFeed"], ["Manually Entered Content", "ManualFeed"] ]
+
+    %tr#feed-url
+      %th.label= label(:feed, :feedurl, 'URL')
+      %td.field= f.text_field :feedurl, :class => 'textbox'
+
+    %tr#feed-type
+      %th.label= label(:feed, :feed_type_id, 'Type')
+      %td.field= f.collection_select :feed_type_id, @feed_types, :id, :name
+
+    %tr
+      %th.label Status
+      %td.field
+        %ul.Inputs.HorizList
+          %li
+            =radio_button :feed, :active, true
+            %label{ :for => 'feed_active_true' } Active
+          %li
+            =radio_button :feed, :active, false
+            %label{ :for => 'feed_active_false' } Inactive
+
+    =render :partial => "subjects"
+    =render :partial => "sections"
+    =render :partial => "article_options"
+    =render :partial => "default_article_image", :locals => { :f => f }
+
+- content_for :page_scripts do
+  :plain
+    Event.addBehavior({
+      '#feed_class_name' : DependentSelectOptions({
+        'ManualFeed' : {
+          'activate' : function(){
+            $('feed-url').hide();
+            $('feed-type').hide();
+          },
+          'deactivate' : function(){
+            $('feed-url').show();
+            $('feed-type').show();
+          }
+        }
+      }),
+
+      '#feed_feed_type_id' : DependentSelectOptions({
+        'Blog' : {
+          'activate' : function(){
+            $('feed-subjects').hide();
+            $('feed-sections').hide();
+            $('feed-article-options').hide();
+          },
+          'deactivate' : function(){
+            $('feed-subjects').show();
+            $('feed-sections').show();
+            $('feed-article-options').show();
+          }
+        },
+
+        'Books' : {
+          'activate' : function(){
+            $('feed-sections').hide();
+            $('feed-article-options').hide();
+          },
+          'deactivate' : function(){
+            $('feed-sections').show();
+            $('feed-article-options').show();
+          }
+        },
+
+        'Courses' : {
+          'activate' : function(){
+            $('feed-sections').hide();
+            $('feed-article-options').hide();
+          },
+          'deactivate' : function(){
+            $('feed-sections').show();
+            $('feed-article-options').show();
+          }
+        },
+
+        'Events' : {
+          'activate' : function(){
+            $('feed-sections').hide();
+            $('feed-article-options').hide();
+          },
+          'deactivate' : function(){
+            $('feed-sections').show();
+            $('feed-article-options').show();
+          }
+        },
+
+        'Jobs' : {
+          'activate' : function(){
+            $('feed-sections').hide();
+            $('feed-article-options').hide();
+          },
+          'deactivate' : function(){
+            $('feed-sections').show();
+            $('feed-article-options').show();
+          }
+        }
+        
+      }, {
+        'use_labels_instead_of_values' : true
+      })
+
+    });

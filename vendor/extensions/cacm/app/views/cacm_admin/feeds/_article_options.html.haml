@@ -1,0 +1,16 @@
+%tr#feed-article-options
+  %th.label= 'Default Article Options'
+  %td.field
+    %ul.Inputs
+      %li
+        =check_box :feed, :news_opinion
+        %label{ :for => 'feed_news_opinion' } Show Related News &amp; Opinions
+      %li
+        =check_box :feed, :digital_library
+        %label{ :for => 'feed_digital_library' } Show Related Digital Library
+      %li
+        =check_box :feed, :acm_resource
+        %label{ :for => 'feed_acm_resource' } Show Related ACM Resources
+      %li
+        =check_box :feed, :user_comments
+        %label{ :for => 'feed_user_comments' } Enable User Comments

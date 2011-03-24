@@ -1,0 +1,258 @@
+-
+    name: artificial intelligence
+    keywords:
+    - artificial intelligence
+    - vision
+    - expert systems
+    - Robotics
+    - Factory
+    - Military
+    - Autonomous Aircraft
+    - Autonomous Cars
+    - Nanotechnology
+    - Humanoid
+    - Swarms
+    - Remote control
+    - Personal
+    - Social companionship
+        
+-
+    name: communications / networking
+    keywords:
+    - Communications
+    - Networking
+    - Networks
+    - Personal area networks
+    - Local-area networks
+    - Campus area networks
+    - Metropolitan area networks
+    - Wide-area networks
+    - Global-area networks
+    - Internetworking
+    - Intranet
+    - Extranet
+    - Internet
+    - Mobile Phones/Devices
+    - Portals
+    - Protocols
+    - Satellites
+    - Sensor Networks
+    - Wireless
+    - Social Networks
+    - E-commerce
+    - Collaborative
+    
+-
+    name: computer applications
+    keywords:
+    - Computer Applications
+    - Administrative Data Processing
+    - Physical Sciences and Engineering
+    - Military
+    - Arts and Humanities
+    - Computer-Aided Engineering
+    - Life and Medical Sciences
+    - Computational Photography
+    
+-
+    name: computer systems
+    keywords:
+    - Computer Systems
+    - Processor Architectures
+    - Computer-Communication Networks
+      
+-
+    name: human-computer interaction
+    keywords:
+    - Human-Computer Interaction
+    - Game-like interfaces
+    - Touch
+    - Hands-free
+    - Remote control
+    - Virtual Reality
+    - Immersive Environments
+      
+-
+    name: computers and society
+    keywords:
+    - Society
+    - Entrepreneurship
+    - Globalization
+    - Public Policy
+    - Surveillance
+    - History of Computing
+    - The Computer Industry
+    - The Computing Profession
+      
+-
+    name: data / storage and retrieval
+    keywords:
+    - Data
+    - Storage
+    - Mining
+    - Scientific Visualization
+    - Information Visualization
+    - Holographic
+    - Digital libraries
+    - Data Storage
+    - Data Retrieval
+    - Mass Storage
+    - Storage Devices
+    - Flash Memory
+    - Solid-State Memory
+    - USB drives
+    - Disk drives
+    
+-
+    name: education
+    keywords:
+    - Education
+    - Curricula
+    - Enrollment
+    - Educational Technology
+    - Gender Issues
+    - Race Issues
+    
+-
+    name: entertainment
+    keywords:
+    - Entertainment
+    - Personal Computing
+    - Games  
+    - Computer Graphics
+    - Movie special effects
+    - Animation
+    
+-
+    name: hardware
+    keywords:
+    - Hardware
+    - Multi-core
+    - Embedded systems
+    - Sensors
+    - Power consumption
+    - Cooling
+    - Displays
+    - Input Devices
+    - Printers
+    - Storage
+    - Integrated Circuits
+    
+-
+    name: information systems
+    keywords:
+    - Information Systems
+    - Database Management
+    - Digital Libraries
+    - Strategic IS Planning
+    - Information Systems Management
+    - Systems Development
+      
+-
+    name: legal aspects
+    keywords:
+    - Legal Aspects
+    - Intellectual property
+    - Copyrights
+    - Patents
+    - File-sharing
+    - Privacy
+    - Ethics
+    
+-
+    name: management
+    keywords:
+    - Management
+    - Project Management
+    - People Management
+    - Installation Management
+    - Software Management
+    - System Management
+    - Network Management
+    
+-
+    name: performance and reliability
+    keywords:
+    - Performance
+    - Reliability
+    - Hardware Performance 
+    - Hardware Reliability
+    - Testing
+    - Fault-Tolerance
+    - Performance Analysis
+    - Design Aids
+    - Performance of Systems
+    - Measurement techniques
+    - Performance attributes
+    - Reliability
+    - Availability
+    - Serviceability
+    - Software Performance Measures
+    - Systems Performance Evaluation
+    - Software Performance Evaluation
+    - Software Reliability
+    - Program Verification
+    
+-
+    name: personal computing
+    keywords:
+    - Personal Computing
+    - Personal Computers
+    - Portable devices
+    - Application Packages
+    - Hardware
+    - Miscellaneous
+      
+-
+    name: search
+    keywords:
+    - Search
+    - Information Storage
+    - Information Retrieval
+    - Information Search
+    - Engines
+    - Links
+    - Keyword
+    - Natural Language
+    - Local Search
+    - Search Engine Optimization
+    - Search-oriented Architecture
+    - Social Search
+    - Semantic Web
+    - Metasearch
+    - OpenSearch
+    - Web Indexing
+    
+-
+    name: security
+    keywords:
+    - Security
+    - Encryption
+    - Protection
+    - Attacks
+    - Viruses
+    - Spam
+    - Biometrics
+    - Firewalls
+    - Network Security
+      
+-
+    name: software
+    keywords:
+    - Software
+    - Programming
+    - Applications Software
+    - Systems Software
+    - Development
+    - Tools
+    - Performance
+    - Hacking
+    - User ethics/rights
+    
+-
+    name: theory
+    keywords:
+    - Theory
+    - Mathematical Logic
+    - Formal Languages
+    

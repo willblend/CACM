@@ -1,0 +1,5 @@
+<%- content_for :page_scripts do -%>
+RadiantFCK.page_picker_root_node = '<%= page_picker_root_node %>';
+<%- end -%>
+
+<span id="toggle-wysiwyg-editor"><%= button_to_function "Toggle WYSIWYG", "RadiantFCK.toggle();"%></span>

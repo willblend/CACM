@@ -1,0 +1,53 @@
+- content_for :page_scripts do
+  :plain
+    document.observe('dom:loaded', function(){
+      new Validation('create-account-form');
+      new CreateWebAccountForm('create-account-form');
+    });
+    
+- content_for :page_css do
+  :plain
+    #control_overlay { background: #000; }
+    .modal { background: #fff; padding: 10px; border: 1px solid #333; }
+    .window { background-image: url(/images/livepipe.window_background.png); background-position: top left; -moz-border-radius: 10px; -webkit-border-radius: 10px; padding: 10px; font-size:13px; color:#fff; }
+    .window .window_contents { margin-top: 10px; width: 100%; height: 100%; }
+    .window .window_header { text-align: center; }
+    .window .window_title { margin-top: -7px; margin-bottom: 7px; font-size: .92em; }
+    .window .window_close { display: block; position: absolute; top: 4px; left: 5px; height: 13px; width: 13px; background-image: url(/images/livepipe.window_close.gif); cursor: pointer; }
+    .window .window_inner { background: #FFF; padding: 20px; height: 100%; color: #000; width: 500px; font-family: arial, helvetica, sans-serif; }
+    .window .window_inner H2 { font-size: 1.3em; margin-bottom: 1em; text-decoration: underline; }
+    .window .window_inner .or { margin: 1em 0 .5em; font-weight: bold; display: block; }
+    .window div[class="window_inner"] FORM INPUT { font-size: 1.3em; } /* no way ie6 */
+    .window { left: 200px; top: 160px; position: absolute; z-index: 10006; margin: 0; }
+    * HTML .window { width: 420px; }
+    *:first-child+html .window .window_inner FORM INPUT { font-size: 1em; }
+
+#BodyWrapper.UtilityPage.TwoColumnUtility
+  #MainColumn
+    #MainContentArea
+      #PageHdr
+        %h1#create-a-web-account
+          %span create a web account
+      
+      - if @error_no_acm_member_found || @account
+        = render :partial => 'modal'
+      
+      %p.Intro 
+        %strong With an ACM Web Account 
+        you get a single username and password to allow you access to a growing set of functions within the ACM site and beyond.
+      
+      - form_tag create_account_url, :class => "AccountForm", :id => "create-account-form" do
+        %fieldset#create-new-account
+          %table.FormLayout
+            %col{ :width => "35%" }
+            %col{ :width => "65%" }
+            %tbody
+              = render :partial => "base_fields"
+          .FormAction 
+            %input{ :type => :image, :src => '/images/btn.continue.gif' }
+          %p.helptext#submit-help-text You will be sent an email to complete the account creation process.
+            
+  #Banner.AccountAds
+    %r:snippet{ :name => "account_right_column_ads" }
+  
+  .ClearFix <!-- do not remove -->

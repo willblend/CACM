@@ -1,0 +1,8 @@
+%p.Footer 
+  %strong Account Found
+  %br
+  An ACM Web Account already exists for this email address.
+  %br
+  %strong= link_to "Please sign in now.", "/login?username=#{@account.first.username}"
+  %br
+  Or enter another email address to continue creating a new Web Account.

@@ -1,0 +1,78 @@
+<div id="BodyWrapper" class="TopLevelPage">
+
+	<div id="MainColumn">
+
+		<div id="MainContentArea">
+
+			<!-- googleoff:all -->
+			<div id="PageHdr">
+				<h1 id="hdr_news">news</h1>
+				<div class="feed">
+					<a href="/news.rss"><img src="/images/icon.RSS.44.gif" width="44" height="16" alt="RSS" title="Subscribe to this Feed" /></a>
+				</div>
+			</div>
+
+			<div class="Layout ContentHdr" id="news-landing-page">
+
+				<div class="column-1" id="news-column-1">
+
+					<div class="Box">
+						<p>An edited collection of advanced computing news from <cite>Communications of the ACM</cite>, <cite>ACM TechNews</cite>, other ACM resources, and news sites around the Web.</p>
+					</div>
+					
+					<div class="SecondaryNav">
+						<ul>
+							<li class="active"><a href="/news">News</a></li>
+							<li><a href="/news/archive">News Archive</a></li>
+						</ul>
+					</div>
+
+				</div>
+
+				<div class="column-2">
+					
+					<r:snippet name="featured_summary" />
+					
+				</div>
+
+			</div>
+
+			<h2 id="hdr_latest-news"><span>latest news</span></h2>
+
+			<div class="Layout Col-435_300">
+				
+				<div class="column-1">
+					<r:snippet name="article_summaries" />
+				</div>
+				
+				<div class="column-2">
+					<r:widgets part="widget_column_1" /> 
+					<div class="ad">
+					  <r:content part="Second Column Ad" />
+					</div>
+				</div>
+
+			</div>
+			<!-- googleon:all -->
+
+		</div>
+		<!-- END: MainContentArea -->
+
+	</div>
+	<!-- END: MainColumn -->
+
+	<div id="SideColumn">
+
+		<div class="ad">
+		  <r:content part="Right Column Ad Top" />
+		</div>
+
+		<div class="ad">
+		  <r:content part="Right Column Ad Bottom" />
+		</div>
+
+	</div>
+	<!-- END: SideColumn -->
+
+</div>
+<!-- END: BodyWrapper -->

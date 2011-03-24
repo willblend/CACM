@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/lib/ruby/gems/1.8/gems/backupgem-0.0.11/bin/backup -r /srv/rails/cacm/shared/asset_backup.rb

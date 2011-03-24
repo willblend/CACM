@@ -1,0 +1,9 @@
+defaults:
+  batch-size: 100
+  max-age: 0
+  delay: 60
+
+<%= application %>:
+  chdir: <%= current_path %>
+  environment: <%= stage %>
+  pidfile: ./tmp/pids/ar_sendmail.pid

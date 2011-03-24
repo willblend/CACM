@@ -1,0 +1,13 @@
+<div id="most-discussed-in-opinion" class="FeatureBox MostDiscussed">
+	<h2 id="hdr_most-discussed-in-opinion"><span>Most Discussed in Opinion</span></h2>
+	<div class="content">
+		<r:most_discussed_opinion properties="width: 240px; height: 80px;">
+		<r:each>
+			<div class="item">
+				<h5><r:dynamic_tag tag="a" href="r:link"><r:escape_html:title /></r:dynamic_tag></h5>
+				<div class="metadata"><r:date /><span class="separator"> | </span><r:comments /></div>
+			</div>
+		</r:each>
+		</r:most_discussed_opinion>
+	</div>
+</div>

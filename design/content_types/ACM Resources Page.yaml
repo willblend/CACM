@@ -1,0 +1,28 @@
+--- 
+layout_name: standard_full_cached
+page_class_name: 
+135: 
+  name: main_content
+  filter_id: 
+  part_type_name: WYSIWYG Narrow Article
+  description: Main Content
+136: 
+  name: widget_slot_1
+  filter_id: 
+  part_type_name: Associated Widgets
+  description: Side Column 1st Widget
+2081: 
+  name: Right Column Ad Top
+  filter_id: 
+  part_type_name: Plain textarea
+  description: 160x160 Ad
+2082: 
+  name: Right Column Ad Bottom
+  filter_id: 
+  part_type_name: Plain textarea
+  description: 160x600 Ad
+2083: 
+  name: Second Column Ad
+  filter_id: 
+  part_type_name: Plain textarea
+  description: 300x250 or 180x150 Ad

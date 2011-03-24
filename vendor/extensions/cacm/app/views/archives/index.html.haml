@@ -1,0 +1,49 @@
+- cache('/magazines', 1.week) do
+  - generate_index
+
+  <!-- googleon:all -->
+  #BodyWrapper.MagArchivePage
+    #MainColumn
+      #MainContentArea
+        #PageHdr
+          %h1#hdr_cacm-archive= "Communications of the ACM archive"
+          .feed
+            %a{:href => "/magazine.rss"}
+              %img{:src => "/images/icon.RSS.44.gif", :width => "44", :height => "16", :alt=>"RSS", :title => "Subscribe to this Feed"}
+        %div{:class => "Layout Col-160_575"}
+          %div.column-1
+            .Box#about-archive
+              %h3 About the Archive
+              %p 
+                The magazine archive includes every article published in 
+                %em
+                  Communications of the ACM
+                for over the past 50 years.
+              %p Click on a cover image or issue date to scan the table of contents, which leads to complete articles on this site, as well as in the ACM Digital Library. 
+          %div.column-2
+            .MagIssues
+              .row
+                - @issues.each_with_index do |issue,index|
+                  %div{:class => "issue #{'issue-first issue-current' if index.eql?(0)}"}
+                    - if index.eql?(0)
+                      .title Current Issue
+                    = link_to image_tag(issue.source.cover_url, :width => 132, :height => 171, :alt => "CACM [#{issue.source.issue_date}]", :class => "cover"), magazine_issue_path(issue.source.pub_date.year,issue.source.pub_date.month)
+                    %h3= issue.source.pub_date.to_s(:calendar)
+                    %p
+                      = link_to issue.source.title, magazine_issue_path(issue.source.pub_date.year,issue.source.pub_date.month)
+            .Archive
+              %h2= "Full-text HTML and PDFs: January 1999 &#8211; #{Time.now.strftime('%B %Y')}"
+              .wrap
+                %table
+                  %tbody
+                    - (2000..Time.now.year).reject{|x| !(x%10 == 0) }.reverse.each do |decade|
+                      %tr
+                        %th= "#{decade}s"
+                        - (decade..(decade+9)).each do |year|
+                          %td= "#{(Time.now.year >= year) ? (link_to year, "/magazines/#{year}") : '&#8211;' }"
+                    = render :partial => "current_full_text_and_citations"
+            = render :partial => "legacy_full_text_pdfs_and_citations"
+    #SideColumn
+      %r:snippet{ :name => "magazine_archive_right_column_ads" }
+
+  <!-- googleoff:all -->

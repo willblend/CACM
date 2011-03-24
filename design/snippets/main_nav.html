@@ -1,0 +1,116 @@
+<ul id="MainNav" class="DHTMLMenu">
+	<li id="mn_home"<r:if_current_url url="/"> class="active"</r:if_current_url>><a href="/">Home</a></li>
+	<li id="mn_news"<r:if_section section="news"> class="active"</r:if_section>>
+		<a href="/news">News</a>
+		<div class="SubMenu">	
+			<div class="inner">	
+				<p>Advanced computing news from <cite>Communications of the ACM</cite>, other ACM resources, and from around the Web.</p>
+				<ul>
+					<li><a href="/news">Latest News</a></li>
+					<li><a href="/news/archive">News Archive</a></li>
+				</ul>
+			</div>
+		</div> 
+	</li>
+	<li id="mn_blogs"<r:if_section section="blogs"> class="active"</r:if_section>>
+		<a href="/blogs">Blogs</a>
+		<div class="SubMenu">
+			<div class="inner">
+				<ul>
+					<li><a href="/blogs/about-the-blogs">About the Blogs</a></li>
+					<li><a href="/blogs/blog-cacm">BLOG@CACM</a></li>
+					<li><a href="/blogs/blogroll">Blogroll</a></li>
+					<li><a href="/blogs/archive">Blogs Archive</a></li>
+				</ul>
+			</div>
+		</div>
+	</li>
+	<li id="mn_opinion"<r:if_section section="opinion"> class="active"</r:if_section>>
+		<a href="/opinion">Opinion</a>
+		<div class="SubMenu">	
+			<div class="inner">
+				<ul>
+					<li><a href="/opinion/articles">Articles</a></li>
+					<li><a href="/opinion/interviews">Interviews</a></li>
+					<li><a href="/opinion/archive">Opinion Archive</a></li>
+				</ul>
+			</div>
+		</div>
+	</li>
+	<li id="mn_browse-subject"<r:if_section section="browse-by-subject"> class="active"</r:if_section>>
+		<a href="/browse-by-subject">Browse by Subject</a>
+		<div class="SubMenu">	
+			<div class="inner">	
+				<p>Recent articles from <em>Communications</em> organized into categories that encompass the broad scope of computing.</p>
+				<ul>
+					<li><a href="/browse-by-subject/artificial-intelligence">Artificial Intelligence</a></li>
+					<li><a href="/browse-by-subject/communications-networking">Communications / Networking</a></li>
+					<li><a href="/browse-by-subject/computer-applications">Computer Applications</a></li>
+					<li><a href="/browse-by-subject/computer-systems">Computer Systems</a></li>
+					<li><a href="/browse-by-subject/computers-and-society">Computers and Society</a></li>
+					<li><a href="/browse-by-subject/data-storage-and-retrieval">Data / Storage and Retrieval</a></li>
+					<li><a href="/browse-by-subject/education">Education</a></li>
+				</ul>
+				<ul>					
+					<li><a href="/browse-by-subject/entertainment">Entertainment</a></li>
+					<li><a href="/browse-by-subject/hardware">Hardware</a></li>
+					<li><a href="/browse-by-subject/human-computer-interaction">Human-Computer Interaction</a></li>
+					<li><a href="/browse-by-subject/information-systems">Information Systems</a></li>
+					<li><a href="/browse-by-subject/legal-aspects">Legal Aspects</a></li>
+					<li><a href="/browse-by-subject/management">Management</a></li>
+				</ul>
+				<ul>
+					<li><a href="/browse-by-subject/performance-and-reliability">Performance and Reliability</a></li>
+					<li><a href="/browse-by-subject/personal-computing">Personal Computing</a></li>
+					<li><a href="/browse-by-subject/search">Search</a></li>
+					<li><a href="/browse-by-subject/security">Security</a></li>
+					<li><a href="/browse-by-subject/software">Software</a></li>
+					<li><a href="/browse-by-subject/theory">Theory</a></li>
+				</ul>
+			</div>
+		</div>
+	</li>
+	<li id="mn_mag-archive"<r:if_section section="magazines"> class="active"</r:if_section>>
+		<a href="/magazines">Magazine Archive</a>
+		<div class="SubMenu">	
+			<div class="inner">	
+				<div class="Layout">
+          <r:widget name="recent_issues" />
+				</div>
+				<div class="more"><a href="/magazines">View More Issues</a></div>
+			</div>
+		</div>
+	</li>
+	<li id="mn_careers"<r:if_section section="careers"> class="active"</r:if_section>>
+		<a href="/careers">Careers</a>
+		<div class="SubMenu">	
+			<div class="inner">	
+				Jump-start your career with information on trends, opportunities and jobs &#8211; in both industry and academia.
+				<div class="more"><a href="/careers">View Careers</a></div>
+			</div>
+		</div>
+	</li>
+	<li id="mn_resources"<r:if_section section="acm-resources"> class="active"</r:if_section>>
+		<a href="/acm-resources">ACM Resources</a>
+		<div class="SubMenu">	
+			<div class="inner">	
+				<ul>
+					<li><a target="_blank" href="http://portal.acm.org/dl.cfm">Digital Library <img class="Icon" width="8" height="8" title="This link opens off-site" alt="External Link" src="/images/icon.external-link.gif"/></a></li>
+					<li><a target="_blank" href="http://www.acm.org/publications">ACM Publications <img class="Icon" width="8" height="8" title="This link opens off-site" alt="External Link" src="/images/icon.external-link.gif"/></a></li>
+					<li><a target="_blank" href="http://pd.acm.org/books/books.cfm">Online Books <img class="Icon" width="8" height="8" title="This link opens off-site" alt="External Link" src="/images/icon.external-link.gif"/></a></li>
+					<li><a target="_blank" href="http://www.acm.org/sigs">Special Interest Groups <img class="Icon" width="8" height="8" title="This link opens off-site" alt="External Link" src="/images/icon.external-link.gif"/></a></li>
+					<li><a href="/alerts-and-feeds">Alerts &amp; Feeds</a></li>
+				</ul>
+				<div class="more"><a href="/acm-resources">More About ACM Resources</a></div>
+			</div>
+		</div>
+	</li>
+	<li id="mn_subscribe">
+		<a href="/subscribe" target="_blank">Subscribe</a>
+		<div class="SubMenu">	
+			<div class="inner">	
+				Receive the benefits of ACM membership with a subscription to its flagship publication, <em>Communications of the ACM</em>.
+			</div>
+		</div>
+	</li>
+</ul>

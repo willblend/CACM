@@ -1,0 +1,6 @@
+#!/bin/bash
+export ORACLE_HOME=<%= default_environment['ORACLE_HOME'] %>
+export LD_LIBRARY_PATH=<%= default_environment['LD_LIBRARY_PATH'] %>
+export JAVA_HOME=<%= default_environment['JAVA_HOME'] %>
+cd <%= current_path %> && /usr/bin/rake <%= stage %> purger:purge_old_articles
+cd <%= current_path %> && /usr/bin/rake <%= stage %> purger:purge_nonexistent_articles

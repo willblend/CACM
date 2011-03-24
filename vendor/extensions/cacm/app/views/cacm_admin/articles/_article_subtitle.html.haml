@@ -1,0 +1,42 @@
+%tr
+  %th.label Article Subtitle
+  - if @article.is_dl_article?
+    %td.field
+      = f.text_field :subtitle, :class => 'textbox'
+      %p#full-title-output
+        Full Title: 
+        %span#full-title-preview
+    
+    - content_for :page_scripts do
+      :plain
+      
+        function updateArticleFullTitle(title, subtitle, preview){
+          if (subtitle.length == 0) {
+            preview.update(title);
+          } else {
+            preview.update(title + ": " + subtitle);
+          }
+        };
+      
+        document.observe("dom:loaded", function(){
+          var cacm_title_field = $("article_title");
+          var cacm_subtitle_field = $("article_subtitle");
+          var full_title_preview = $("full-title-preview");
+          if (cacm_title_field && cacm_subtitle_field && full_title_preview) {
+            updateArticleFullTitle($F(cacm_title_field), $F(cacm_subtitle_field), full_title_preview);
+            new Form.Element.Observer(cacm_subtitle_field, 0.5, function() {
+              updateArticleFullTitle($F(cacm_title_field), $F(cacm_subtitle_field), full_title_preview);
+            });
+            new Form.Element.Observer(cacm_title_field, 0.5, function() {
+              updateArticleFullTitle($F(cacm_title_field), $F(cacm_subtitle_field), full_title_preview);
+            });
+          }
+        });
+      
+    - content_for :page_css do
+      :plain
+        #full-title-output { margin: 0; padding-top: .5em; font-size: .85em; }
+        #full-title-output SPAN { color: #AAA; }
+        
+  - else
+    %td.field= h(@article.full_title)

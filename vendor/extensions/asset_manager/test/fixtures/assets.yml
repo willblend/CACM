@@ -1,0 +1,29 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+png:
+  id: 1
+  file_content_type: image/png
+  file_file_name: mypng.png
+  file_file_size: <%= 1.kilobyte %>
+  description: An image
+  created_at: <%= 3.days.ago.to_s(:db) %>
+  updated_at: <%= 2.days.ago.to_s(:db) %>
+  class_name: ImageAsset
+qt:
+  id: 2
+  file_content_type: video/quicktime
+  file_file_name: video.mov
+  file_file_size: <%= 1.megabyte %>
+  description: A movie
+  created_at: <%= 3.days.ago.to_s(:db) %>
+  updated_at: <%= 2.days.ago.to_s(:db) %>
+  class_name: VideoAsset
+expired:
+  id: 3
+  file_content_type: video/mpeg
+  file_file_name: another_video.mpeg
+  file_file_size: <%= 3.megabytes %>
+  description:
+  created_at: <%= 3.days.ago.to_s(:db) %>
+  updated_at: <%= 2.days.ago.to_s(:db) %>
+  expires_on: <%= (Date.today-1).to_s(:db) %>
+  class_name: VideoAsset

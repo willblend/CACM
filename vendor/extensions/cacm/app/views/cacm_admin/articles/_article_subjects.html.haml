@@ -1,0 +1,46 @@
+- if @article.is_a?(DLArticle) && !@article.is_a?(CacmArticle)
+  -content_for :page_scripts do
+    :plain
+      document.observe('dom:loaded', function(){
+        var section_or_subject_boxes = $$(".section-or-subject-required");
+        var form = $("content").down("form");
+        if (!section_or_subject_boxes || !form) { return; }
+        form.observe('submit', function(e){
+          var invalid = true;
+          section_or_subject_boxes.each(function(box){
+            if (box.checked) { invalid = false; }
+          }, this);
+          if (!invalid) {
+            $$(".subject_section_advice").invoke("remove");
+          } else {
+            e.stop();
+            var warning = new Element('div', { 'class' : 'validation-advice subject_section_advice' }).update("You must select at least one subject or section.");
+            var warning2 = warning.cloneNode(true);
+            var subjects_field = $('article-subjects-field');
+            var sections_field = $('article-sections-field');
+            if (!subjects_field.down(".subject_section_advice")) {
+              subjects_field.insert({ bottom : warning });
+              subjects_field.scrollTo();
+            }
+            if (!sections_field.down(".subject_section_advice")) {
+              sections_field.insert({ bottom : warning2 })
+            }
+          }
+        }, this);
+      });
+
+%tr
+  %th.label Related Subjects
+  %td.field#article-subjects-field
+    %table.LayoutTable
+      %tr
+        -@subjects.chunk(3).each do |subj|
+          %td
+            %ul.topics_list.Inputs
+              -subj.each do |s|
+                %li
+                
+                  =check_box_tag "article[subject_ids][]", s.id, @article.subjects.include?(s), :id => "article_subject_ids_#{s.id}", :class => "section-or-subject-required"
+                  %label{ :for => "article_subject_ids_#{s.id}" }= h(s.name)
+                  
+    =hidden_field_tag "article[subject_ids][]", nil, :id => 'article_subject_ids' # catch empty submissions

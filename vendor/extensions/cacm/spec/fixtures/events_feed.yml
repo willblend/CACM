@@ -1,0 +1,104 @@
+--- !map:FeedParser::FeedParserDict 
+status: "200"
+href: http://rss.acm.org/conferences/conferences.xml
+encoding: utf-8
+feed: !map:FeedParser::FeedParserDict 
+  title: Calendar of Events
+  subtitle_detail: !map:FeedParser::FeedParserDict 
+    language: 
+    type: text/html
+    value: 02-Nov-2009 to 07-Dec-2009
+    base: http://rss.acm.org/conferences/conferences.xml
+  subtitle: 02-Nov-2009 to 07-Dec-2009
+  title_detail: !map:FeedParser::FeedParserDict 
+    language: 
+    type: text/plain
+    value: Calendar of Events
+    base: http://rss.acm.org/conferences/conferences.xml
+  links: 
+  - !map:FeedParser::FeedParserDict 
+    href: http://campus.acm.org/calendar/
+    rel: alternate
+    type: text/html
+  link: http://campus.acm.org/calendar/
+bozo: true
+modified_time: 2009-11-02 19:30:09 Z
+etag: "\"c2ebd5e3f25bca1:c0a\""
+namespaces: {}
+
+version: rss20
+bozo_exception: !ruby/exception:FeedParser::CharacterEncodingOverride 
+  message: documented declared as us-ascii, but parsed as utf-8
+updated: 
+- 2009
+- 11
+- 2
+- 19
+- 30
+- 9
+- 0
+- 306
+- 0
+entries: 
+- !map:FeedParser::FeedParserDict 
+  title: "ISB '10: International Symposium on BioComputing 2010 (ISB '10)"
+  summary_detail: !map:FeedParser::FeedParserDict 
+    language: 
+    type: text/html
+    value: Monday February 15, 2010 - Wednesday February 17, 2010, Calicut, India, India
+    base: http://rss.acm.org/conferences/conferences.xml
+  summary: Monday February 15, 2010 - Wednesday February 17, 2010, Calicut, India, India
+  title_detail: !map:FeedParser::FeedParserDict 
+    language: 
+    type: text/plain
+    value: "ISB '10: International Symposium on BioComputing 2010 (ISB '10)"
+    base: http://rss.acm.org/conferences/conferences.xml
+  links: 
+  - !map:FeedParser::FeedParserDict 
+    href: http://rss.acm.org/conferences/TBA
+    rel: alternate
+    type: text/html
+  link: http://rss.acm.org/conferences/TBA
+  updated: Mon, 15 Feb 2010 00:00:00 GMT
+  updated_time: 2010-02-15 00:00:00 Z
+  updated_parsed: 
+  - 2010
+  - 2
+  - 15
+  - 0
+  - 0
+  - 0
+  - 0
+  - 46
+  - 0
+- !map:FeedParser::FeedParserDict 
+  title: Eighth IEEE International Conference on Pervasive Computing and Communications 2010 (PerCom 2010)
+  summary_detail: !map:FeedParser::FeedParserDict 
+    language: 
+    type: text/html
+    value: Monday March 29, 2010 - Friday April 2, 2010, Mannheim, Germany
+    base: http://rss.acm.org/conferences/conferences.xml
+  summary: Monday March 29, 2010 - Friday April 2, 2010, Mannheim, Germany
+  title_detail: !map:FeedParser::FeedParserDict 
+    language: 
+    type: text/plain
+    value: Eighth IEEE International Conference on Pervasive Computing and Communications 2010 (PerCom 2010)
+    base: http://rss.acm.org/conferences/conferences.xml
+  links: 
+  - !map:FeedParser::FeedParserDict 
+    href: http://rss.acm.org/conferences/httwww.percom.org/
+    rel: alternate
+    type: text/html
+  link: http://rss.acm.org/conferences/httwww.percom.org/
+  updated: Mon, 29 Mar 2010 00:00:00 GMT
+  updated_time: 2010-03-29 00:00:00 Z
+  updated_parsed: 
+  - 2010
+  - 3
+  - 29
+  - 0
+  - 0
+  - 0
+  - 0
+  - 88
+  - 0

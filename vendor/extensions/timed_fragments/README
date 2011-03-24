@@ -1,0 +1,10 @@
+= Timed Fragments
+
+This is the Simplest Thing That Could Possibly Work and it probably won't 
+if you're using Rails > 2.0.2. Fragment lifetime is global across all fragments 
+and can be adjusted in timed_fragments_extension.rb.
+
+Add this to whatever environments you desire:
+Page.perform_caching = true
+
+You should read Rails' Fragment Caching docs, in ActionController::Caching::Fragments.

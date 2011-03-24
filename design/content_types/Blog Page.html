@@ -1,0 +1,63 @@
+<div id="BodyWrapper" class="OpinionPage BlogPage">
+
+	<div id="MainColumn">
+
+		<div id="MainContentArea">
+
+			<div id="PageHdr">
+				<h1 id="hdr_communication-blog"><span>Communications blog</span></h1>
+				<div class="feed">
+					<a href="TEST"><img src="/images/icon.RSS.44.gif" width="44" height="16" alt="RSS" title="Subscribe to this Feed" /></a>
+				</div>
+			</div>
+
+			<div class="Layout ContentHdr">
+
+				<div class="column-1">
+
+					<r:snippet name="secondary_nav_childless" />
+
+				</div>
+
+				<div class="column-2">
+
+					<h2 id="hdr_about-this-blog"><span>About This Blog</span></h2>
+					<div class="wysiwyg">
+						<r:content part="about_blog" />
+					</div>
+					
+				</div>
+
+			</div>
+
+			<h2 class="SectionHeader" id="hdr_recent-posts"><span>Recent Posts</span></h2>
+
+			<div class="Layout Col-435_300">
+
+				<div class="column-1">
+					<r:snippet name="article_summaries" />
+				</div>
+
+				<div class="column-2">
+					<r:widget name="most_discussed_blog" />
+					<r:widget name="most_emailed_blog" /> 
+					<r:snippet name="promo_300" /> 
+				</div>
+			</div>
+		</div>
+		<!-- END: MainContentArea -->
+
+		<r:snippet name="promo_banner_default" />
+
+	</div>
+	<!-- END: MainColumn -->
+
+	<div id="SideColumn">
+
+		<r:snippet name="promo_sidecolumn_default" />
+
+	</div>
+	<!-- END: SideColumn -->
+
+</div>
+<!-- END: BodyWrapper -->

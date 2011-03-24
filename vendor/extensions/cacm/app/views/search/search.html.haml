@@ -1,0 +1,42 @@
+- content_for :page_meta do
+  %meta{ :name => "robots", :content => "noindex,nofollow" }
+
+- content_for :page_css do
+  :plain
+    #hdr_search-results { background: url(/images/hdr.ph.search-results.gif) no-repeat; height: 40px; overflow: hidden; text-indent: -9999px; }
+    #hdr_search-results SPAN { display: none; }
+
+    #search-results .SearchHeading { font-family: helvetica, arial, sans-serif; font-size: 1.33em; margin-bottom: .25em; }
+
+    #search-results .search-pagination-wrapper { clear: both; border: 1px solid #e2e6cb; border-left: 0px; border-right: 0px; padding: 4px; margin: 1em 0; }
+    #search-results .search-pagination-wrapper .pagination { float: right; }
+
+    * HTML #search-results .search-pagination-wrapper { zoom: 1; }
+    *:first-child+html #search-results .search-pagination-wrapper { zoom: 1; }
+
+    #gsa-results P.g { margin: 1em 0 0; font-size: 1.12em; }
+    #gsa-results P.g A { color: #00364D; font-weight: bold; /* color: #0095C9; */ }
+    #gsa-results BLOCKQUOTE.g { margin-bottom: 0; }
+    #gsa-results .gsa-result { padding-bottom: 1em; border-bottom: 1px solid #E2E6CB; }
+    #gsa-results .last { border-bottom: none !important; }
+    #gsa-results .gsa-sort { }
+    #gsa-results .gsa-metadata { font-style: italic; }
+    #gsa-results .gsa-url { font-family: helvetica, arial, sans-serif; color: #777; margin-top: .2em; }
+    #gsa-results .gsa-more { font-family: helvetica, arial, sans-serif; }
+    #gsa-results P#gsa-filter-note { margin-top: 2em; }
+  
+#BodyWrapper.ArticlePage
+  #MainColumn
+    #MainContentArea
+      #search-results
+        #PageHdr
+          %h1#hdr_search-results
+            %span search results
+
+        %div.Layout#results-wrapper
+
+          #gsa-results
+            = post_process_gsa_results(@search) if @search
+
+  #SideColumn
+    %r:widget{ :name => "promo_column" }/

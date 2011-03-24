@@ -1,0 +1,16 @@
+<div class="Summaries">
+  <r:latest_articles>
+    <r:each>
+      <div class="item">
+        <div class="byline"><span class="slugline"><r:slugline /></span>&nbsp;<span class="separator">|</span>&nbsp;<r:byline/></div> 
+        <h3><a href="<r:url/>" <r:target/>><r:title/></a></h3>
+        <r:article_listing_thumbnail />
+        <r:summary/>
+        <div class="metadata"><r:if_author><em><r:author/></em> <span class="separator">|</span></r:if_author> <r:date/> <r:if_comments> <span class="separator">|</span> <a href="<r:url />/comments">User Comments</a> (<r:comments_count />)</r:if_comments></div>
+      </div>
+    </r:each>
+    <div class="footer" id="pagination-footer">
+      <r:pagination_links/>
+    </div>
+  </r:latest_articles>
+</div>

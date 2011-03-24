@@ -1,0 +1,6 @@
+= Sitemap Search
+
+== Dependencies
+=== Extensions
+ * meta_tags
+ * shards

@@ -1,0 +1,21 @@
+- rendering_node(node)
+%tr{:id => "page-#{node.id}", :class => "node level-#{level}#{children_class}#{virtual_class}"}
+  %td.page{:style => "padding-left: #{padding_left(level)}px"}
+    %span.w1
+      - if @current_node.children.any?
+        %a{ :href => formatted_page_picker_path(:format => :rad, :root => expanded ? @current_node.parent : @current_node) }
+          %img{ :class=>"expander", :src=>"/images/admin/expand.png", :alt=>"toggle children" }
+      = icon
+      = node_title
+  
+  - view_link = node.status.name.eql?("Published") ? "View" : "Preview"
+  - unless @site.nil?
+    - view_url = node.status.name.eql?("Published") ? node.url : @site.dev_url(node.url)
+  - else
+    - view_url = node.url
+    
+  %td.preview= link_to view_link, view_url, :target => "_blank"
+  %td.modify= link_to_function "Select Page", "window.top.opener.CurrentPicker.addNewAssocation({'id' : #{node.id}, 'title' : '#{node.title}', 'status_id' : #{node.status_id}, 'url' : '#{view_url}', 'view_title' : '#{view_link}' }); window.top.close();", :class => "Link"
+
+- if level == 0 && @homepage
+  = render :partial => "admin/page_picker/node.rad.haml", :collection => node.children, :locals => {:level => level + 1}

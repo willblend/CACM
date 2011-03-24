@@ -1,0 +1,7 @@
+mysql:
+  adapter: mysql
+  host: localhost
+  username: root
+  password:
+  database: sandbox_test
+  socket: /tmp/mysql.sock

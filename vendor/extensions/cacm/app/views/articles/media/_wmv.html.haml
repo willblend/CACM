@@ -1,0 +1,8 @@
+%object{ :classid => "clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95", :codebase => "http://www.microsoft.com/Windows/MediaPlayer", :width => 550, :height => 416 }
+  %param{ :name => "Filename", :value => @supplement.url }
+  %param{ :name => "AutoStart", :value => :true }
+  %param{ :name => "ShowControls", :value => :true }
+  %param{ :name => "BufferingTime", :value => 3 }
+  %param{ :name => "ShowStatusBar", :value => :true }
+  %param{ :name => "AutoSize", :value => :true }
+  %embed{ :src => @supplement.url, :type => "application/x-mplayer2", :autostart => 1, :enabled => 1, :showstatusbar => 1, :showcontrols => 1, :pluginspage => "http://www.microsoft.com/Windows/MediaPlayer", :codebase => "http://www.microsoft.com/Windows/MediaPlayer", :width => 550, :height => 416 }

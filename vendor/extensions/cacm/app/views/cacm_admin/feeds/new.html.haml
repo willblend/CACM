@@ -1,0 +1,11 @@
+%h1 New Feed
+
+- form_for :feed, @feed, :url => admin_feed_path(@feed), :html => { :name => "new_feed_form", :id => "new_feed_form"} do |f|
+
+  .form-area
+    = render :partial => 'form', :locals => {:f => f}
+
+  %p.buttons
+    = submit_tag 'Create'
+    or
+    = link_to 'Cancel', admin_feeds_path

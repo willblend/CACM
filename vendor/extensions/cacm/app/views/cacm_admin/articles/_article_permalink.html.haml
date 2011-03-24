@@ -1,0 +1,7 @@
+%tr
+  %th.label Article Permalink
+  %td.field
+    - if @article.link.include?("acm.org") # linking to the digital library, add CF tokens
+      = link_to h(@article.link), @article.link + (current_member.session_id.blank? ? "" : "&CFID="+current_member.session_id) + (current_member.session_token.blank? ? "" : "&CFTOKEN="+current_member.session_token), :target => '_blank'
+    - else
+      = link_to h(@article.link), @article.link, :target => '_blank'

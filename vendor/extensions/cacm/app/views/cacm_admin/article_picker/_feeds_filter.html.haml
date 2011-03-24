@@ -1,0 +1,17 @@
+-content_for :page_css do
+  :plain
+    #feeds_filter_form { margin: 16px 0; }
+    #feed_id { font-size: 16px; }
+  
+-form_tag associated_articles_path, :method => 'get', :id => 'feeds_filter_form', :class => 'InlineForm' do
+  .Field
+    - if params[:query]
+      = hidden_field_tag :query, params[:query]
+    %label{ :for => 'feed_id', :class => 'Invisible' } Show Only:
+    %select#feed_id.ShowTitle.AutoSubmitField{ :name => 'feed_id', :title => 'Select a feed to filter by' }
+      %option
+      = options_for_select(@feeds.map { |f| ["#{f.name}", f.id] }, (params[:feed_id].to_i || ""))
+
+  .FormAction
+    = hidden_field_tag :filter, params[:filter]
+    = submit_tag "Filter Feeds"

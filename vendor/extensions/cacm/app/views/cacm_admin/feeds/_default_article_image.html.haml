@@ -1,0 +1,33 @@
+%tr#feed-default-image{ :style => "display:none;" }
+  %th.label= 'Default Article Image'
+  %td.field
+  
+    = f.asset_field :default_article_image_id, :class => "asset-manager-field-image"
+    
+    :javascript
+      
+      var DefaultArticleImage = Behavior.create({
+
+        initialize : function(){
+          this.table_row = $("feed-default-image");
+          this.feed_class = $("feed_class_name");
+          this.feed_type = $("feed_feed_type_id");
+          if (!this.table_row || !this.feed_class || !this.feed_type) return;
+          this.feed_class.observe("change", this.toggleFieldVisibiliy.bind(this));
+          this.feed_type.observe("change", this.toggleFieldVisibiliy.bind(this));
+          this.toggleFieldVisibiliy();
+        },
+        
+        fieldShouldBeVisible : function(){
+          return this.feed_class.value === "RssFeed" && parseInt(this.feed_type.value) === #{FeedType.find_by_name("Blog").id};
+        },
+
+        toggleFieldVisibiliy : function(){
+          this.table_row[this.fieldShouldBeVisible() ? "show" : "hide"]();
+        }
+        
+      });
+      
+      Event.addBehavior({
+        "#feed_default_article_image_id" : DefaultArticleImage
+      });

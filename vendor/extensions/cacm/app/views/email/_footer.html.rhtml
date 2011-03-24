@@ -1,0 +1,33 @@
+							<div style="margin: 5px 10px 0 5px; padding: 1em 0 25px; border-top: 1px solid #C9C9C9;">
+								For more of the latest news, opinion, and research in advanced computing, visit our Web site, <a href="http://cacm.acm.org" style="color: #007DA7; text-decoration:none;">CACM.acm.org</a>.
+							</div>
+						</td>
+						
+						<td align="center" style="background-color: #EBF8FD; padding: 10px 0px; font-size: 0.917em;">
+							<%= @email_promo %>
+							<div class="nav" style="margin: 20px 10px; padding-top: 15px; border-top: 1px solid #C1C1C1; line-height: 1.5;">
+								<a href="http://<%= ActionMailer::Base.default_url_options[:host] %>/login" style="color: #007DA7; text-decoration:none;">Sign In</a> | <a href="http://<%= ActionMailer::Base.default_url_options[:host] %>/about-communications" style="color: #007DA7; text-decoration:none;">About Communications</a><br> 
+								<a href="http://<%= ActionMailer::Base.default_url_options[:host] %>/privacy" style="color: #007DA7; text-decoration:none;">Privacy Policy</a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+						
+		</div>
+
+		<div style="text-align: center; padding: 10px;">
+			<div style="color: #808285; font-size: 0.917em;">The <cite>Communications Online Email Alerts</cite> newsletter is a service of:<br>
+			Association for Computing Machinery &bull; 2 Penn Plaza, Suite 70 &bull; New York, NY 10121-0701<br>  
+			Phone: 1-800-342-6626 &bull; Email: cacm-info@hq.acm.org</div>
+			<br>		
+			<a href="http://<%= ActionMailer::Base.default_url_options[:host] %>/alerts-and-feeds/email-alerts" style="color: #007DA7; text-decoration:none;">Manage Alerts or Unsubscribe</a>
+			<br/><br/>
+			<div style="color: #808285; font-size: 0.917em;">Copyright &copy; <%= Date.today.year %> by the ACM. All rights reserved.</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
+

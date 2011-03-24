@@ -1,0 +1,45 @@
+#article-picker-wrapper
+  -# Disallow searching for issues and sections
+  - unless params[:issue] || params[:section_id]
+    = render :partial => 'search'
+  
+  = render :partial => 'nav'
+  
+  %h2 Select An Article
+  %p.Title= @title
+
+  -# Don't show the feeds filter if we're already scoped, but give them a clear option to reset
+  - if not ( params[:issue] || params[:feed_id] || params[:feed_ids] || params[:section_id] )
+    = render :partial => 'feeds_filter'
+    %br
+    %br
+
+  %table.index#article-picker
+    %col{:width => "60%"}
+    %col{:width => "10%"}
+    %col{:width => "10%"}
+    %col{:width => "15%"}
+    %thead
+      %tr
+        %th= link_to 'Title', CGI.unescape(path_for_sorted_column('articles.title'))
+        %th= link_to 'Item Date', CGI.unescape(path_for_sorted_column('articles.date'))
+        %th= link_to 'Last Updated', CGI.unescape(path_for_sorted_column('articles.updated_at'))
+        %th Pick
+    %tbody
+      - @articles.each do |article|
+        %tr
+          %td
+            %strong= article.title
+            %br
+            = truncate(article.author, 100, "...")
+          %td= article.date.to_s(:mdy_short)
+          %td= article.updated_at.to_s(:mdy_short)
+          %td
+            %a{ :class => "Link", :onclick => "window.top.opener.CurrentPicker.sendAssociationPopupHandler({'id': #{article.id}, 'title' : '#{escape_javascript(article.title)}'}); window.top.close();" }= "Select Article"
+      
+      - if @articles.empty?
+        %tr
+          %td{ :colspan => 3 }
+            %p Sorry, no articles are available for picking with these parameters.
+            %p Try broadening your search or removing filters.
+  =will_paginate @articles unless params[:issue] || params[:feed_id] || params[:feed_ids] || params[:section_id]

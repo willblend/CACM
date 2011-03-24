@@ -1,0 +1,60 @@
+.Layout.Col-285_630#sign-in-wrapper
+  .column-1{ :id => params[:direct_login].nil? ? "sign-in-column-one" : "direct-login" }
+    %h2#enter-account-information
+      %span enter account information
+    - form_for(current_member, :url => member_login_url, :html => {:method => :post}) do |f|
+      %fieldset#sign-in-form
+        %p Sign in for access to premium content and site features.
+        %table.FormTable#sign-in-table
+          %col{ :width => "25%" }
+          %col{ :width => "75%" }
+          %tbody
+            %tr
+              %th
+                %label{ :for => 'current_member_user' } Username
+              %td= text_field_tag 'current_member[user]', (params[:current_member][:user] if params[:current_member])||params[:username], :id => 'current_member_user', :disabled => params[:direct_login].nil? ? false : "disabled"
+            %tr
+              %th
+                %label{:for => 'current_member_passwd'}Password
+              %td= password_field_tag 'current_member[passwd]', '', :id => 'current_member_passwd'
+          
+        .form-action
+          = link_to 'Forgot Password?', forgot_password_path
+          %input{:type => 'image', :src => '/images/btn.sign-in.gif', :alt => 'Sign In', :name => 'submit'}
+
+  - unless params[:direct_login]
+    .column-2
+      %h2#need-access
+        %span need access?
+      %p Please select one of the options below for access to premium content and features.
+
+      #access-options
+        .option.option-1
+          %h3 Create a Web Account
+          %p If you are an ACM member, <cite>Communications</cite> subscriber, Digital Library subscriber, or use your institution's subscription, please set up a web account to access premium content and site features.
+          %p If you are a SIG member or member of the general public, you may set up a web account to comment on free articles and sign up for email alerts.
+          %p.more
+            = link_to 'Create a Web Account Now', new_account_path
+
+        .option.option-2
+          %h3 Join the ACM
+          %p Become a member to take full advantage of ACM's outstanding computing information resources, networking opportunities, and other benefits.
+          %p.more
+            %a{:href => 'http://campus.acm.org/public/quickjoin/interim.cfm', :target => :_blank}
+              Become a Member
+            %span -or-
+            %a{:href => 'https://campus.acm.org/Public/renewal_url/get_url_login.cfm?rdr=https://campus.acm.org/public/renewal_url/get_urls.cfm', :target => :_blank}
+              Renew Your Membership
+
+        .option.option-3
+          %h3 Subscribe to <cite>Communications of the ACM</cite> Magazine
+          %p Get full access to 50+ years of CACM content and receive the print version of the magazine monthly.
+          %p.more
+            %a{:href => '/subscribe', :target => :_blank}
+              Get a Subscription
+  - else
+    .ClearFix <!-- do not remove -->
+    %br
+    %br
+    %br
+

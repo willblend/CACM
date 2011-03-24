@@ -1,0 +1,15 @@
+#asset-type-filtering.FilterNav
+  %h3 By Type
+  %ul
+    %li= link_or_span_for(params[:type].eql?('all'), "All", :overwrite_params => { :type => 'all' })
+    - Asset.send(:subclasses).map(&:name).sort.each do |type|
+      - t = type.gsub('Asset', '').humanize
+      %li= link_or_span_for(params[:type].eql?(t), t, :overwrite_params => { :type => t })
+
+#asset-name-filtering.FilterNav
+  %h3 By Name
+  %ul
+    %li= link_or_span_for((params[:index].blank? || params[:index].eql?('all')), "All", :overwrite_params => { :index => '' })
+    %li= link_or_span_for((params[:index].eql?('0')), "#", :overwrite_params => { :index => 0 })
+    - ("a".."z").each do |letter|
+      %li= link_or_span_for((params[:index].eql?(letter)), letter.upcase, :overwrite_params => { :index => letter })

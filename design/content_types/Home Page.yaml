@@ -1,0 +1,48 @@
+--- 
+layout_name: home
+2035: 
+  name: widget_column_1
+  filter_id: 
+  part_type_name: Associated Widgets
+  description: Left widget column
+page_class_name: ""
+2036: 
+  name: widget_column_2
+  filter_id: 
+  part_type_name: Associated Widgets
+  description: Center widget column
+2031: 
+  name: featured_article
+  filter_id: 
+  part_type_name: Associated Article
+  description: Featured article for splash image
+2037: 
+  name: widget_column_3
+  filter_id: 
+  part_type_name: Associated Widgets
+  description: Right widget column
+2032: 
+  name: featured_splash_image
+  filter_id: 
+  part_type_name: Asset
+  description: Splash image for featured article
+2038: 
+  name: Right Column Ad Top
+  filter_id: 
+  part_type_name: Plain textarea
+  description: 160x160 Ad
+2033: 
+  name: featured_video
+  filter_id: 
+  part_type_name: Plain textarea
+  description: Video embed code
+2039: 
+  name: Right Column Ad Bottom
+  filter_id: 
+  part_type_name: Plain textarea
+  description: 160x600 Ad
+2034: 
+  name: featured_video_caption
+  filter_id: 
+  part_type_name: Asset
+  description: Featured video caption (as image)

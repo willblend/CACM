@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Styles>
+	<Style name="Paragraph" element="p" />
+
+	<Style name="H2 Large" element="h2">
+		<Attribute name="class" value="large" />
+	</Style>
+	
+	<Style name="H2 Small" element="h2">
+		<Attribute name="class" value="small" />
+	</Style>
+	
+	<Style name="Header 3" element="h3" />
+	<Style name="Header 4" element="h4" />
+	
+	<Style name="Blue Bold Sub Heading" element="b">
+		<Attribute name="class" value="BlueSubheading" />
+	</Style>
+
+	<Style name="Small Gray Sans-Serif" element="div">
+		<Attribute name="class" value="note" />
+	</Style>
+	
+	<Style name="Smaller Gray Sans-Serif" element="div">
+		<Attribute name="class" value="smaller_note" />
+	</Style>
+
+	<Style name="Link Style 1" element="span">
+		<Attribute name="class" value="more" />
+	</Style>
+</Styles>

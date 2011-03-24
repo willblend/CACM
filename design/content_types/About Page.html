@@ -1,0 +1,49 @@
+<div id="BodyWrapper" class="AboutPage">
+
+	<div id="MainColumn">
+
+		<div id="MainContentArea">
+
+			<r:unless_depth level="3"> 				
+			<div id="PageHdr">
+				<h1 id="hdr_about-communications">about Communications</h1>
+			</div>					
+			</r:unless_depth>
+			<r:if_depth level="3"> 
+			<div id="Breadcrumbs">				
+				<r:breadcrumbs separator=" &#187; " />	
+			</div>
+			</r:if_depth>
+
+			<div class="Layout">
+				<!-- googleoff:index -->
+				<div class="column-1">
+					<r:snippet name="secondary_nav_about" />
+					<r:widget name="communicate" />
+				</div>
+				<!-- googleon:index -->
+				<div class="column-2 wysiwyg">
+					<r:content part="main_content" />
+				</div>
+			</div>
+		</div>
+		<!-- END: MainContentArea -->
+
+	</div>
+	<!-- END: MainColumn -->
+
+	<div id="SideColumn">
+
+		<div class="ad">
+		  <r:content part="Right Column Ad Top" />
+		</div>
+
+		<div class="ad">
+		  <r:content part="Right Column Ad Bottom" />
+		</div>
+
+	</div>
+	<!-- END: SideColumn -->
+
+</div>
+<!-- END: BodyWrapper -->

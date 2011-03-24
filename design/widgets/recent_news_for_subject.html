@@ -1,0 +1,18 @@
+<div id="recent-news-for-subject" class="ItemsBlock">
+  <h2 id="hdr_recent-news-for-subject"><span>Recent News for this Subject</span></h2>
+  <div class="content">
+    <r:placeholder properties="width: 240px; height: 80px;">
+      <r:cache widget="recent_news_for_subject">
+        <r:recent_news_for_subject>
+          <r:each>
+            <div class="item">
+              <h5><r:dynamic_tag tag="a" href="r:link"><r:escape_html:title /></r:dynamic_tag></h5>
+              <r:short_description />
+              <div class="metadata"><r:author /><span class="separator"> | </span><r:date /><r:if_comments><span class="separator"> | </span><r:comments /></r:if_comments></div>
+            </div>
+          </r:each>
+        </r:recent_news_for_subject>
+      </r:cache>
+    </r:placeholder>
+	</div>
+</div>

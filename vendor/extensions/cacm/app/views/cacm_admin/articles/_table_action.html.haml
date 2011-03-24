@@ -1,0 +1,40 @@
+%table.index
+  - if params[:filter] == 'rejected'
+    %col{:width=>'70%'}
+    %col{:width=>'30%'}
+  - else
+    %col{:width=>'55%'}
+    %col{:width=>'15%'}
+    %col{:width=>'20%'}
+    %col{:width=>'10%'}
+
+  %thead
+    %tr
+      - # using CGI.unescape because this method sometimes deals with already escaped params in the path.
+      %th= link_to 'Title', CGI.unescape(path_for_sorted_column('title'))
+      %th= link_to 'Item Date', CGI.unescape(path_for_sorted_column('date'))
+      %th= link_to 'Last Updated', CGI.unescape(path_for_sorted_column('updated_at'))
+      - unless params[:filter] == 'rejected'
+        %th Actions
+
+  %tbody
+    -@articles.each do |a|
+      %tr
+        %td
+          -if a.is_dl_article?
+            %strong= link_to a.full_title, h(edit_admin_article_path(a, index_options))
+          -else
+            %strong= link_to h(a.full_title), h(edit_admin_article_path(a, index_options))
+          - if params[:feed_id].blank?
+            %br/
+            = h(a.feed.name) unless a.feed.nil?
+        %td= a.date.to_s(:abbr_date)
+        %td= a.updated_at.to_s(:mdy_time)
+        - unless params[:filter] == 'rejected'
+          %td
+            = link_to 'Reject', reject_admin_article_path(a, index_options), :method => :put
+
+    -if @articles.empty?
+      %tr
+        %td{ :colspan => (params[:filter] == 'rejected' ? 2 : 4) }
+          %p.Placeholder No articles match this criteria.

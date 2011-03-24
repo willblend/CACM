@@ -1,0 +1,15 @@
+<div id="most-discussed-for-subject" class="FeatureBox MostDiscussed">
+	<h2 id="hdr_most-discussed-for-subject"><span>Most Discussed in this Subject</span></h2>
+	<div class="content">
+	  <r:placeholder properties="width: 240px; height: 80px;">
+  		<r:most_discussed_articles_for_subject>
+  		  <r:each>
+    			<div class="item">
+    				<h5><r:dynamic_tag tag="a" href="r:link"><r:escape_html:title /></r:dynamic_tag></h5>
+    				<div class="metadata"><r:date /><span class="separator"> | </span><r:comments /></div>
+    			</div>
+    		</r:each>
+  		</r:most_discussed_articles_for_subject>
+		</r:placeholder>
+	</div>
+</div>

@@ -1,0 +1,5 @@
+@import url(default.styles.css);
+ 
+BODY { margin-right: 420px; background: #FFF url(/images/fckeditor.bg.right-margin.gif) 370px 0 repeat-y; }
+H2 { font: 2.333em Arial, Helvetica, sans-serif; line-height: 1.3; color: #007AA4; line-height: 0.8; border-bottom: 5px solid #D7EAF1; margin-bottom: 0.5em; }
+H4 { margin-bottom: 0.1em; }

@@ -1,0 +1,35 @@
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body>
+
+<div style="padding: 1em;">
+	
+	<a href="http://<%= ActionMailer::Base.default_url_options[:host] %>">
+		<img src="http://<%= ActionMailer::Base.default_url_options[:host] %>/images/logo.CACM.gif" width="584" height="60" alt="Communications of the ACM" style="border:0;margin-bottom:1em;" />
+	</a>
+	
+	<hr />
+	
+	<div style="padding: 1em 10px 20px;">
+		<h3 style="margin: 0 0 1em;">Thank you for signing up for your ACM Web Account!</h3>
+		<p style="margin: 0 0 1em;">Please take a moment to verify your email address by clicking the link below. From there you can complete your signup.</p>
+		<p style="margin: 0 0 1em;">
+			<a href="http://<%= ActionMailer::Base.default_url_options[:host] %>/accounts/verify?t=<%= @token %>">
+				http://<%= ActionMailer::Base.default_url_options[:host] %>/accounts/verify?t=<%= @token %>
+			</a>
+		</p>
+		<p style="margin: 0 0 1em;">If clicking the link doesn't work, copy and paste the link into your browser's address bar.</p>
+		<p style="margin: 0 0 1em;">If you didn't initiate this request, please ignore it.</p>
+		<p style="margin: 0 0 1em;">Thank You,
+		<br />
+		Communications of the ACM</p>
+	</div>
+
+</div>
+
+</body>
+</html>

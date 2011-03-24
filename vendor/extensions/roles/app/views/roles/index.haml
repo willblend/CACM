@@ -1,0 +1,31 @@
+%h1 Roles
+
+%table#roles.index{:cellpadding=>'0', :cellspacing=>'0', :border=>'0'}
+  %thead
+    %tr
+      %th.role Name
+      %th.users Users
+      %th.modify Modify
+  %tbody
+    - unless @roles.empty?
+      - @roles.each do |role|
+        %tr{:class =>'node level-1'}
+          %td.role= link_to role.name, edit_role_path(role)
+          %td.users= role.users.map(&:name).join ', '
+          %td.remove
+            - if role.id == 1
+              = image('remove-disabled', :alt => 'Remove role')
+            - else
+              = link_to(image('remove', :alt => 'Remove role'), role_path(role), :method => :delete, :confirm => 'Are you sure?')
+    - else
+      %tr
+        %td.note{:colspan=>'3'}No roles defined
+%script{:type=>'text/javascript'}
+  :plain
+    // <![CDATA[
+       new RuledTable('roles');
+    // ]]>
+
+%p
+  = link_to image('plus', :alt => 'New Role'), new_role_path
+  = link_to 'Add Role', new_role_path

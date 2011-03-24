@@ -1,0 +1,5 @@
+- if !@article.feed || (@article.feed && @article.feed.feed_type != "Blog")
+  %tr
+    %th.label Article Image
+    %td.field
+      = f.asset_field :image_id, :class => "asset-manager-field-image"

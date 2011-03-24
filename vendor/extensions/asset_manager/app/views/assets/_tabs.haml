@@ -1,0 +1,39 @@
+.AdminTabSet.Static
+  %ul.AdminTabNav
+    
+    - if controller.action_name.eql?('recent')
+      %li.Selected
+        %span Recently Uploaded
+    - else
+      %li= link_to "Recently Uploaded", recent_assets_path(:type => :all, :format => params[:format])
+
+    - if controller.action_name.eql?('browse')
+      %li.Selected 
+        %span
+          Browse All
+          %small= "(#{Asset.count})"
+    - else
+      %li= link_to "Browse All <small>(#{Asset.count})</small>", browse_assets_path(:type => params[:type], :format => params[:format])
+
+    / commenting our expiration stuff
+    /  - if controller.action_name.eql?('report')
+    /    %li.Selected 
+    /      %span Expiration Report
+    /  - else
+    /    %li= link_to "Expiration Report", expiring_assets_path(:format => params[:format])
+      
+  .TabBorder.ClearFix
+
+- if (params[:search].blank?)
+  - if controller.action_name.eql?('recent')
+    %p#tab-description The latest 100 assets uploaded listed reverse chronologically.
+  
+  - elsif controller.action_name.eql?('browse')
+    %p#tab-description Browsing all assets, filtering by asset type and file name
+  
+  / commenting out expiration stuff
+  /  - elsif controller.action_name.eql?('report')
+  /    %p#tab-description All of the currently expired assets along with those scheduled to expire within the next 30 days.
+
+- else
+  %p= "Search results for \"#{params[:search]}\":"

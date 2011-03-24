@@ -1,0 +1,30 @@
+%h1 Viewing Article
+
+%p
+  %b Title:
+  = @article.title
+
+%p
+  %b Author:
+  = @article.author
+
+%p
+  %b Link:
+  = @article.link
+
+%p
+  %b Date:
+  = @article.date
+
+%p
+  %b Short description:
+  = @article.short_description
+
+%p
+  %b Full text:
+  = @article.full_text
+
+%p
+  = link_to "Edit Article", :action => "edit", :id => @article
+  &nbsp;|&nbsp;
+  = link_to 'Back to Articles', :action => "index"

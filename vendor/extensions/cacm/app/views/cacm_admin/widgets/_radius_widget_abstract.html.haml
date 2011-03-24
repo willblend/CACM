@@ -1,0 +1,83 @@
+%h3= name.titleize
+- if form_props["legend"]
+  %span{:style => "font-size:0.8em;"}
+    = form_props["legend"]
+  %br
+
+- case form_props["input"]
+
+- when 'text'
+  = text_field "widget_abstracts[#{tag.to_sym}]", name.to_sym, :value => form_props["value"]
+
+- when 'radio'
+  - form_props["choices"].each_pair do |value,text|
+    = radio_button "widget_abstracts[#{tag.to_sym}]", name.to_sym, value
+    = text
+
+- when 'select'
+  - if form_props["range"]
+    = select_tag "widget_abstracts[#{tag.to_sym}][#{name.to_sym}]", options_for_select((form_props["range"]["low"]..form_props["range"]["high"]).each{ |s| [s, s] },form_props["value"].to_i)
+
+- when 'object', 'part'
+  = select_tag "widget_abstracts[#{tag.to_sym}][#{name.to_sym}]", options_for_select(form_props["select"]["model"].constantize.find(:all, :select => (form_props["select"]["select"] || "*"), :conditions => [form_props["select"]["conditions"] || '']).map{ |s| [s.attributes[form_props["select"]["display"]], s.attributes[form_props["select"]["return"]]] },form_props["value"])
+
+- when 'book_picker'
+  .book-picker= text_field "widget_abstracts[#{tag.to_sym}]", name.to_sym, :value => form_props["value"], :class => "associated-articles-field-with-feeds"
+
+  %script{:type => "text/javascript"}
+    :plain
+      Event.addBehavior({
+        "INPUT.associated-articles-field-with-feeds" : AssociationPicker({
+          associated_items : "article",
+    = "fieldset_class_selector : '.book-picker',"
+    = "picker_popup_param : \"feed_ids\","
+    = "picker_popup_value : \"#{Feed.book_feeds.map(&:id).join(',')}\","
+    = "associations_href : \"/admin/picker/associated_articles\""
+    :plain
+        })
+      });
+
+- when 'blog_articles_picker'
+  .blog-article-picker= text_field "widget_abstracts[#{tag.to_sym}]", name.to_sym, :value => form_props["value"], :class => "associated-articles-field-with-feedtype"
+
+  %script{:type => "text/javascript"}
+    :plain
+      Event.addBehavior({
+        "INPUT.associated-articles-field-with-feedtype" : MultipleAssociationPicker({
+          associated_items : "article",
+    = "fieldset_class_selector : '.blog-article-picker',"
+    = "picker_popup_param : \"feed_ids\","
+    = "picker_popup_value : \"#{FeedType.find(11).feeds.dup.push(Feed.find_by_name("blog@CACM")).compact.map(&:id).join(',')}\","
+    = "associations_href : \"/admin/picker/associated_articles\""
+    :plain
+        })
+      });
+
+- when 'interview_articles_picker'
+  .interviews-article-picker= text_field "widget_abstracts[#{tag.to_sym}]", name.to_sym, :value => form_props["value"], :class => "associated-articles-field-with-feedtype"
+
+  %script{:type => "text/javascript"}
+    :plain
+      Event.addBehavior({
+        "INPUT.associated-articles-field-with-feedtype" : MultipleAssociationPicker({
+          associated_items : "article",
+    = "fieldset_class_selector : '.interviews-article-picker',"
+    = "picker_popup_param : \"section_id\","
+    = "picker_popup_value : \"#{Section.find_by_name("Interviews").id}\","
+    = "associations_href : \"/admin/picker/associated_articles\""
+    :plain
+        })
+      });
+
+- when 'article_picker'
+  = text_field "widget_abstracts[#{tag.to_sym}]", name.to_sym, :value => form_props["value"], :class => "associated-articles-field"
+
+- when 'asset_picker'
+  = text_field "widget_abstracts[#{tag.to_sym}]", name.to_sym, :value => form_props["value"], :class => "asset-manager-field"
+  - unless form_props["value"].blank?
+    - asset = Asset.find(form_props["value"]).public_filename rescue nil
+    - if asset
+      %img{ :src => asset, :id => "widget_abstracts_#{tag}_#{name}" + "_asset_preview", :class => "asset-manager-preview" }
+
+- else
+  = "That helper method `#{form_props["input"]}`, has not yet been defined!"

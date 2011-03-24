@@ -1,0 +1,13 @@
+%tr#feed-subjects
+  %th.label Default Related Subjects
+  %td.field
+    %table.LayoutTable
+      %tr
+        -@subjects.chunk(3).each do |subj|
+          %td
+            %ul.topics_list.Inputs
+              -subj.each do |s|
+                %li
+                  =check_box_tag "feed[subject_ids][]", s.id, @feed.subjects.include?(s), :id => "feed_subject_ids_#{s.id}"
+                  %label{ :for => "feed_subject_ids_#{s.id}" }= h(s.name)
+        =hidden_field_tag "feed[subject_ids][]", nil, :id => 'feed_subject_ids' # catch empty submissions

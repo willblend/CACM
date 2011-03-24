@@ -1,0 +1,20 @@
+#SideColumn
+  =render :partial => "/articles/article_tools"
+
+  <!-- googleoff:all -->
+
+  -# KAS 03/13/09 - check each attribute individual and pick a subject for each widget individually for some randomization
+  -# for additional randomization throw rand(2) at the end of the cache name so there are fragments to choose from
+  - if @article.news_opinion?
+    %r:cache{:name => "/widgets/related-news/by-article-subject/"+Digest::MD5.hexdigest(@article.subjects.map(&:name).sort.join)}
+      %r:widget{ :name => "related_news" } /
+  
+  - if @article.acm_resource?
+    %r:cache{:name => "/widgets/related-resources/by-article-subject/"+Digest::MD5.hexdigest(@article.subjects.map(&:name).sort.join)}
+      %r:widget{ :name => "related_resources" } /
+  
+  - if @article.digital_library?
+    %r:cache{:name => "/widgets/digital-library/by-article-subject/"+Digest::MD5.hexdigest(@article.subjects.map(&:name).sort.join)}
+      %r:widget{ :name => "digital_library" } /
+
+  <!-- googleon:all -->

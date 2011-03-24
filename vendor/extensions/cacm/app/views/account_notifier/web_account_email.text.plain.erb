@@ -1,0 +1,12 @@
+Thank you for signing up for your ACM Web Account!
+
+Please take a moment to verify your email address by clicking the link below. From there you can complete your signup.
+
+<%= "http://#{ActionMailer::Base.default_url_options[:host]}/accounts/verify?t=#{@token}" %>
+
+If clicking the link doesn't work, copy and paste the link into your browser's address bar.
+
+If you didn't initiate this request, please ignore it.
+
+Thank You,
+Communications of the ACM

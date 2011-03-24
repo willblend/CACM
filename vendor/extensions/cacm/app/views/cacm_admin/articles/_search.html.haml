@@ -1,0 +1,14 @@
+#search-box
+
+  // This is an ugly hack to finish off the functionality for the blogger role. named routes do not work nor does anything else besides just selectively
+  // explicitly targeting the routes based on the incoming url 
+  %form{ :action => (request.request_uri.match(/admin\/blog/) ? "blog"  : "articles"), :method => :get, :id => 'article_search_form', :class => "InlineForm" }
+    %fieldset
+      %legend Search Articles
+
+      .Field
+        %label{ :for => 'query', :class => 'Invisible' } Search
+        = text_field_tag :query, '', :class => 'TextInput ShowTitle', :title => 'Search Articles'
+
+      .FormAction
+        = submit_tag "Search"

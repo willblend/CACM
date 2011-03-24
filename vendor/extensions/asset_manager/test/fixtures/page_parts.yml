@@ -1,0 +1,12 @@
+one:
+  id: 1
+  filter_id:
+  name: body
+  page_id: 1
+  content: /system/assets/files/0000/0001/mypng.png
+two:
+  id: 2
+  filter_id:
+  name: body
+  page_id: 2
+  content: /system/assets/files/0000/0001/mypng.png

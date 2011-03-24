@@ -1,0 +1,63 @@
+- content_for :page_css do
+  :plain
+    #asset-info { margin-bottom: .5em; font-size: .92em; }
+    #asset-info TH { text-align: left; padding-bottom: .5em; vertical-align: top; }
+    #asset-info TD { padding-bottom: .5em; }
+    
+    #asset-metadata .Field { margin-bottom: 1em; }
+    #asset-metadata LABEL { display: block; }
+    #asset-metadata .TextAreaInput,
+    #asset-metadata .TextInput { width: 99%; }
+
+    #asset-expiration { width: 180px; }
+    #asset-expiration .TextInput { width: 99%; }
+    
+    #asset_credit { }
+    #asset_description { }
+
+%table#asset-info
+  %col{ :width => "100" }
+  %col
+
+  %tbody
+    %tr
+      %th File Name
+      %td= h(asset.filename)
+
+    %tr
+      %th File Size
+      %td= "#{number_to_human_size(asset.size)} (#{number_with_delimiter(asset.size)} bytes)"
+
+    %tr
+      %th Asset Info
+      %td
+        - if asset.image?
+          = "Image / #{asset.width} (w) x #{asset.height} (h)"
+        - else
+          (N/A)
+      
+    %tr
+      %th Uploaded
+      %td= "#{adjust_time(asset.created_at).to_s(:long)} by #{asset.uploaded_by && asset.uploaded_by.name}"
+
+    %tr
+      %th Modified
+      %td= "#{adjust_time(asset.updated_at).to_s(:long)} by #{asset.uploaded_by && asset.uploaded_by.name}"
+
+%fieldset#asset-metadata
+  .Field#photo-credit
+    %label{ :for => :asset_credit } Photo Credit
+    = f.text_field :credit, :class => "TextInput"
+
+  .Field#description
+    %label{ :for => :asset_description } Description
+    = f.text_area :description, :size => "25x3", :class => "TextAreaInput"
+
+  .Field#long-description
+    %label{:for => :asset_long_description } Transcript/Long Description
+    = f.text_area :long_description, :class => "TextAreaInput wysiwyg"
+
+  / commented out asset expiration
+  /  .Field#asset-expiration
+  /    %label{ :for => :asset_expires_on } Expiration Date
+  /    = f.text_field :expires_on, :value => (asset.expires_on.nil? ? '' : asset.expires_on.to_s(:mdy) ), :class => "TextInput DatePicker"

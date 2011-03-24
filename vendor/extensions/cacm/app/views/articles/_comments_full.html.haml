@@ -1,0 +1,21 @@
+.TopCommentPagination= will_paginate @comments, :next_label => "<span class='page-next'></span>", :previous_label => "<span class='page-prev'></span>"
+.ClearFix <!-- do not remove -->
+
+- if @comments.any?
+  #ArticleComments
+    .header
+      %h3 User Comments
+      %span= "&nbsp;(#{@article.approved_comments.size})"
+
+    #article-comments
+      - @comments.each do |comment|
+        .item
+          = simple_format(h(comment.comment))
+          .metadata= "&nbsp;&nbsp;&nbsp;&mdash; #{comment.owner}, #{comment.created_at.to_s(:date)}"
+
+- else
+  #ArticleComments
+    %span.CommentHeader Post a comment...
+
+.BottomCommentPagination= will_paginate @comments, :next_label => "<span class='page-next'></span>", :previous_label => "<span class='page-prev'></span>"
+.ClearFix <!-- do not remove -->

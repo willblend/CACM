@@ -1,0 +1,14 @@
+- @featured_articles = Article.featured
+#featured_articles.dashboard_module
+  %h2 Featured Articles
+  - unless @featured_articles.blank?
+    %ul
+      - @featured_articles.each do |article|
+        %li
+          %span= link_to article.title, article.url
+          - updater = article.updated_by || article.created_by
+          - updater_name = updater.name if updater
+          - updater_name = "System" unless updater
+          = "Updated by #{updater_name} #{time_ago_in_words article.updated_at.to_time} ago."
+  - else
+    %p There are currently no Featured Articles.

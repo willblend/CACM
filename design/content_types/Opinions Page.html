@@ -1,0 +1,65 @@
+<div id="BodyWrapper" class="OpinionPage">
+
+	<div id="MainColumn">
+
+		<div id="MainContentArea">
+
+			<!-- googleoff:index -->
+			<div id="PageHdr">
+				<h1 id="hdr_<r:slug />"><span><r:title /></span></h1>
+				<div class="feed">
+					<a href="/opinion.rss" title="Subscribe to an RSS feed of the articles on this page"><img src="/images/icon.RSS.44.gif" width="44" height="16" alt="RSS" alt="RSS icon" /></a>
+				</div>
+			</div>
+
+			<div class="Layout ContentHdr">
+				
+				<div class="column-1">
+					<r:snippet name="secondary_nav_childless" />
+				</div>
+
+				<div class="column-2">
+					<r:snippet name="featured_summary" />
+				</div>
+
+			</div>
+
+			<r:if_current_url url="/opinion"><h2 class="SectionHeader" id="hdr_recent-opinion"><span>Recent Opinion</span></h2></r:if_current_url>
+			<r:if_current_url url="/opinion/articles"><h2 class="SectionHeader" id="hdr_recent-articles"><span>Recent Articles</span></h2></r:if_current_url>
+			<r:if_current_url url="/opinion/interviews"><h2 class="SectionHeader" id="hdr_recent-interviews"><span>Recent Interviews</span></h2></r:if_current_url>
+
+			<div class="Layout Col-435_300">
+				<div class="column-1">
+					<r:snippet name="article_summaries" />
+				</div>
+
+				<div class="column-2">
+					<r:widgets part="widget_column_1" />
+					<div class="ad">
+					  <r:content part="Second Column Ad" />
+					</div>
+				</div>
+			</div>
+			<!-- googleon:all -->
+
+		</div>
+		<!-- END: MainContentArea -->
+
+	</div>
+	<!-- END: MainColumn -->
+
+	<div id="SideColumn">
+
+		<div class="ad">
+		  <r:content part="Right Column Ad Top" />
+		</div>
+
+		<div class="ad">
+		  <r:content part="Right Column Ad Bottom" />
+		</div>
+
+	</div>
+	<!-- END: SideColumn -->
+
+</div>
+<!-- END: BodyWrapper -->

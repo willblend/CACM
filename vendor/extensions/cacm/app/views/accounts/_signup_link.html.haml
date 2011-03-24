@@ -1,0 +1,6 @@
+%p.Footer 
+  %strong BEFORE YOU CONTINUE
+  = "-"
+  ACM verifies that you are the owner of the email address you've provided here by sending you a verification message. The message will contain a link to a URL. You must execute the link within the message in order to complete the process of creating your account. You may click on the link embedded in the message (if your email system permits), or paste the link into your browser.
+  
+  %strong= link_to "Create My Web Account Now", create_account_path(:email => params[:email], :member => params[:member])

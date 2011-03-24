@@ -1,0 +1,12 @@
+%h1 Asset Manager: Upload New Asset
+
+- form_for :asset, @asset, :url => assets_path(:format => params[:format], :type => params[:type]), :html => { :multipart => true, :id => :new_asset_form } do |f|
+
+  %div.Field
+    %label{ :for => :asset_file } Select a file to upload:
+    = f.file_field :file
+
+  %div.FormAction
+    = submit_tag :Upload
+    or
+    = link_to :Cancel, recent_assets_path(:format => params[:format], :type => params[:type])

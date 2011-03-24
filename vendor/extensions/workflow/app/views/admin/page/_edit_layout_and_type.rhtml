@@ -1,0 +1,9 @@
+<%= link_to_function "Advanced &raquo;", "$('layout_and_type').toggle();" %>
+<div class="row" style="display:none;" id="layout_and_type">
+  <p><label for="page_layout_id">Layout</label>
+    <%= select "page", "layout_id", [['<inherit>', '']] + Layout.find(:all).map { |s| [s.name, s.id] } %></p>
+  <p><label for="page_class_name">Page Type</label>
+    <%= select "page", "class_name", [['<normal>', 'Page']] + Page.descendants.map { |p| [p.display_name, p.name] }.sort_by { |p| p.first } %></p>
+  <%= render_region :layout_row %>
+</div>
+<span class="clear">&nbsp;</span>

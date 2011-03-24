@@ -1,0 +1,9 @@
+#quicktime-movie
+  %object{ :classid => "clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B", :codebase => "http://www.apple.com/qtactivex/qtplugin.cab" }
+    %param{ :name => :scale, :value => "tofit" }
+    %param{ :name => :src, :value => correct_crawl_url(@supplement.crawl_url) }
+    %param{ :name => :controller, :value => :true }
+    %param{ :name => :autoplay, :value => :true }
+    %param{ :name => :width, :value => 555 }
+    %param{ :name => :height, :value => 432 }
+    %embed{ :src => correct_crawl_url(@supplement.crawl_url), :qtsrc => correct_crawl_url(@supplement.crawl_url), :pluginspage => "http://www.apple.com/quicktime/download", :controller => :true, :autoplay => :true, :width => 555, :height => 432, :scale => :tofit }

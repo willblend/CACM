@@ -1,0 +1,55 @@
+- include_javascript 'livepipe'
+- include_javascript 'window'
+
+- content_for :page_css do
+  :plain
+    .AssetHeader { float: left; }
+    .InlineAssetNav { float: right; margin-top: .25em; }
+
+    #asset_edit_form { clear: both; }
+    #asset_edit_form .FieldValue { font-size: .85em; color: #000; }
+    #asset_edit_form .form-area .title { margin-bottom: 1.5em; }
+
+%h1.AssetHeader Edit Asset Metadata
+
+%p.InlineAssetNav
+  = link_to "&laquo; Back to asset list", assets_path(:format => params[:format], :type => params[:type])
+  &nbsp;|&nbsp;
+  %span#replace-asset-link= link_to_function "Replace Asset", "$('replace_asset_form').show();", :id => :replace_asset_button
+  &nbsp;|&nbsp;
+  = link_to "Delete Asset", asset_path(:id => @asset.id, :format => params[:format], :type => params[:type]), :method => :delete, :confirm => "Are you sure you want to delete #{@asset.filename}?"
+
+- form_for :asset, @asset, :url => asset_path(:id => @asset.id, :format => params[:format], :type => params[:type]), :html => {:method => :put, :multipart => true, :id => 'replace_asset_form', :style => "display: none" } do |f|
+  %h2 Replace Asset File
+  %span.close#close-asset-replace-form Close [X]
+  .ClearFix <!-- do not remove -->
+  %p.HelpText The new file <strong>must</strong> be the same type as the original file (JPG, PNG, SWF, etc).
+  %p
+    %label{ :for => :asset_file } New file:
+    = f.file_field :file
+  = submit_tag "Upload &amp; Replace", :id => "replace-asset-submit"
+
+%script{ :type => "text/javascript" }
+  :plain
+    document.observe('dom:loaded', function(){
+      $('replace-asset-link').setStyle({ display : 'inline' });
+      $('close-asset-replace-form').observe('click', function(){ $('replace_asset_form').hide(); });
+    });
+
+- form_for :asset, @asset, :url => asset_path(:id => @asset.id, :format => params[:format], :type => params[:type]), :html => { :method => :put, :name => 'asset_edit_form', :id => 'asset_edit_form' } do |f|
+  .form-area
+    %p.title
+      %label{ :for => :asset_title } Title
+      = f.text_field :title, :class => :textbox
+
+    %table.LayoutTable
+      %tr
+        %td.Left{ :width => '200' }
+          = render :partial => "asset_info", :locals => { :f => f, :asset => @asset }
+        %td.Right
+          = render :partial => "asset_metadata", :locals => { :f => f, :asset => @asset }
+
+  %p.buttons
+    = submit_tag "Save Metadata", :class => :button
+    or
+    = link_to 'Cancel', recent_assets_path(:type => params[:type], :format => params[:format])

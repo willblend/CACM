@@ -1,0 +1,64 @@
+%h1 Import Issue
+
+%script{ :type => "text/javascript" }
+  :plain
+    
+    IssueSubmission = Class.create({
+      
+      initialize : function(e){
+        this.element = $(e);
+        this.element.observe("submit", this.submitHandler.bindAsEventListener(this));
+        this.response = $("response");
+      },
+      
+      submitHandler : function(e){
+        e.stop();
+        this.response.update("Issue is ingesting, please be patient...");
+        $("submit_ingest").disabled = true;
+        new Ajax.Request(this.element.action, {
+          parameters : this.element.serialize(),
+          method : "post",
+          onSuccess : this.onSuccessHandler.bind(this),
+          onFailure : this.onFailureHandler.bind(this)
+        });
+      },
+      
+      onSuccessHandler : function(e) {
+        responseData = e.transport.responseText.evalJSON();
+        $("submit_ingest").disabled = false;
+        if (responseData.duplicate == true) {
+          this.response.update(responseData.text);
+          $("confirm_refetch").value = "true";
+          $("submit_ingest").value = "Confirm Reingestion";
+          $("cancel_ingest").href = "/admin/issues/fetch";
+        } else {
+          this.response.update(responseData.text);
+          $("confirm_refetch").value = "";
+          $("issue_id").clear();
+          $("cancel_ingest").href = "/admin/issues";
+        }
+      },
+      
+      onFailureHandler : function(e) {
+        this.response.update("The request failed");
+        $("issue_id").clear();
+      }
+      
+    });
+    
+    
+    document.observe("dom:loaded", function(){
+      new IssueSubmission("issue_ingestion");
+    });
+
+%form{ :id => "issue_ingestion", :name => "issue_ingestion", :action => url_for({ :controller => :issues, :action => :new }), :method => "post" }
+
+  .form-area
+
+    %label{ :for => "issue_id" } Issue ID
+    %input{ :type => "text", :id => "issue_id", :name => "issue_id" }
+    %input{ :type => "hidden", :id => "confirm_refetch", :name => "confirm_refetch", :value => "" }
+    %p{ :id => "response" }
+
+    = submit_tag 'Ingest Issue', :id => 'submit_ingest'
+    = link_to "Cancel", admin_issues_path, :id => "cancel_ingest"

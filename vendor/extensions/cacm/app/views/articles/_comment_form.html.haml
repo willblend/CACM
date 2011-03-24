@@ -1,0 +1,28 @@
+<!-- googleoff:all -->
+
+#comment-form-wrapper
+
+  - if @comments and not @comments.empty?
+    %span.CommentHeader Post a comment...
+      
+  .item#comment_box
+    %form{ :method => :post, :action => url_for(:action => :create, :controller => "comments"), :id => "comment-form"}
+      %fieldset#comment
+        .LeftColumn
+          %span.label
+            %strong Name:
+            = current_member_commenting(current_member)
+          %p.privacy 
+            Signed and anonymous comments submitted to this site are moderated and will appear if they are relevant to the topic and not abusive. Your comment will appear with your username if you are signed into the site, and will be anonymous if you are not signed in.
+            %a{:href => '/help#Q22'} View our policy on comments
+        .RightColumn
+          %label{ :for => 'comment-textarea' } 
+            %strong Comments:
+          = text_area_tag :comment, flash[:comment_text], :cols => 10, :rows => 6, :id => "comment-textarea"
+          - unless current_member.indv?
+            = recaptcha_tags
+        .ClearFix <!-- do not remove -->
+        .form-action
+          %input{:type => 'image', :src => '/images/btn.submit-for-review.gif', :alt => 'Submit', :name => '', :id => "submit-for-review"}
+
+<!-- googleon:all -->

@@ -1,0 +1,23 @@
+<div class="item" id="current-issue">
+  <r:current_issue properties="width:250px;height:100px;">
+    <h2>Current Issue <span class="separator">|</span> <span><r:pub_date /></span></h2>
+  	<div class="Layout">
+  	  <r:dynamic_tag tag="a" href="r:link">
+  	    <r:dynamic_tag tag="img" src="r:cover" width="132" height="171" class="cover" alt="r:title" />
+  	  </r:dynamic_tag>
+  		<div class="column">
+  			<ul class="contents">
+          <r:each>
+            <li><r:dynamic_tag tag="a" href="r:link"><r:title /></r:dynamic_tag></li>
+          </r:each>
+  			</ul>
+  			<ul class="more">
+  				<li><r:dynamic_tag tag="a" href="r:toc_link">Table of Contents</r:dynamic_tag></li>
+   				<li><r:dynamic_tag tag="a" href="r:digital_library" target="_blank">Digital Library</r:dynamic_tag></li>
+  				<li><r:dynamic_tag tag="a" href="r:digital_edition" target="_blank">Digital Edition</r:dynamic_tag></li>
+  				<li><a href="/magazines">Past Issues</a></li>
+  			</ul>
+  		</div>
+  	</div>
+  </r:current_issue>
+</div>

@@ -1,0 +1,11 @@
+<%= shared_path %>/log/*.log {
+  daily
+  rotate 30
+  compress
+  delaycompress
+  missingok
+  sharedscripts
+  postrotate
+    touch <%= current_path %>/tmp/restart.txt
+  endscript
+}

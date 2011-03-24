@@ -1,0 +1,65 @@
+.window
+  .window_header 
+    .window_title &nbsp;
+  .window_contents
+    .window_inner
+    
+      - unless @account # @accounts was empty
+    
+        %h2 A Member Account With Your Email Address Was Not Found
+        %p= "<strong>#{params[:email]}</strong> is not associated with an ACM or SIG membership."
+        %ul#acm-member-not-found
+          %li
+            If you cannot remember your email address,
+            %strong 
+              email us at
+              %a{ :href => "mailto:cacm-admin@cacm.acm.org" } cacm-admin@cacm.acm.org
+            to reset the email address associated with your ACM account.
+          %li
+            Or you may continue and
+            %strong= "create a new ACM web account for #{params[:email]},"
+            but it will not be associated with any ACM or SIG membership.
+      
+        %form{ :method => :post, :action => create_account_path }
+          %input{ :type => "hidden", :name => "email", :value => params[:email] }
+          %input{ :type => "submit", :class => "BigInput", :value => "Create a new ACM Web Account with this email address" }
+
+      - else # we've got some accounts!
+        
+        - if @account.length < 2
+        
+          %h2 An Existing ACM Web Account With Your Email Was Found
+          %p
+            %strong= params[:email]
+            is associated with the ACM Web Account
+            %strong= @account.first.username
+            
+          %p If this is your account, click the Login button below. Otherwise, try creating a Web Account with a different email address.
+            
+          %form{ :action => "/login", :method => :get }
+            %fieldset
+              %input{ :type => "hidden", :name => "username", :value => @account.first.username }
+              %input{ :type => "hidden", :name => "direct_login", :value => "true" }
+              %input{ :type => "submit", :class => "BigInput", :value => "Login as #{@account.first.username}" }
+        
+        - else # multiple accounts!
+        
+          %h2 Existing ACM Web Accounts With Your Email Address Were Found
+          %p
+            %strong= params[:email]
+            is associated with all of the following ACM Web Accounts:
+        
+          %form{ :action => "/login", :method => :post, :id => "multiple-usernames-form" }
+            %fieldset
+              %input{ :type => "hidden", :name => "direct_login", :value => "true" }
+              - @account.each do |account|
+                %p.Field
+                  = radio_button_tag :username, account.username
+                  %label{ :for => "username_#{account.username}" }= account.username
+            %p If you recognize any of the usernames above, select it and click the Login button below. Otherwise, try creating a Web Account with a different email address.
+            .FormAction
+              %input{ :type => "submit", :value => "Login as User" } 
+              
+      %span.or OR
+      %p
+        %a{ :href => new_account_path, :onclick => "$('ajax-modal').remove();return false;" } Try again with another email address

@@ -1,0 +1,72 @@
+development: &development
+  adapter: mysql
+  database: cacm_development
+  username: root
+  password: d3p77r
+  host: localhost
+  socket: /var/run/mysqld/mysqld.sock
+  encoding: utf8
+  
+development_cached:
+  <<: *development
+
+test: &test
+  adapter: mysql
+  database: cacm_test
+  username: root
+  password:
+  host: localhost
+  encoding: utf8
+  
+production: &production
+  adapter: mysql
+  database: cacm_pro
+  username: deploy
+  password: password
+  host: localhost
+  socket: /var/lib/mysql/mysql.sock
+  encoding: utf8
+  
+staging:
+  database: cacm_development
+  socket: /var/run/mysqld/mysqld.sock
+  username: root
+  password: d3p77r
+  <<: *production
+  
+sandbox:
+  database: cacm_sandbox
+  <<: *production
+  
+# cacm-test.digitalpulp.com
+cache:
+  <<: *production
+
+
+oracle: &oracle
+  adapter: oracle_enhanced
+  database: acm25-10.acm.org/orcl
+  username: cacm_interface
+  password: wind0w
+  encoding: utf8
+  
+oracle_test:
+  <<: *test
+
+oracle_development:
+  <<: *oracle
+
+oracle_development_cached:
+  <<: *oracle
+  
+oracle_staging:
+  <<: *oracle
+  
+oracle_production:
+  <<: *oracle
+  
+oracle_sandbox:
+  <<: *oracle
+  
+oracle_cache:
+  <<: *oracle

@@ -1,0 +1,28 @@
+- content_for :page_css do
+  :plain
+    .Notes { font-size: 83%; font-weight: normal; padding-left: 31px; margin: 0; }
+
+%h1 Widgets
+
+%p#new-item-link= link_to 'Create a New Widget', new_admin_widget_path
+
+%p Widgets contain logic but have other portions editable through a WYSIWYG
+
+%table#snippets.index{:cellspacing=>"0", :border=>"0", :cellpadding=>"0"}
+  %thead
+    %tr
+      %th.snippet Widget
+      %th.clone Clone
+      %th.remove Remove
+  %tbody
+    - @widgets.each do |widget|
+      %tr.node.level-1
+        %td.snippet
+          = image('snippet', :alt => 'snippet-icon')
+          %span= link_to widget.name.titleize, edit_admin_widget_path(widget.id)
+          - unless widget.notes.blank?
+            %p.Notes= widget.notes
+        %td.clone
+          = link_to "Clone", new_admin_widget_path(:clone => widget.id)
+        %td.remove
+          = link_to image("remove", :alt => "Remove Widget"), admin_widget_path(widget), :method => :delete, :confirm => "Are you sure you want to delete this Widget?"

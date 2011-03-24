@@ -1,0 +1,19 @@
+<!-- googleoff:all -->
+%r:add_tokens
+  - cache :fragment => "reviews_nav.pdf=#{current_member.can_access?(@article, :pdf)}" do
+
+    - if current_member.can_access?(@article)
+
+      - @reviews = @article.source.reviews if @article.source and @article.source.respond_to? :reviews
+  
+      - if @reviews and @reviews.any?
+
+        .SecondaryNav#article-reviews
+          %h3
+            %span Reviews
+          %ul
+            - @reviews.each do |review|
+              - debugger
+              %li= link_to review.review_authors, review.url, :target => "_blank"
+        
+<!-- googleon:all -->

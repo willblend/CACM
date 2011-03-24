@@ -1,0 +1,36 @@
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body>
+	
+<div style="padding: 1em;">
+	
+	<a href="http://<%= ActionMailer::Base.default_url_options[:host] %>">
+		<img src="http://<%= ActionMailer::Base.default_url_options[:host] %>/images/logo.CACM.gif" width="584" height="60" alt="Communications of the ACM" style="border:0; margin-bottom:1em;" />
+	</a>
+
+	<hr />
+
+	<div style="padding: 1em 10px 20px;">
+		<h3 style="margin: 0 0 1em;">Your ACM Web Account has been verified!</h3>
+		<p style="margin: 0 0 1em;">Thanks for taking the time to finish registering your account. Your login information is below:</p>
+		<div id="internal-nav" style="padding: .5em 20px;">
+			<%= "Username: #{@username}" %><br />
+			<%= "Password: #{@password}" %>
+		</div>
+		<p style="margin: 0 0 1em;">If you lose your password and delete this email you will need to reset your password to gain access to your account.</p>
+		<p style="margin: 0 0 1em;">Please visit us again at: 
+			<a href="http://cacm.acm.org/">http://cacm.acm.org/</a>
+		</p
+		<p style="margin: 0 0 1em;">Thank You,
+		<br />
+		Communications of the ACM</p>
+	</div>
+
+</div>
+
+</body>
+</html>

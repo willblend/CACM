@@ -1,0 +1,17 @@
+- content_for :page_css do
+  :plain
+    .Notes { font-size: 75%; font-weight: normal; margin: 3px 0; color: #666; }
+    .Link { font-weight: bold; }
+    #widget-picker-wrapper LI { margin-bottom: .5em !important; }
+
+#widget-picker-wrapper
+  %h1 Select A Widget
+  %ul
+    - @widgets.sort_by(&:name).each do |widget|
+      %li
+        - if widget.name.include? "featured_article"
+          %a{ :class => "Link", :onclick => "window.top.opener.CurrentPicker.sendAssociationPopupHandler({ 'id' : #{widget.id}, 'title' : '#{escape_javascript(widget.name.titleize)}', 'inner_content' : '<input type=\\\'text\\\' value=\\\'\\\' class=\\\'associated-articles-field associated-value\\\' />' }); window.top.close();" }= widget.name.titleize
+        - else
+          %a{ :class => "Link", :onclick => "window.top.opener.CurrentPicker.sendAssociationPopupHandler({ 'id' : #{widget.id}, 'title' : '#{escape_javascript(widget.name.titleize)}' }); window.top.close();" }= widget.name.titleize
+        - if widget.notes && !widget.notes.empty?
+          %p.Notes= widget.notes

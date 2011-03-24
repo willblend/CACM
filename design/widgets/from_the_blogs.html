@@ -1,0 +1,20 @@
+<div class="ItemsBlock" id="featured-in-blogs">
+	<h3><span>Featured: From the Blogs</span></h3>
+	<r:from_the_blogs properties="width: 250px; height: 150px;">
+		<r:each>
+			<div class="item">
+				<h4><r:dynamic_tag tag="a" href="r:url"><r:title /></r:dynamic_tag></h4>
+				<r:short_description/>
+				<div class="metadata">
+					<em><r:author /></em>
+					<span class="separator">|</span>
+					<r:date />
+					<r:if_comments>
+  					<span class="separator">|</span>
+  					<r:comments />
+					</r:if_comments>
+				</div>
+			</div>
+		</r:each>
+	</r:from_the_blogs>
+</div>

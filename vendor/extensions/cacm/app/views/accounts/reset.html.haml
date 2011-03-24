@@ -1,0 +1,40 @@
+#BodyWrapper.UtilityPage.TwoColumnUtility
+  #MainColumn
+    #MainContentArea
+      #PageHdr
+        %h1#hdr_reset-your-password
+          %span reset your password
+
+        %p.Intro
+          %strong You may now reset your password.
+          
+        - form_tag update_account_path do
+          = hidden_field_tag "username", @account.username
+          = hidden_field_tag "answer", params[:answer]
+          %fieldset#reset-password
+            %table.FormLayout#reset-password-table
+              %col{ :width => "50%" }
+              %col{ :width => "50%" }
+              %tbody
+              
+                %tr
+                  %td
+                    %label{ :for => "password" }
+                      %em{ :title => "This field is required" } *
+                      New Password
+                  %td
+                    %label{ :for => "password_confirm" }
+                      %em{ :title => "This field is required" } *
+                      Confirm Password
+                %tr
+                  %td= password_field_tag "password"
+                  %td= password_field_tag "password_confirm"
+                  
+                %tr
+                  %td{ :colspan => 2 }
+                    %span.help-text A password must be between 6 and 26 characters in length, cannot contain spaces, and must not be the same as your old password.
+                
+            .FormAction
+              %input{ :type => :image, :src => '/images/btn.continue.gif' }
+  #Banner.AccountAds
+    %r:snippet{ :name => "account_right_column_ads" }

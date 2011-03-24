@@ -1,0 +1,57 @@
+-content_for :page_css do
+  :plain
+    #feeds_filter_form { margin: 16px 0 0; }
+    * HTML #feeds_filter_form SELECT { margin: 0 0 5px; }
+    *:first-child+html #feeds_filter_form SELECT { margin: 0 0 5px; }
+    #feed_id { font-size: 14px; }
+    #date-filter-fieldset { display: block; margin-bottom: 6px; }
+    #date-filter-fieldset #clear-dates-button { float: left; margin: 3px 10px 0 0; }
+    #date-filter-fieldset .Field { float: left; margin-right: 10px; }
+    #date-filter-fieldset .Field SELECT { font-size: 14px; }
+    * HTML #date-filter-fieldset .Field SELECT { margin-top: 3px; }
+    *:first-child+html #date-filter-fieldset .Field SELECT { margin-top: 3px; }
+    #date-filter-fieldset .Field SMALL { display: block; padding-top: 4px; color: #AAA; }
+    #date-filter-fieldset LABEL,
+    #feeds_filter_form LABEL { display: block; float: left; text-align: right; width: 105px; padding: .1em 6px 0 0; height: 1.4em; }
+    #clear-filter-button,
+    #filter-articles-button { float: left; margin: 0 10px 15px; cursor: pointer; }
+    #clear-filter-button { margin-top: 3px; font-size: .8em; }
+    #filter-articles-button { font-size: 1.25em; }
+    
+-form_tag admin_articles_path, :method => 'get', :id => 'feeds_filter_form', :class => 'InlineForm' do
+  %fieldset#feeds-filter-fieldset
+    %legend Filter by Feed:
+    
+    .Field
+      %label{ :for => 'feed_id' } Filter by Feed:
+      %select#feed_id.ShowTitle{ :name => 'feed_id', :title => 'Select a feed to filter by' }
+        %option
+        = options_for_select(@feed_options, (params[:feed_id].to_i || ""))
+  
+  %fieldset#date-filter-fieldset
+    %legend Filter by Date:
+    
+    .Field
+      %label{ :for => :month_filter} Filter by Date:
+      %select{ :id => :month_filter, :name => :month_filter }
+        %option{ :value => "" } Month
+        %option{ :value => "" } &nbsp;
+        = month_options_for_select(params[:month_filter])
+    
+    .Field
+      %label{ :for => :year_filter, :class => :Invisible } Year:
+      %select{ :id => :year_filter, :name => :year_filter }
+        %option{ :value => "" } Year
+        %option{ :value => "" } &nbsp;
+        - @year_range.reverse.each do |year|
+          - if params[:year_filter] && params[:year_filter].to_i.eql?(year)
+            %option{ :selected => :selected, :value => year }= year
+          - else
+            %option{ :value => year }= year
+  
+  .FormAction#filter-form-action
+    = hidden_field_tag :filter, params[:filter]
+    %button{ :id => "clear-filter-button", :onclick => "$('feed_id').selectedIndex = 0; $('month_filter').selectedIndex = 0; $('year_filter').selectedIndex = 0;  return false;" } Reset Filters
+    = submit_tag "Filter Articles", :id => "filter-articles-button"
+    
+  .ClearFix <!-- do not remove -->

@@ -1,0 +1,62 @@
+- @barrier_form_rendered = true
+<!-- googleoff:all -->
+.ColumnWrapper
+
+  - unless request.request_uri.include?("alerts") or @article.is_a?(CacmArticle) or !controller.action_name.eql?("comments")
+    
+    %h3#sign-in-to-comment
+      %span sign in to comment
+  
+  .column-1
+    - if @article.is_a?(CacmArticle)
+      %h2#sign-in
+        %span sign in
+    - form_for(current_member, :url => member_login_url, :html => {:method => :post, :class => 'session_login_form', :id => 'session_login_form' }) do |f|
+      %fieldset#sign-in-form
+        - if @article.is_a?(CacmArticle)
+          %p Sign in using your ACM Web Account username and password to access premium content if you are an ACM member, <em>Communications</em> subscriber or Digital Library subscriber.
+        %table.FormTable#sign-in-table
+          %col{ :width => "25%" }
+          %col{ :width => "75%" }
+          %tbody
+            %tr
+              %th
+                %label{ :for => 'current_member_user' } Username
+              %td= text_field_tag 'current_member[user]', (params[:current_member][:user] if params[:current_member])||params[:username], :id => 'current_member_user', :disabled => params[:direct_login].nil? ? false : "disabled"
+            %tr
+              %th
+                %label{:for => 'current_member_passwd'}Password
+              %td= password_field_tag 'current_member[passwd]', '', :id => 'current_member_passwd'
+    
+        .form-action
+          = link_to 'Forgot Password?', forgot_password_path
+          %input{:type => 'image', :src => '/images/btn.sign-in.gif', :alt => 'Sign In', :name => 'submit'}
+
+  .column-2
+    
+    - if @article.is_a?(CacmArticle)
+    
+      %h2#get-access
+        %span get access
+      .access
+        .option.option-1
+          %h3= link_to 'Create a Web Account', "/accounts/new"
+          %p If you are already an ACM member, <cite>Communications</cite> subscriber, or Digital Library subscriber, please set up a web account to access premium content on this site.
+
+        .option.option-2
+          %h3= link_to 'Join the ACM', "http://campus.acm.org/public/quickjoin/interim.cfm"
+          %p Become a member to view this article and take full advantage of ACM's outstanding computing information resources, networking opportunities, and other benefits.
+
+        .option.option-3
+          %h3= link_to 'Subscribe to Communications of the ACM', "/subscribe", :target => "_blank"
+          %p Get full access to 50+ years of CACM content and receive the print version of the magazine monthly.
+          
+    - else
+    
+      %h4.create-web-account= link_to "Create A Web Account", new_account_path
+      
+      %p If you are an ACM member, <em>Communications</em> subscriber, Digital Library subscriber, or use your institution's subscription, please set up a web account to access comments, premium content and additional site features.
+      %p If you are a SIG member or member of the general public, you may set up a web account to comment on free articles and sign up for email alerts.
+
+  .ClearFix <!-- do not remove -->
+<!-- googleon:all -->

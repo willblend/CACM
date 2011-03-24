@@ -1,0 +1,46 @@
+%p
+  Make your selections below and click the "Update My Alerts" button to set your new preferences.  You may unsubscribe from all
+  %em Communications of the ACM
+  emails by unchecking all selections.
+
+  #email-alerts-wrapper.Layout.Colx2
+    -form_for :subscription, @subscription, update_subscription_path, :html => { :method => :put, :id => 'EmailAlertsForm' } do |f|
+      %fieldset
+      
+      %p
+        %strong All alerts will be sent to this email address:
+      %p
+        = f.text_field :email
+
+      %div.column-1
+        %h3 Subject Alerts
+        %ul
+          - @subjects.each do |s|
+            %li
+              =check_box_tag "subscription[subject_ids][]", s.id, @subscription.subjects.include?(s), :id => "subscription_subject_ids_#{s.id}"
+              %label{ :for => "subscription_subject_ids_#{s.id}" }= h(s.name).titleize + " Alerts"
+
+      %div.column-2
+        %h3 
+          %em Communications
+          Alert
+        %ul
+          %li
+            = f.check_box :toc
+            %label{ :for => 'subscription_toc' } Table of Contents E-Alert
+        %h3 Alerts By Resource Type
+        %ul
+          - @sections.each do |s|
+            %li
+              =check_box_tag "subscription[section_ids][]", s.id, @subscription.sections.include?(s), :id => "subscription_section_ids_#{s.id}"
+              -if s.name == 'Blog CACM'
+                %label{ :for => "subscription_section_ids_#{s.id}" }= "blog@CACM"
+              -else
+                %label{ :for => "subscription_section_ids_#{s.id}" }= h(s.name).titleize + " Alerts"
+
+        -#catch empty submissions
+        =hidden_field_tag "subscription[subject_ids][]", 0, :id => 'subscription_subject_ids'
+        =hidden_field_tag "subscription[section_ids][]", 0, :id => 'subscription_section_ids'
+
+      %div.FormAction
+        %input{:type => "image", :src => "/images/btn.update-my-alerts.gif"}

@@ -1,0 +1,59 @@
+<div id="BodyWrapper" class="SubjectPage">
+
+	<div id="MainColumn">
+
+		<div id="MainContentArea">
+
+			<!-- googleoff:all -->
+			<div id="PageHdr">
+				<h1 id="hdr_<r:slug />"><span><r:title /></span></h1>
+
+				<div class="feed">
+					<a href="<r:subject_rss_url />" title="Subscribe to an RSS feed of the articles on this page"><img src="/images/icon.RSS.44.gif" width="44" height="16" alt="RSS" alt="RSS icon" /></a>
+				</div>
+
+			</div>
+
+			<h2 id="hdr_research-etc"><span>Research, Practice, News &amp; Opinions</span></h2>
+
+			<div class="Layout Col-435_300">
+
+        <r:cache fragment="article_summaries">
+  				<div class="column-1">
+  					<r:snippet name="article_summaries" />
+  				</div>
+        </r:cache>
+
+        <r:cache slug='browse-by-subject/widget-column'>
+  				<div class="column-2">
+  					<r:widgets part="widget_slot_1" />
+						<div class="ad">
+						  <r:content part="Second Column Ad" />
+						</div>
+  				</div>
+        </r:cache>
+
+			</div>
+			<!-- googleon:all -->
+
+		</div>
+		<!-- END: MainContentArea -->
+
+	</div>
+	<!-- END: MainColumn -->
+
+	<div id="SideColumn">
+
+		<div class="ad">
+		  <r:content part="Right Column Ad Top" />
+		</div>
+
+		<div class="ad">
+		  <r:content part="Right Column Ad Bottom" />
+		</div>
+
+	</div>
+	<!-- END: SideColumn -->
+
+</div>
+<!-- END: BodyWrapper -->

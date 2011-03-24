@@ -1,0 +1,49 @@
+<!-- googleoff:all -->
+#BodyWrapper.ArticlePage
+  #MainColumn{ :class => @article.is_a?(CacmArticle) ? "CACMArticleWrapper" : "Normal" }
+    #MainContentArea
+      #Breadcrumbs
+        %r:breadcrumbs_with_rails{ :separator => " &#187; "} /
+      %div.Layout
+        %div.column-1
+          = render :partial => '/articles/dl_navigation'
+          = render :partial => '/articles/supplemental_nav' if @article.respond_to? :source and not @article.source.nil?
+          = render :partial => '/articles/reviews_nav' if @article.respond_to? :source and not @article.source.nil?
+          
+        %div.column-2#article-wrapper
+          %div.Article
+            .kicker= publication_source_name(@article)
+
+            %h1= @article.is_dl_article? ? @article.full_title : h(@article.title)
+
+            - if @article.is_dl_article?
+              %p.lead= @article.leadin
+
+            - unless @article.author.blank?
+              %p.byline= h(@article.author)
+
+            %p.metadata
+              - if @article.is_dl_article?
+                = @article.source.publication.title 
+                %br/
+                - if @article.respond_to? :issue
+                  = @article.vol_issue_page
+                  %br/
+                = @article.uuid
+              - else
+                = @article.date.to_s :date
+
+            %div#ArticleContents.Supplements
+              
+              %div{ :class => "download-pdf SupplementalDownload" }
+                
+                -# The gz/pdf links are truly downloads, but external/htm 
+                -# supplements are going to open up in the browser, so let's
+                -# make it clear what's about to happen...
+                
+                -# Possible download/linking types: gz, pdf, htm, html
+                
+                %h3= link_to "Download/View PDF", @pdf
+                %h4= "#{number_to_human_size(@article.source.full_texts.pdf.filesize)}. Start downloading this full text PDF file by clicking the link above."
+
+  = render :partial => "/articles/side_column"

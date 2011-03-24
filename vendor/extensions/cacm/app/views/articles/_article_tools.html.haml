@@ -1,0 +1,31 @@
+<!-- googleoff:all -->
+%r:add_tokens
+  - cache :fragment => 'reader_tools', :authorized => current_member.can_access?(@article).to_s do
+    .ReaderTools
+      .header
+        %h4 Tools For Readers
+      .content
+        %ul
+          - if @article.user_comments? && !controller.action_name.eql?("abstract") && !(controller.action_name.eql?("fulltext") && !current_member.can_access?(@article))
+            %li.comment#comment-pounddown= link_to "Comments", :action => 'comments'
+          %li.print{ :style => "display: none; "}= link_to "Print", "#"
+        - unless @controller.controller_name.include?('preview')
+          :plain
+            <script type="text/javascript">
+            var addthis_options = "email,digg,slashdot,technorati,buzz,favorites,google,linkedin,delicious,more";
+            </script>
+            <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=250&amp;pub=cacmadmin"><img src="http://s7.addthis.com/static/btn/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js?pub=cacmadmin"></script>
+            
+        #Font-Sizer
+          %span#font-default{:class => "Link"}
+            %img{:src => "/images/font-size.default.gif", :width => 11, :height => 11, :alt => "Default Font Size", :title => "Default Font Size"}
+          %span#font-large{:class => "Link"}
+            %img{:src => "/images/font-size.large.gif", :width => 13, :height => 13, :alt => "Large Font Size", :title => "Large Font Size"}
+          %span#font-xlarge{:class => "Link"}
+            %img{:src => "/images/font-size.x-large.gif", :width => 14, :height => 14, :alt => "X-Large Font Size", :title => "X-Large Font Size"}
+          %span.title Text Size
+      - if @article.is_dl_article?
+        .footer
+          = link_to "Author profiles and more in the Digital Library", h(@article.citation_url), :target => "_blank"
+
+<!-- googleon:all -->

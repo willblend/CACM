@@ -1,0 +1,42 @@
+%h1 All Feeds
+
+%p#new-item-link=link_to 'New Feed', new_admin_feed_path
+
+%p= link_to '&laquo; Back to Articles', admin_articles_path
+
+%table.index
+  %col{:width=>'40%'}
+  %col{:width=>'10%'}
+  %col{:width=>'15%'}
+  %col{:width=>'10%'}
+  %col{:width=>'20%'}
+  %col{:width=>'5%'}
+
+  %thead
+    %tr
+      %th Name / URL
+      %th # of Articles
+      %th Type
+      %th Status
+      %th Last Ingest
+      %th Actions
+
+  %tbody
+    -@feeds.each do |f|
+      %tr
+        %td
+          %strong=link_to h(f.name), edit_admin_feed_path(f)
+          %br/
+          %small= (f.class_name == 'ManualFeed') ? "(Manual Feed)" : h(truncate(f.feedurl, 80))
+        %td= f.articles.count
+        %td= h(f.display_name)
+        %td= f.active? ? "Active" : "Inactive"
+        %td= f.last_ingest.nil? ? "N/A" : f.last_ingest.to_s(:mdy_time)
+        %td
+          - unless (f.class_name == 'ManualFeed')
+            =link_to 'Ingest', ingest_path(f)
+          
+    -if @feeds.empty?
+      %tr
+        %td{ :colspan => 6 }
+          %p.Placeholder No Feeds in database.
