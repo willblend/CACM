@@ -1,0 +1,20 @@
+.clearfix, .clearfix-left, .clearfix-right { clear:both; content:" "; display:block; font-size:0; height:0; visibility:hidden; }
+.clearfix-left { clear:left; }
+.clearfix-right { clear:right; }
+
+input { vertical-align: text-bottom; }
+
+header { padding-top:10px; }
+header #topBar ul { margin-right:20px; }
+header nav li.first-child a { border-left:1px solid #a8b2b5; }
+* html ul li a { height:1em; }
+
+.widget .smallBlueI { margin-right:1px; overflow:hidden; }
+.widget .smallWhiteI { margin-right:3px; overflow:hidden; }
+
+#topLogo, #issueArrow, .toolTip, .videoCont a,
+header #topBox ul.sectionsList li.selected  { behavior: url('stylesheets/resources/iepngfix.htc'); }
+
+.videoCont a { cursor: pointer; }
+
+footer nav li.first-child a { border-left:none; padding-left:0; }

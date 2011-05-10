@@ -1,0 +1,239 @@
+/* 
+html5doctor.com Reset Stylesheet (Eric Meyer's Reset Reloaded + HTML5 baseline)
+v1.4 2009-07-27 | Authors:Eric Meyer & Richard Clark
+html5doctor.com/html-5-reset-stylesheet/
+*/
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, menu, time, mark, audio, video { margin:0; padding:0; border:0; outline:0; font-size:100%; vertical-align:baseline; background:transparent; } article, aside, figure, footer, header, hgroup, nav, section { display:block; } nav ul { list-style:none; } blockquote, q { quotes:none; } blockquote:before, blockquote:after, q:before, q:after { content:''; content:none; } a { margin:0; padding:0; border:0; font-size:100%; vertical-align:baseline; background:transparent; } ins { background-color:#ff9; color:#000; text-decoration:none; } mark { background-color:#ff9; color:#000; font-style:italic; font-weight:bold; } del { text-decoration:line-through; } abbr[title], dfn[title] { border-bottom:1px dotted #000; cursor:help; } table { border-collapse:collapse; border-spacing:0; } /* tables still need cellspacing="0" in the markup */ 
+:focus { outline:0; }
+/* /RESET */
+/* HTML */
+html, body { height:100%; text-align:center; }
+html { overflow:auto; -webkit-font-smoothing:antialiased; }
+body,div,dd,dl,dt,h1,h2,h3,h4,h5,h6,li,ol,span,td,th,ul { color:#444; font:15px arial,verdana,sans-serif; line-height:1.22; }
+body { background: url('../images/backgrounds/body_bg.png') repeat-x #FFF; }
+a { color:#f47a4d; text-decoration:none; }
+a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color:#c01339; text-decoration:none; }
+img { border:none; }
+p { padding:10px 0; }
+strong, b { font-weight:bold; }
+em, i { font-style:italic; }
+h1, h2, h3, h4, h5, h6 { color:#000; font-weight:bold; padding:10px 0; text-rendering:optimizeLegibility; }
+h1, h1 a { font-size:26px; padding-top:0; }
+h2, h2 a { font-size:24px; }
+h3, h3 a { font-size:22px; }
+h4, h4 a { font-size:18px; }
+h5, h5 a { font-size:16px; }
+h6, h6 a { font-size:14px; }
+table { padding:10px 0;  width:100%; }
+th { font-weight:bold; }
+td, th { padding:5px; }
+ul, ol { padding:10px 10px 10px 30px; }
+ul li { background:transparent url(../images/bullet.gif) 0 7px no-repeat; line-height:1.22; list-style:none; padding:0 0 8px 10px; }
+ol { font-size:13px; }
+ol li { list-style:decimal; margin:0 0 0 10px; padding:0 0 8px 0; }
+blockquote { color:#76888a; font-size:16px; font-style:italic; line-height:1.22; padding:10px 0; }
+blockquote p { padding:0 }
+hr { border:0 #e2e6e6 solid; border-top-width:2px; clear:both; display:block; height:2px; margin:10px 0; }
+code, pre { font-family:"Courier New", monospace, serif; font-size:1em; }
+sub { vertical-align:sub; font-size:smaller; }
+sup { vertical-align:super; font-size:smaller; }
+/* inputs/form fields */
+select, input, textarea { font:99% arial,helvetica,sans-serif; }
+input, select { vertical-align:middle; }
+button { overflow:visible; width:auto; }
+button, input[type='button'], input[type='submit'], label, select { cursor:pointer; } 
+input[type='text'], input[type='password'], input.input-field { border:1px solid #bccccd; margin-bottom:8px; padding:2px; width:450px; }
+input[type="radio"] { vertical-align:text-bottom; }
+input[type="checkbox"] { vertical-align:bottom; *vertical-align:baseline; }
+textarea { border:1px solid #bccccd; display:block; margin-bottom:8px; overflow:auto; }
+select { border:1px solid #bccccd; display:block; margin-bottom:8px; padding:2px; width:200px; }
+fieldset { margin-bottom:8px; }
+label { font-weight:bold; font-size:13px; display:block; margin:0 0 2px 0; }
+label.radio { display:inline; font-size:13px; padding-left:3px; }
+
+::selection { background:#000; color:#fff; }
+::-moz-selection { background:#000; color:#fff; } 
+a:focus, button:focus, input:focus, label:focus, select:focus, textarea:focus { outline:1px dotted #c01339; }
+
+/* /HTML */
+/* CLASSES */
+
+/* Hide for both screenreaders and browsers
+   css-discuss.incutio.com/wiki/Screenreader_Visibility */
+.hidden { display:none; visibility:hidden; } 
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+.clear, .clear-left, .clear-right { clear:both; display:block; overflow:hidden; visibility:hidden; width:0; height:0; }
+
+.clearfix:after, .clearfix-left:after, .clearfix-right:after { content:"."; display:block; height:0; clear:both; visibility:hidden; }
+.clearfix, .clearfix-left:after, .clearfix-right:after { display:inline-block; }
+* html .clearfix, * html .clearfix-left:after, * html .clearfix-right:after { height:1%; } /* Hides from IE-mac \*/
+.clearfix, .clearfix-left:after, .clearfix-right:after { display:block; }
+.clearfix-left:after, .clear-left { clear:left; }
+.clearfix-right:after, .clear-right { clear:right; }
+
+.align-left { text-align:left; }
+.align-center { text-align:center; }
+.align-right { text-align:right; }
+.float-left { float:left; }
+.float-right { float:right; }
+.inline { display:inline; }
+.alert, .required { color:#ff0000; }
+.rounded10 {  }
+/* /CLASSES */
+/* LAYOUT */
+#container { height:auto !important; height:500px; margin:0 auto; min-height:500px; text-align:left; width:980px; }
+#layout { width: 980px; }
+header.topHeader { padding: 0px; position: relative; height: 477px; z-index: 100; }
+header #topBar { padding: 9px 0px; height: 13px; overflow: hidden; background: url('../images/backgrounds/top_bar_bg.png') 20px 12px no-repeat #000; overflow: hidden; }
+header #topBar ul { margin: 0px 40px; padding: 0px; float: right; }
+header #topBar ul li { margin: 0px; padding: 0px; background: none; display: inline; }
+header #topBar ul li a { border-left: 1px solid #1b1c1d; border-right: 1px solid #656a6d; font-family: Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; color: #FFF; margin: 0px; padding: 0px 10px; background: none; display: block; float: left; }
+header #topBar ul li:first-child a { border-left: 0; }
+header #topBar ul li.last-child a { border-right: 0; }
+header #topBar ul li a:hover { color: #79c1e4; text-decoration: none; }
+header #topBar ul li a:active, header #topBar ul li a.on { color:#3db8f5; }
+header #topLogo { position: absolute; top: 11px; right: 0px; z-index: 10; width: 40px; height: 40px; display: block; background: url('../images/icons/acm_header.png') no-repeat; text-indent: -9999px; }
+header #topSignIn { position: absolute; top: 41px; font-weight: bold; right: 50px; color: #2194ce; font-size: 11px; text-transform: uppercase; }
+header #topSignIn:hover { color: #003356; text-decoration: none; }
+header #topSignIn:active, header #topSignIn .topSignInOn { color: #000000; text-decoration: none; }
+
+header #topForm { width: 223px; height: 25px; background: url('../images/backgrounds/search_box_bg.png') no-repeat 0px 0px; position: absolute; top: 65px; right: 0px; }
+header #topForm .portaInput { position: relative; margin: 0px; padding: 0px; }
+header #topForm form { position: relative; margin: 0px; padding: 0px; border: 0; }
+header #topForm #labelSearchInput { position: absolute; top: 5px; left: 9px; z-index: 20; color: #646a6d; font-size: 11px; font-weight: bold; background: url('../images/buttons/empty.gif') repeat; }
+header #topForm #searchSubmit { position: absolute; top: 0px; right: 0px; z-index: 20; border: 0; background: transparent; height: 25px; width: 25px; text-indent: -9999px; }
+header #topForm #searchInput { position: absolute; top: 5px; left: 6px; width: 184px; height: 11px; line-height: 11px; border: 0; background: transparent; z-index: 10; color: #646a6d; font-size: 11px; font-weight: bold; outline: 0;}
+
+header hgroup h1 { margin: 39px 0px 0px 0px; }
+header hgroup h1 a { display: block; width: 307px; height: 58px; background: url('../images/backgrounds/main_logo_bg.png') no-repeat; text-indent: -9999px; }
+
+header nav { text-align: right; }
+header nav ul { margin: -35px 0px 0px 0px; float: right; padding: 0px; }
+header nav ul li { margin: 0px; padding: 0px; background: none; display: inline; }
+header nav ul li a { line-height: 11px; border-left: 1px solid #a8b2b5; border-right: 1px solid #a8b2b5; font-family: Arial, Helvetica, sans-serif; text-transform: uppercase; font-size: 12px; font-weight: bold; color: #000; margin: 0px 0px 0px -1px; padding: 14px 0px 0px 0px; text-align: center; background: url('../images/buttons/empty.gif') repeat #FFF; display: block; float: left; }
+header nav .portaDropdown { float: left; position: relative; z-index: 100; }
+header nav .portaDropdown .menuLinks { border: 1px solid #a8b2b5; display: none; text-align: left; clear: both; float: none; background: url('../images/buttons/empty.gif') repeat #FFF; width: 200px; position: absolute; top: 37px; z-index: 100; }
+header nav .portaDropdown .menuLinks.currenIssueDropdown { width: 420px; left: -53px; padding-bottom: 20px; }
+header nav .portaDropdown .menuLinks.newsDropdown { width: 168px; left: -53px; padding: 10px 0px; }
+header nav .portaDropdown .menuLinks.previousDropdown { width: 277px; left: -161px; padding: 10px 0px; }
+header nav .portaDropdown .menuLinks.blogsDropdown, header nav .portaDropdown .menuLinks.opinionDropdown { width: 180px; left: -53px; padding: 10px 0px; }
+header nav .portaDropdown .menuLinks.previousDropdown .previousIssueTitle { display: block; font-weight: normal; color: #000; font-size: 12px; margin: 0px 20px 5px 20px; padding-top: 10px; line-height:18px; }
+header nav .portaDropdown .menuLinks.currenIssueDropdown .dropDownIssueTitle { display: block; font-weight: bold; color: #000; font-size: 12px; text-transform: uppercase; margin: 20px 0px 5px 0px; }
+header nav .portaDropdown .menuLinks.currenIssueDropdown .dropdownCover { float: left; border: 1px solid white; margin: 20px 20px 0px 20px; position: relative; z-index: 102; }
+header nav .portaDropdown .menuLinks a { color: #077fba; text-transform: none; margin: 0px 20px 0px 20px; padding: 6px 0px; display: block; float: none; border-left: 0; border-right: 0; border-top: 0; border-bottom: 1px dotted #999999; text-align: left; line-height:18px; }
+header nav .portaDropdown .menuLinks.currenIssueDropdown a { color: #077fba; text-transform: none; margin: 0px 20px 0px 185px; padding: 6px 0px; display: block; float: none; border-left: 0; border-right: 0; border-top: 0; border-bottom: 1px dotted #999999; text-align: left; }
+header nav .portaDropdown .menuLinks a:hover { color:#003356; text-decoration: none; }
+header nav .portaDropdown .menuLinks a.lastLink { border-bottom: 0px; }
+
+header nav ul li a.itemHome { width: 52px; }
+header nav ul li a.itemCurrent { width: 109px; }
+header nav ul li a.itemNews { width: 53px; }
+header nav ul li a.itemBlogs { width: 59px; }
+header nav ul li a.itemOpinion { width: 65px; }
+header nav ul li a.itemResearch { width: 80px; }
+header nav ul li a.itemPractice { width: 80px; }
+header nav ul li a.itemJobs { width: 50px; }
+header nav ul li a.itemPrevious { width: 117px; }
+
+header #topBox { position: relative;height: 310px; border: 2px solid #FFF; background: url('../images/backgrounds/slider_bg.png') repeat; clear: both; margin: 21px 0px; z-index: 99; }
+header #topBox .issueCover { position: absolute; top: 0px; left: 0px; width:206px; height: 310px; }
+header #topBox .issueCover #issueCover { position: absolute; z-index: 9; border: 1px solid #FFF; top: 26px; left: 20px; }
+header #topBox .issueCover #issueArrow { position: absolute; z-index: 10; top: 69px; left: 8px; }
+header #topBox .issueCover #issueInfo { position: absolute; z-index: 10; top: 222px; left: 20px; width: 146px; background: #2094cd; }
+header #topBox .issueCover #issueInfo span { display: block; color: #000; font-weight: bold; margin: 7px 0px 0px 8px; font-size: 11px; line-height: 16px; font-family: Arial, Helvetica, sans-serif; text-transform: uppercase; }
+header #topBox .issueCover #issueInfo a { display: block; color: #FFF; font-weight: bold; margin: 2px 0px 7px 8px; font-size: 11px; line-height: 16px; font-family: Arial, Helvetica, sans-serif; text-transform: uppercase; }
+header #topBox .issueCover #issueInfo a:hover { text-decoration: underline; }
+header #topBox #issueBg { position: absolute; top: 0px; right: 0px; }
+header #topBox ul.sectionsList { margin: 20px 0px 0px 206px; padding: 0px; }
+header #topBox ul.sectionsList li { list-style-type: none; margin: 0px; padding: 0px; width: 117px; background: none; }
+header #topBox ul.sectionsList li.selected { background: url('../images/backgrounds/arrow_bg.png') right no-repeat; }
+header #topBox ul.sectionsList li span{ display: block; color: #FFF; background: #000; padding: 5px 7px; width: 76px; text-transform: uppercase; font-size: 11px; font-weight: bold; }
+header #topBox ul.sectionsList li a{ border-top: 1px solid #6f777a; display: block; color: #FFF; padding: 9px 7px; width: 76px; font-size: 13px; font-weight: bold; }
+header #topBox ul.sectionsList li a:hover, header #topBox ul.sectionsList li.selected a{ color: #3db8f5; }
+header #topBox ul.sectionsList li a.firstLink { border-top: none; }
+
+header #topBox #articlesLists { display:none; height: 310px; width: 525px; background: #000; position: absolute; top: 0px; right: 128px; margin: 0px; }
+header #topBox ul.articlesList { display:none; height: 300px; width: 525px; position: absolute; top: 0px; right: 0px; padding: 5px 0px; margin: 0px; }
+header #topBox ul.articlesList li { background: none; margin: 0px 15px; padding: 0px; }
+header #topBox ul.articlesList li a { border-top: 1px solid #383c3d; color: #FFF; font-size: 20px; font-family: proxima, sans-serif; display: block; padding: 6px; z-index: 1; }
+header #topBox ul.articlesList li a:hover { color: #3db8f5; }
+header #topBox ul.articlesList li:first-child a { border-top: none; }
+header #topBox ul.articlesListSelected { display:block; }
+
+header .toolTip { top: 0px; left: 260px; overflow: hidden; width: 270px; position: absolute; z-index: 99; background: url('../images/backgrounds/tool_tip_arrow.png') 0 10px no-repeat; padding-left: 8px; }
+header .toolTip .toolTipText { margin: 0px 10px 10px 0px; font-size: 13px; color: #000; line-height: 18px; min-height:24px; background: #d4f0fe; padding: 7px 10px;-moz-box-shadow: 3px 3px 4px #000;-webkit-box-shadow: 3px 3px 4px #000;	box-shadow: 3px 3px 4px #000;/* For IE 8 */-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')"; }
+
+article {  }
+section { float:left; padding: 20px 20px 40px 20px; width:940px; clear: both; min-height: 200px; }
+section header { padding:10px 0; }
+
+.col3 { width: 220px; padding: 0px; margin: 0px 20px 0px 0px; }
+.lastCol { margin: 0px 0px 0px 0px; }
+.floatLeft { float: left; }
+.blueWidget { width: 220px; padding: 0px; border-top: 4px solid #2094cd; border-bottom: 1px solid #2094cd; min-height: 50px; margin-bottom: 30px;}
+.lightBlueWidget { width: 220px; padding: 0px; border-top: 4px solid #4da9d7; border-bottom: 1px solid #2094cd; min-height: 50px; margin-bottom: 30px;}
+.signInWidget { width: 220px; padding: 0px; min-height: 50px; margin-bottom: 30px; background: #2094cd; overflow: hidden; }
+.bestWidget { width: 220px; padding: 0px; min-height: 50px; margin-bottom: 30px; background: #d2eaf5; overflow: hidden; }
+.jobsWidget { width: 220px; padding: 0px; min-height: 50px; margin-bottom: 30px; background: #f0f1d6; overflow: hidden; }
+.noBottom { border-bottom: 0; }
+
+.widget .widgetName { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; text-transform: uppercase; color: #000; margin: 5px 0px 8px 0px; display: block; }
+.widget .dateWidget { float: right; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; text-transform: uppercase; color: #6f777a; margin: 5px 3px 0px 0px; display: block; }
+.widget .smallBlueI { float: right; margin: 5px 3px 0px 0px; display: block; width: 14px; height: 14px; background: url('../images/backgrounds/small_blue_i.png'); }
+.widget .smallWhiteI { float: right; margin: 7px 7px 0px 0px; display: block; width: 14px; height: 14px; background: url('../images/backgrounds/small_white_i.png'); }
+.widget .dateNews { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; text-transform: uppercase; color: #6f777a; margin: 5px 3px 0px 0px; display: block; }
+.widget .withImage .dateNews { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; text-transform: uppercase; color: #6f777a; margin: 5px 3px 0px 81px; display: block; }
+.widget h5 { font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; color: #003660; line-height: 20px; margin: 0px 0px 3px 0px; padding: 0px; }
+.widget.bestWidget h5, .widget.jobsWidget h5 { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #003660; line-height: 18px; margin: 0px 0px 3px 0px; padding: 0px; }
+.widget .withImage h5 { margin: 0px 0px 3px 81px; }
+.widget h6 { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: normal; color: #646a6c; line-height: 20px; margin: 0px 0px 3px 0px; padding: 0px; }
+.widget .viewMore { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #2094cd; line-height: 20px; margin: 10px 3px 3px 0px; padding: 0px; display: block; text-transform: uppercase; }
+.widget.jobsWidget .viewMore { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #2094cd; line-height: 20px; margin: 10px 3px 10px 10px; padding: 0px; display: block; text-transform: uppercase; }
+.widget p { font-family: Georgia, serif; font-size: 13px; font-weight: normal; color: #000; line-height: 20px; margin: 0px 3px 3px 0px; padding: 0px; }
+.widget.bestWidget p, .widget.jobsWidget p { font-family: Arial, Helvetica, sans-serif; font-size: 11px; font-weight: normal; color: #000; line-height: 18px; margin: 0px 3px 3px 0px; padding: 0px; }
+.widget h5 a { display: block; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; color: #003660; }
+.widget h5 a:hover { text-decoration: underline; }
+.widget.bestWidget h5 a, .widget.jobsWidget h5 a { display: block; font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 18px; font-weight: bold; color: #003660; }
+.widget.bestWidget h5 a:hover, .widget.jobsWidget h5 a:hover { text-decoration: underline; }
+.iconNewPage { background: url('../images/icons/new_page.png') no-repeat 4px 6px; }
+
+.widget .singleVideo { border-top: 1px dotted #115f86; padding-top: 12px; margin-bottom: 12px; clear: both; overflow: hidden; }
+.widget .singlePopular { border-bottom: 1px dotted #115f86; margin-top: 10px; padding-bottom: 10px; clear: both; overflow: hidden; }
+.widget .singleBest { border-top: 1px dotted #115f86; padding-top: 10px; margin: 0px 10px 10px 10px; clear: both; overflow: hidden; }
+.widget.jobsWidget .singleBest { border-top: 1px dotted #000; padding-top: 10px; margin: 0px 10px 10px 10px; clear: both; overflow: hidden; }
+.widget .singleNews { border-top: 1px dotted #999999; padding-top: 12px; margin-bottom: 12px; clear: both; overflow: hidden; }
+.widget .singleNews img { border: 1px solid #a8b2b5; float: left; margin-top: 3px; }
+.widget .singleVideo .videoCont { position: relative; float: left; margin-top: 3px; width: 75px; height: 50px; }
+.widget .singleVideo .videoCont a { background: url('../images/backgrounds/video_overlay.png') bottom no-repeat; position: absolute; display: block; top: 0px; left: 0px; width: 75px; height: 50px; z-index: 10; }
+.widget .singleVideo .videoCont a:hover { background: url('../images/backgrounds/video_overlay.png') top no-repeat; }
+.widget .singleVideo .videoCont img { position: absolute; display: block; top: 0px; left: 0px; width: 75px; height: 50px; z-index: 9; }
+.widget .singleNews.firstNews, .widget .singleVideo.firstVideo, .widget .singleBest.firstBest { border-top: 0px; padding-top: 0px; }
+
+.signInTitle { font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; display: block; margin: 15px 0px 10px 10px; text-transform: uppercase; color: #FFF; }
+.portaInputSignIn { width: 200px; height: 25px; position: relative; margin: 0px 0px 10px 10px; }
+.portaInputSignIn label { top: 5px; left: 8px; font-weight: normal; position: absolute; color:#333; font-size: 13px; font-family: Arial, Helvetica, sans-serif; z-index: 10; background: #d4f0fe; }
+.portaInputSignIn input { outline: 0; top: 0px; left: 0px; position: absolute; color:#333; font-size: 13px; font-family: Arial, Helvetica, sans-serif; width: 193px; line-height: 25px; height: 25px; border: 0; background: #d4f0fe; z-index: 9; padding: 0px 0px 0px 7px; }
+.subText { display: block; margin: 0px 0px 5px 10px; font-size: 12px; color: #FFF; }
+.subText:hover { text-decoration: underline; color: #FFF; }
+.signInWidget .submitSignIn { float: right; margin: 10px 10px 15px 10px; text-transform: uppercase; color: #FFF; background: #000; font-size: 11px; font-weight: bold; padding: 5px 10px; border: 0; }
+
+.bestWidget .widgetBigTitle { overflow: hidden; height: 30px; background: url('../images/backgrounds/bg_widget_1.png') no-repeat right top #115f86; margin-bottom: 10px; }
+.jobsWidget .widgetBigTitle { overflow: hidden; height: 30px; background: url('../images/backgrounds/bg_widget_2.png') no-repeat right top #b2ba30; margin-bottom: 10px; }
+.widgetBigTitle .bigTitle { color: #FFF; font-size: 12px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; text-transform: uppercase; display: block; margin: 7px 0px 0px 9px; }
+
+.adWidget { text-align: center; padding: 20px 0px; background: url('../images/backgrounds/ad_bg.png') repeat; margin-bottom: 30px; }
+
+footer { padding: 5px 0px 0px 0px; clear: both; border-top: 3px solid #000; height: 30px; }
+footer nav { background:none; height:auto; width:auto; float: left; }
+footer nav ul { padding: 0; margin: 0; }
+footer nav ul li { padding: 0; margin: 0; display: inline; background: 0; }
+footer nav ul li a { border-left: 1px solid #888888; color: #000; font-size: 11px; font-family: Arial, Helvetica, sans-serif; padding: 0px 10px; margin: 0; display: block; float: left; }
+footer nav ul li:first-child a { border-left: 0; padding: 0px 10px 0px 0px; }
+footer nav ul li a:hover { color: #000;text-decoration: underline; }
+footer #footerText { float: right; color: #000; font-size: 11px; font-family: Arial, Helvetica, sans-serif; }
+footer nav li a { background:none; text-indent:0px; }
+/* /LAYOUT */
+
+
